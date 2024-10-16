@@ -5,7 +5,7 @@ namespace TP9_MONTENEGRO_LUCERO.Models
 {
     public static class BD
     {
-        private static string _connectionString = @"Server=A-PHZ2-LUM-13; Database=TP9;Trusted_Connection=True;";
+        private static string _connectionString = @"Server=localhost; Database=TP9;Trusted_Connection=True;";
 
 
         public static void AgregarDeportista(USUARIO user)
