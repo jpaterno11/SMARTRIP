@@ -92,7 +92,8 @@ CREATE TABLE [dbo].[USUARIO](
 	[apellido] [varchar](50) NULL,
 	[fechaNacimiento] [date] NULL,
 	[genero] [varchar](10) NULL,
-	[usuario] [varchar](50) NOT NULL, /* ESTO INCLUYE TELEFONO O EMAIL*/
+	[email] [varchar](50) NOT NULL,
+	[telefono] [int] NOT NULL,
 	[contraseña] [varchar](50) NULL
 ) ON [PRIMARY]
 GO

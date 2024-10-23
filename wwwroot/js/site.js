@@ -13,18 +13,23 @@
 }
 
 
-// function EmailOTelefono(){
-//   let usuario = document.getElementById('usuario').value;
-//   let email;
-//   let telefono;
-//   if(usuario.includes("@"))
-//   {
-//     email = usuario;
-//   }
-//   else
-//   {
-//     telefono = usuario;
-//   }
+function enviarFormulario() {
+  let usuario = document.getElementById('usuario').value;
+  let contraseña = document.getElementById('contraseña').value;
 
-//   document.getElementById('loginForm').submit();
-// }
+  if (usuario.includes('@')) 
+  {
+      document.getElementById('loginForm').action = '/Account/IniciarSesionConEmail'; // Cambia la acción del formulario
+  } 
+  else if (/^\d+$/.test(usuarioInput)) 
+  {
+      document.getElementById('loginForm').action = '/Account/IniciarSesionConTelefono'; // Cambia la acción del formulario
+  } 
+  else 
+  {
+      alert("Por favor, ingrese un email válido o un número de teléfono.");
+      return false; // Evita que se envíe el formulario si no es válido
+  }
+
+  document.getElementById('loginForm').submit();
+}

@@ -31,7 +31,7 @@ public class AccountController : Controller
 
 
      [HttpPost] 
-     public IActionResult IniciarSesion(string usuario, string contraseña)
+     public IActionResult IniciarSesionEmail(string email, string contraseña)
     {
         USUARIO user = BD.
 
