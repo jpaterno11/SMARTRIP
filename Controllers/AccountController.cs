@@ -13,5 +13,9 @@ public class AccountController : Controller
         _logger = logger;
     }
 
+     public IActionResult IniciarSesion(string usuario, string contraseña)
+    {
+        return View();
+    }
    
 }
