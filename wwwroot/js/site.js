@@ -1,4 +1,4 @@
-﻿function login() {
+﻿function validarContraseña() {
     let contraseña = document.getElementById('contraseña').value;
     let usuario = document.getElementById('usuario').value;
    
