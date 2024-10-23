@@ -1,4 +1,4 @@
-namespace TP9_MONTENEGRO_LUCERO.Models;
+namespace SMARTRIP.Models;
 
 public class ErrorViewModel
 {

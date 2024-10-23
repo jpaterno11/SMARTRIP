@@ -19,11 +19,11 @@ function enviarFormulario() {
 
   if (usuario.includes('@')) 
   {
-      document.getElementById('loginForm').action = '/Account/IniciarSesionConEmail'; // Cambia la acción del formulario
+      document.getElementById('loginForm').action = '/Account/IniciarSesionConEmail';
   } 
   else if (/^\d+$/.test(usuarioInput)) 
   {
-      document.getElementById('loginForm').action = '/Account/IniciarSesionConTelefono'; // Cambia la acción del formulario
+      document.getElementById('loginForm').action = '/Account/IniciarSesionConTelefono';
   } 
   else 
   {

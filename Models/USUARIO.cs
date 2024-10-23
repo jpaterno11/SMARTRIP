@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 
-namespace TP9_MONTENEGRO_LUCERO.Models
+namespace SMARTRIP.Models
 {
     public class USUARIO
     {

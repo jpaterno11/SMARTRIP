@@ -1,8 +1,8 @@
 using System.Diagnostics;
 using Microsoft.AspNetCore.Mvc;
-using TP9_MONTENEGRO_LUCERO.Models;
+using SMARTRIP.Models;
 
-namespace TP9_MONTENEGRO_LUCERO.Controllers;
+namespace SMARTRIP.Controllers;
 
 public class AccountController : Controller
 {
@@ -33,9 +33,24 @@ public class AccountController : Controller
      [HttpPost] 
      public IActionResult IniciarSesionEmail(string email, string contraseña)
     {
-        USUARIO user = BD.
-
-        return View();
+        USUARIO user = BD.VerificarUsuarioEmail(email, contraseña);
+        if(user == null)
+        {
+            ViewBag.Mensaje = "Lo sentimos, esa cuenta no existe.";
+            return View("Registro");
+        }
+        return View("Index");
     }
    
+   [HttpPost] 
+    public IActionResult IniciarSesionTelefono(int telefono, string contraseña)
+    {
+        USUARIO user = BD.VerificarUsuarioTelefono(telefono, contraseña);
+        if(user == null)
+        {
+            ViewBag.Mensaje = "Lo sentimos, esa cuenta no existe.";
+            return View("Registro");
+        }
+        return View("Index");
+    }
 }

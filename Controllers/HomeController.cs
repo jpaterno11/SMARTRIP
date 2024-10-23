@@ -1,8 +1,8 @@
 using System.Diagnostics;
 using Microsoft.AspNetCore.Mvc;
-using TP9_MONTENEGRO_LUCERO.Models;
+using SMARTRIP.Models;
 
-namespace TP9_MONTENEGRO_LUCERO.Controllers;
+namespace SMARTRIP.Controllers;
 
 public class HomeController : Controller
 {

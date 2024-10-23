@@ -1,7 +1,7 @@
 using System.Data.SqlClient;
 using Dapper;
 
-namespace TP9_MONTENEGRO_LUCERO.Models
+namespace SMARTRIP.Models
 {
     public static class BD
     {
