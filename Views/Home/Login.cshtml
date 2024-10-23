@@ -7,12 +7,12 @@
 </head>
 <body>
     <body>
-    <form action="post" action='@Url.Action("IniciarSesion, Account")'>
+    <form method="post" action='@Url.Action("IniciarSesion, Account")'>
         <label for="usuario">Ingrese su email o teléfono:</label>
-            <input type="text" id="usuario" name="usuario" requiered>
+            <input type="text" id="usuario" name="usuario" required>
         <label for="contraseña">Ingrese su contraseña:</label>
-            <input type="text" id="contraseña" name="contraseña" requiered>
-         <input type="submit" value "Iniciar Sesión">
+            <input type="password" id="contraseña" name="contraseña" required>
+         <input type="submit" value="Iniciar sesión">
     </form>
 </body>
 </html>

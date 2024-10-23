@@ -17,6 +17,15 @@ namespace TP9_MONTENEGRO_LUCERO.Models
             }
         }
 
+        // public static void VerificarUsuario(strin)
+        // {
+        //     USUARIO user = null;
+        //     string sql = "SELECT * FROM USUARIOS WHERE ;
+        //     using (SqlConnection db = new SqlConnection(_connectionString))
+        //     {
+        //         db.Execute(sql, new { Pusername = user.username, Pcontraseña = user.contraseña, Pemail = user.email, Ptelefono = user.telefono, Pnombre = user.nombre, Papellido = user.apellido });
+        //     }
+        // }
 
     }
 }

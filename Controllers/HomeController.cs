@@ -18,19 +18,5 @@ public class HomeController : Controller
         return View();
     }
 
-    public IActionResult Login()
-    {
-        return View();
-    }
-
-    
-    public IActionResult Registro()
-    {
-        return View();
-    }
-
-    public IActionResult OlvideMiContraseña()
-    {
-        return View();
-    }
+  
 }

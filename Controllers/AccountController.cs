@@ -13,8 +13,28 @@ public class AccountController : Controller
         _logger = logger;
     }
 
+  public IActionResult Login()
+    {
+        return View();
+    }
+
+    
+    public IActionResult Registro()
+    {
+        return View();
+    }
+
+    public IActionResult OlvideMiContraseña()
+    {
+        return View();
+    }
+
+
+     [HttpPost] 
      public IActionResult IniciarSesion(string usuario, string contraseña)
     {
+        USUARIO user = BD.
+
         return View();
     }
    

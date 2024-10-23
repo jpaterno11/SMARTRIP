@@ -11,3 +11,20 @@
       document.getElementById('loginForm').submit();
     }
 }
+
+
+// function EmailOTelefono(){
+//   let usuario = document.getElementById('usuario').value;
+//   let email;
+//   let telefono;
+//   if(usuario.includes("@"))
+//   {
+//     email = usuario;
+//   }
+//   else
+//   {
+//     telefono = usuario;
+//   }
+
+//   document.getElementById('loginForm').submit();
+// }
