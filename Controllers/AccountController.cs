@@ -18,11 +18,14 @@ public class AccountController : Controller
         return View();
     }
 
-    
-    public IActionResult Registro()
-    {
-        return View();
-    }
+    [HttpPost] 
+    public IActionResult Registrarse(string email, string contraseña)
+     {
+
+         
+         return View("Index");
+     }
+
 
     public IActionResult OlvideMiContraseña()
     {
@@ -30,27 +33,27 @@ public class AccountController : Controller
     }
 
 
-     [HttpPost] 
-     public IActionResult IniciarSesionEmail(string email, string contraseña)
-    {
-        USUARIO user = BD.VerificarUsuarioEmail(email, contraseña);
-        if(user == null)
-        {
-            ViewBag.Mensaje = "Lo sentimos, esa cuenta no existe.";
-            return View("Registro");
-        }
-        return View("Index");
-    }
-   
-   [HttpPost] 
-    public IActionResult IniciarSesionTelefono(int telefono, string contraseña)
-    {
-        USUARIO user = BD.VerificarUsuarioTelefono(telefono, contraseña);
-        if(user == null)
-        {
-            ViewBag.Mensaje = "Lo sentimos, esa cuenta no existe.";
-            return View("Registro");
-        }
-        return View("Index");
-    }
+//      [HttpPost] 
+//      public IActionResult IniciarSesionEmail(string email, string contraseña)
+//     {
+
+//         USUARIO user = BD.VerificarUsuarioEmail(email, contraseña);
+//         if(user == null)
+//         {
+//             ViewBag.Mensaje = "Lo sentimos, esa cuenta no existe.";
+//             return View("Registro");
+//         }
+//         return View("Index");
+//     }
+//    [HttpPost] 
+//     public IActionResult IniciarSesionTelefono(int telefono, string contraseña)
+//     {
+//         USUARIO user = BD.VerificarUsuarioTelefono(telefono, contraseña);
+//         if(user == null)
+//         {
+//             ViewBag.Mensaje = "Lo sentimos, esa cuenta no existe.";
+//             return View("Registro");
+//         }
+//         return View("Index");
+//     }
 }

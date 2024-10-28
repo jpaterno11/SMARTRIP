@@ -1,0 +1,26 @@
+@{
+        ViewData["Title"] = "Registrarse - SmarTrip";
+    }
+    <body>
+        <form action="@Url.Action("Registrarse2", "Home")" method="post" onsubmit="return enviarFecha();">
+            <label for="nombre">Ingrese su nombre: </label>
+            <input type="text" id="nombre" name="nombre" requiered>
+            <label for="apellido">Ingrese su apellido: </label>
+            <input type="text" id="apellido" name="apellido" requiered>
+            <fieldset>
+                <legend>Ingrese su fecha de nacimiento y género: </legend>
+                <input type="number" id="dia" name="dia" placeholder="Dia" required>     
+                <select id="mes" name="mes" aria-label="Mes" required>
+                    <option value="">Selecciona un mes</option>
+                </select>
+                <input type="number" id="año" name="año" placeholder="Año" required>
+                <select id="genero" name="genero" aria-label="Genero" required>
+                    <option value="">Selecciona un Genero</option>
+                    <option value="Hombre">Hombre</option>
+                    <option value="Mujer">Mujer</option>
+                    <option value="Otro">Otro</option>
+                </select>
+            </fieldset>
+        <input type="submit" value="Continuar">
+        </form>
+</body>
