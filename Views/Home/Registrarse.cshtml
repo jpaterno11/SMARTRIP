@@ -1,26 +1,113 @@
 @{
         ViewData["Title"] = "Registrarse - SmarTrip";
     }
-    <body>
-        <form action="@Url.Action("Registrarse2", "Home")" method="post" onsubmit="return enviarFecha();">
-            <label for="nombre">Ingrese su nombre: </label>
-            <input type="text" id="nombre" name="nombre" requiered>
-            <label for="apellido">Ingrese su apellido: </label>
-            <input type="text" id="apellido" name="apellido" requiered>
-            <fieldset>
-                <legend>Ingrese su fecha de nacimiento y género: </legend>
-                <input type="number" id="dia" name="dia" placeholder="Dia" required>     
-                <select id="mes" name="mes" aria-label="Mes" required>
-                    <option value="">Selecciona un mes</option>
+    <style>
+        body {
+            background-color: #f0f8ff;
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+        }
+        .container-fluid {
+            padding: 20px 50px;
+        }
+        h2 {
+            color: #002060;
+            font-weight: bold;
+        }
+        label {
+            font-weight: bold;
+            color: #002060;
+        }
+        input[type="text"],
+        input[type="number"],
+        select {
+            background-color: #d9f0ff;
+            border: 2px solid #b0c4de;
+            padding: 10px;
+            font-size: 16px;
+            width: 100%;
+            margin-bottom: 20px;
+            border-radius: 5px;
+            box-sizing: border-box;
+        }
+        .button-container {
+            display: flex;
+            gap: 10px;
+            justify-content: space-between;
+            margin-top: 30px;
+        }
+
+        .btn-primary {
+            width: 150px;
+            background-color: #00bfff;
+            border: none;
+            padding: 10px;
+            font-size: 18px;
+            color: white;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+        .btn-primary:hover {
+            background-color: #009acd;
+        }
+        .btn-secondary {
+            width: 150px;
+            background-color: #5a5a5a;
+            border: none;
+            padding: 10px;
+            font-size: 18px;
+            color: white;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+        footer {
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+            text-align: center;
+            padding: 10px;
+            background-color: #ffffff;
+            color: #5a5a5a;
+        }
+    </style>
+<body>
+    <div class="container-fluid">
+        <h2>Registrarse en SmarTrip</h2>
+        <form action="@Url.Action("Registrase2", "Home")" method="post" onsubmit="return enviarFecha();">
+            <label for="nombre">Ingrese su nombre:</label>
+            <input type="text" id="nombre" name="nombre" placeholder="Introducir nombre" required>
+            
+            <label for="apellido">Ingrese su apellido:</label>
+            <input type="text" id="apellido" name="apellido" placeholder="Introducir apellido" required>
+            
+            <label>Ingrese su fecha de nacimiento y género:</label>
+            <div style="display: flex; gap: 10px;">
+                <input type="number" id="dia" name="dia" placeholder="Día" required style="flex: 1;">
+                <select id="mes" name="mes" required style="flex: 1;">
+                    <option value="">Mes</option>
+                    <option value="Enero">Enero</option>
+                    <option value="Febrero">Febrero</option>
+                    <option value="Marzo">Marzo</option>
+                    <!-- Agregar los demás meses aquí -->
                 </select>
-                <input type="number" id="año" name="año" placeholder="Año" required>
-                <select id="genero" name="genero" aria-label="Genero" required>
-                    <option value="">Selecciona un Genero</option>
-                    <option value="Hombre">Hombre</option>
-                    <option value="Mujer">Mujer</option>
-                    <option value="Otro">Otro</option>
-                </select>
-            </fieldset>
-        <input type="submit" value="Continuar">
+                <input type="number" id="año" name="año" placeholder="Año" required style="flex: 1;">
+            </div>
+            
+            <select id="genero" name="genero" required>
+                <option value="">Género</option>
+                <option value="Hombre">Hombre</option>
+                <option value="Mujer">Mujer</option>
+                <option value="Otro">Otro</option>
+            </select>
+            
+            <div class="button-container">
+                <button type="button" class="btn-secondary">Volver</button>
+                <button type="submit" class="btn-primary">Continuar</button>
+            </div>
         </form>
+    </div>
+    <footer>
+        © 2024 - NombreProyecto
+    </footer>
 </body>
