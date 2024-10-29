@@ -18,19 +18,27 @@ public class AccountController : Controller
         return View();
     }
 
-    [HttpPost] 
-    public IActionResult Registrarse(string email, string contraseña)
-     {
-
-         
-         return View("Index");
-     }
-
 
     public IActionResult OlvideMiContraseña()
     {
         return View();
     }
+    [HttpPost] 
+      public IActionResult registrarse(string nombre, string apellido, DateTime fecha, string genero)
+     {
+        USUARIO user = new USUARIO ("", "", ' ', nombre, apellido, fecha, genero); 
+        ViewBag.Datos = user;
+        return View("/Views/Home/Registrarse2.cshtml");
+     }
+     [HttpPost] 
+      public IActionResult registrarse2(USUARIO user, string email, int telefono, string contraseña)
+     {
+        user.email = email;
+        user.telefono = telefono;
+        user.contraseña = contraseña; 
+        BD.AgregarUsuario(user);
+        return View("/Views/Home/Registrarse2.cshtml");
+     }
 
 
 //      [HttpPost] 

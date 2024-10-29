@@ -33,6 +33,11 @@ function enviarFormulario() {
 
   document.getElementById('loginForm').submit();
 }
+
+
+
+
+
 function toggleEmailPhone() {
   var inputField = document.getElementById('contacto');
   var toggleLink = document.getElementById('toggleLink');
@@ -67,11 +72,16 @@ selectMes.appendChild(option);
 
 
 function enviarFecha() {
-const dia = document.getElementById('dia').value.padStart(2, '0');
-const mes = document.getElementById('mes').value.padStart(2, '0');
+const dia = document.getElementById('dia').value;
+const mes = document.getElementById('mes').value;
 const año = document.getElementById('año').value;
 const fecha = `${año}-${mes}-${dia}`;
-document.getElementById('fecha').value = fecha;
 console.log(fecha);
-return true; 
+document.getElementById('Registrarseform').action = '/Account/registrarse';
+document.getElementById('Registrarseform').submit();
+return fecha; 
+}
+function enviarForm(){
+document.getElementById('Registrarseform').action = '/Account/registrarse2';
+document.getElementById('Registrarseform').submit();
 }

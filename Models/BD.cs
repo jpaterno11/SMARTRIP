@@ -10,10 +10,10 @@ namespace SMARTRIP.Models
 
         public static void AgregarUsuario(USUARIO user)
         {
-            string sql = "INSERT INTO USUARIO (username, contraseña, email, telefono, nombre, apellido) VALUES (@Pusername, @Pcontraseña, @Pemail, @Ptelefono, @Pnombre, @Papellido)";
+            string sql = "INSERT INTO USUARIO (contraseña, email, telefono, nombre, apellido) VALUES (@Pcontraseña, @Pemail, @Ptelefono, @Pnombre, @Papellido)";
             using (SqlConnection db = new SqlConnection(_connectionString))
             {
-                db.Execute(sql, new { Pusername = user.username, Pcontraseña = user.contraseña, Pemail = user.email, Ptelefono = user.telefono, Pnombre = user.nombre, Papellido = user.apellido });
+                db.Execute(sql, new {Pcontraseña = user.contraseña, Pemail = user.email, Ptelefono = user.telefono, Pnombre = user.nombre, Papellido = user.apellido });
             }
         }
 
