@@ -23,7 +23,7 @@ namespace SMARTRIP.Models
             string sql = "SELECT * FROM USUARIOS WHERE email = @Pemail AND contraseña = @Pcontraseña";
             using (SqlConnection db = new SqlConnection(_connectionString))
             {
-                user = db.QueryFirstOrDefault<USUARIO>(sql, new { Pemail = user.email, Pcontraseña = user.contraseña});
+                user = db.QueryFirstOrDefault<USUARIO>(sql, new { Pemail = email, Pcontraseña = contraseña});
             }
         }
 
@@ -33,7 +33,7 @@ namespace SMARTRIP.Models
             string sql = "SELECT * FROM USUARIOS WHERE telefono = @Ptelefono AND contraseña = @Pcontraseña";
             using (SqlConnection db = new SqlConnection(_connectionString))
             {
-                user = db.QueryFirstOrDefault<USUARIO>(sql, new { Ptelefono = user.telefono, Pcontraseña = user.contraseña});
+                user = db.QueryFirstOrDefault<USUARIO>(sql, new { Ptelefono = telefono, Pcontraseña = contraseña});
             }
         }
 

@@ -14,6 +14,8 @@ namespace SMARTRIP.Models
         public string genero {get;set;}
         public string email {get; set;}
         public int telefono {get; set;}
+        
+        
         public USUARIO()
         {}
 

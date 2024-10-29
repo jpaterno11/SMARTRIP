@@ -21,7 +21,7 @@ function enviarFormulario() {
   {
       document.getElementById('loginForm').action = '/Account/IniciarSesionConEmail';
   } 
-  else if (/^\d+$/.test(usuarioInput)) 
+  else if (/^\d+$/.test(usuario)) 
   {
       document.getElementById('loginForm').action = '/Account/IniciarSesionConTelefono';
   } 
