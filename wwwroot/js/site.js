@@ -77,6 +77,7 @@ const mes = document.getElementById('mes').value;
 const año = document.getElementById('año').value;
 const fecha = `${año}-${mes}-${dia}`;
 console.log(fecha);
+document.getElementById('fecha').value = fecha;
 document.getElementById('Registrarseform').action = '/Account/registrarse';
 document.getElementById('Registrarseform').submit();
 return fecha; 
