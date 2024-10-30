@@ -76,6 +76,12 @@ public class AccountController : Controller
      [HttpPost] 
       public IActionResult Olvidar2(USUARIO user, string contraseña)
      {
+        if(contraseña == user.contraseña)
+        {
+            ViewBag.user = user;
+            ViewBag.Mensaje = "Ingrese una contraseña diferente";
+            return View("/Views/Home/OlvideMiContraseña2.cshtml");
+        }
         user.contraseña = contraseña;
         BD.ActualizarContraseña(user);
         return View("/Views/Home/Index.cshtml");

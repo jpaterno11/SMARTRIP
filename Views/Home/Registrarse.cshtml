@@ -3,7 +3,7 @@
     }
 <body>
     <div class="container">
-    <h2 id="titulo">Registrarse en SmarTrip</h2>
+
     <form method="post" id="Registrarseform" asp-controller="Account" onsubmit="return enviarFecha();">
         <div class="form-group">
             <label for="nombre">Ingrese su nombre:</label>
@@ -16,12 +16,12 @@
         </div>
 
         <label>Ingrese su fecha de nacimiento y género:</label>
-        <div class="form-row">
+        <div class="row">
             <div class="col">
                 <input type="number" class="form-control" id="dia" name="dia" placeholder="Día" required>
             </div>
             <div class="col">
-                <select class="form-control" id="mes" name="mes" required>
+                <select class="form-control mes" id="mes" name="mes" required>
                     <option value="" selected>Mes</option>
                 </select>
             </div>
@@ -30,7 +30,7 @@
             </div>
         </div>
 
-        <div class="form-group mt-3">
+        <div class="form-group genero">
             <select class="form-control" id="genero" name="genero" required>
                 <option value="">Género</option>
                 <option value="Hombre">Hombre</option>

@@ -42,28 +42,39 @@
 
 
 <!-- Navbar -->
-<nav class="navbar navbar-expand-lg navbar-custom">
-    <a class="navbar-brand"  href='@Url.Action("Index", "Home")' >SmarTrip</a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
+<nav class="navbar navbar-custom navbar-expand-lg">
+  <div class="container-fluid">
+    <a class="navbar-brand d-flex align-items-center" href="@Url.Action("Index", "Home")">
+      <img src="../img/Logo_claro.png" alt="Logo" style="height: 40px;"> <!-- Ajusta el tamaño aquí -->
+    </a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
     </button>
-    <div class="collapse navbar-collapse" id="navbarNav">
-        <ul class="navbar-nav mr-auto">
-            <li class="nav-item">
-                <a class="nav-link" href='@Url.Action("Viaja", "Home")'>Viajar</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href='@Url.Action("QuienSomos", "Home")'>Quiénes somos</a>
-            </li>
-        </ul>
-        <div class="d-flex align-items-center">
-            <span class="navbar-text">
-                <a href="#" class="text-white mr-3">¿Ya tienes una cuenta?</a>
-            </span>
-            <a href='@Url.Action("Registrarse", "Home")' class="btn btn-register">Registrarse</a>
-        </div>
+    <div class="collapse navbar-collapse" id="navbarText">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item">
+          <a class="nav-link" aria-current="page" href="#">Viaja</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">Quiénes somos</a>
+        </li>
+      </ul>
+      <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+        <li class="nav-item">
+          <a class="nav-link" aria-current="page" href="#">Ayuda</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="@Url.Action("Login", "Home")">¿Ya tienes una cuenta?</a>
+        </li>
+        <li class="nav-item">
+          <button type="button" class="btn btn-primary"><a href="@Url.Action("Registrarse", "Home")">Registrarse</a></button>
+        </li>
+      </ul>
     </div>
+  </div>
 </nav>
+
+
 
 <!-- Footer -->
 <footer class="footer">
