@@ -2,21 +2,20 @@
         ViewData["Title"] = "Registrarse - SmarTrip";
     }
 <body>
-    <div class="container">
-
+    <div class="container registro">
     <form method="post" id="Registrarseform" asp-controller="Account" onsubmit="return enviarFecha();">
-        <div class="form-group">
+        <div class="form-group margin">
             <label for="nombre">Ingrese su nombre:</label>
             <input type="text" class="form-control" id="nombre" name="nombre" placeholder="Introducir nombre" required>
         </div>
 
-        <div class="form-group">
+        <div class="form-group margin">
             <label for="apellido">Ingrese su apellido:</label>
             <input type="text" class="form-control" id="apellido" name="apellido" placeholder="Introducir apellido" required>
         </div>
 
         <label>Ingrese su fecha de nacimiento y género:</label>
-        <div class="row">
+        <div class="row margin">
             <div class="col">
                 <input type="number" class="form-control" id="dia" name="dia" placeholder="Día" required>
             </div>
