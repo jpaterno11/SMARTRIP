@@ -2,6 +2,7 @@
         ViewData["Title"] = "Registrarse - SmarTrip";
     }
 <body>
+<div id="mensaje" style="color: red;"></div>
     <form method="post" id="Registrarseform2" asp-controller="Account" onsubmit="return enviarForm();">
         <label id="contactoLabel" for="contacto">Ingrese su email: </label>
         <input type="email" id="contacto" name="email" placeholder="Introducir email" required>

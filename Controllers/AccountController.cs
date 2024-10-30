@@ -66,4 +66,18 @@ public class AccountController : Controller
         }
         return View("/Views/Home/Index.cshtml");
     }
+    [HttpPost] 
+      public IActionResult Olvidar(string email, int telefono)
+     {
+        USUARIO user = BD.VerificarEmailTelefono(email, telefono); 
+        ViewBag.user = user;
+        return View("/Views/Home/OlvideMiContraseña2.cshtml");
+     }
+     [HttpPost] 
+      public IActionResult Olvidar2(USUARIO user, string contraseña)
+     {
+        user.contraseña = contraseña;
+        BD.ActualizarContraseña(user);
+        return View("/Views/Home/Index.cshtml");
+     }
 }

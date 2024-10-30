@@ -1,17 +1,36 @@
 ﻿function validarContraseña() {
     let contraseña = document.getElementById('contraseña').value;
-    let usuario = document.getElementById('usuario').value;
-   
+    let confirmar_contraseña = document.getElementById('confirmar_contraseña').value;
 
-    if (contraseña.length < 8 || contraseña.length) {
-       alert('La contraseña debe tener al menos 8 caracteres.');
-    } else {
-        
-      alert('¡Inicio de sesión exitoso!');
-      document.getElementById('loginForm').submit();
+
+    const tieneMayuscula = /[A-Z]/.test(contraseña);
+    const tieneCaracterEspecial = /[!@#$%^&*(),.?":{}|<>]/.test(contraseña);
+
+    if (contraseña.length < 8) {
+        alert('La contraseña debe tener al menos 8 caracteres.');
+        return false;
+    } else if (!tieneMayuscula) {
+        alert('La contraseña debe contener al menos una letra mayúscula.');
+        return false;
+    } else if (!tieneCaracterEspecial) {
+        alert('La contraseña debe contener al menos un carácter especial.');
+        return false;
     }
+    else if (confirmar_contraseña != contraseña)
+    {
+        alert('Las contraseñas deben ser iguales.');
+        return false;
+    }
+
+    return true;
 }
 
+
+function mostrarMensaje(mensaje) {
+    const contenedorMensaje = document.getElementById('mensaje');
+    contenedorMensaje.textContent = mensaje;
+    contenedorMensaje.style.display = 'block'; 
+}
 
 function enviarFormulario() {
     let usuarioInput = document.getElementById('usuario').value;
@@ -42,8 +61,6 @@ function enviarFormulario() {
     loginForm.appendChild(hiddenField);
     loginForm.submit();
 }
-
-
 
 
 
@@ -91,7 +108,21 @@ document.getElementById('Registrarseform').action = '/Account/registrarse';
 document.getElementById('Registrarseform').submit();
 return fechaNacimiento; 
 }
+
+
 function enviarForm(){
 document.getElementById('Registrarseform2').action = '/Account/registrarse2';
+if (validarContraseña)
+{
+    document.getElementById('Registrarseform2').action = '/Account/registrarse';
+}
 document.getElementById('Registrarseform2').submit();
 }
+function enviarForm2(){
+    document.getElementById('Olvidar').action = '/Account/Olvidar';
+    document.getElementById('Olvidar').submit();
+    }
+    function enviarForm3(){
+        document.getElementById('Olvidar2').action = '/Account/Olvidar2';
+        document.getElementById('Olvidar2').submit();
+        }

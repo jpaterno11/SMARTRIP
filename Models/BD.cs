@@ -39,5 +39,26 @@ namespace SMARTRIP.Models
             return user;
         }
 
+         public static USUARIO VerificarEmailTelefono(string email, int telefono)
+        {
+            USUARIO user = null;
+            string sql = "SELECT * FROM USUARIO WHERE email = @Pemail OR telefono = @Ptelefono AND @Ptelefono != 0";
+            using (SqlConnection db = new SqlConnection(_connectionString))
+            {
+                user = db.QueryFirstOrDefault<USUARIO>(sql, new { Pemail = email, Ptelefono = telefono});
+            }
+            return user;
+        }
+
+         public static void ActualizarContraseña(USUARIO user)
+        {
+            string sql = "UPDATE USUARIO SET contraseña = @Pcontraseña WHERE email = @Pemail OR telefono = @Ptelefono AND @Ptelefono != 0";
+            using (SqlConnection db = new SqlConnection(_connectionString))
+            {
+                db.Execute(sql, new { Pcontraseña = user.contraseña, Pemail = user.email, Ptelefono = user.telefono});
+            }
+        }
+
+
     }
 }

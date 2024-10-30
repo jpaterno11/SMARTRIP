@@ -30,4 +30,14 @@ public class HomeController : Controller
     {
         return View();
     }
+
+    public IActionResult OlvideMiContraseña()
+    {
+        return View();
+    }
+
+    public IActionResult OlvideMiContraseña2()
+    {
+        return View();
+    }
 }
