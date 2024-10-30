@@ -40,4 +40,19 @@ public class HomeController : Controller
     {
         return View();
     }
+
+
+    public IActionResult QuienSomos()
+    {
+        return View();
+    }
+    public IActionResult Viaja()
+    {
+        return View();
+    }
+    public IActionResult Ayuda()
+    {
+        return View();
+    }
+    
 }
