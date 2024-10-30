@@ -69,7 +69,7 @@ function toggleEmailPhone() {
   }
 }
 const meses = [
-"", "Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio",
+"Mes", "Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio",
 "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre"
 ];
 

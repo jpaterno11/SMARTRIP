@@ -2,34 +2,50 @@
         ViewData["Title"] = "Registrarse - SmarTrip";
     }
 <body>
-    <div class="container-fluid">
-        <h2>Registrarse en SmarTrip</h2>
-        <form method="post" id="Registrarseform" asp-controller="Account" onsubmit="return enviarFecha();">
+    <div class="container">
+    <h2 id="titulo">Registrarse en SmarTrip</h2>
+    <form method="post" id="Registrarseform" asp-controller="Account" onsubmit="return enviarFecha();">
+        <div class="form-group">
             <label for="nombre">Ingrese su nombre:</label>
-            <input type="text" id="nombre" name="nombre" placeholder="Introducir nombre" required>
-            
+            <input type="text" class="form-control" id="nombre" name="nombre" placeholder="Introducir nombre" required>
+        </div>
+
+        <div class="form-group">
             <label for="apellido">Ingrese su apellido:</label>
-            <input type="text" id="apellido" name="apellido" placeholder="Introducir apellido" required>
-            
-            <label>Ingrese su fecha de nacimiento y género:</label>
-            <div style="display: flex; gap: 10px;">
-                <input type="number" id="dia" name="dia" placeholder="Día" required style="flex: 1;">
-                <select id="mes" name="mes" required style="flex: 1;">
-                </select>
-                <input type="number" id="año" name="año" placeholder="Año" required style="flex: 1;">
+            <input type="text" class="form-control" id="apellido" name="apellido" placeholder="Introducir apellido" required>
+        </div>
+
+        <label>Ingrese su fecha de nacimiento y género:</label>
+        <div class="form-row">
+            <div class="col">
+                <input type="number" class="form-control" id="dia" name="dia" placeholder="Día" required>
             </div>
-            
-            <select id="genero" name="genero" required>
+            <div class="col">
+                <select class="form-control" id="mes" name="mes" required>
+                    <option value="" selected>Mes</option>
+                </select>
+            </div>
+            <div class="col">
+                <input type="number" class="form-control" id="año" name="año" placeholder="Año" required>
+            </div>
+        </div>
+
+        <div class="form-group mt-3">
+            <select class="form-control" id="genero" name="genero" required>
                 <option value="">Género</option>
                 <option value="Hombre">Hombre</option>
                 <option value="Mujer">Mujer</option>
                 <option value="Otro">Otro</option>
             </select>
-            <input type="hidden" value="fechaNacimiento" id="fechaNacimiento" name="fechaNacimiento">
-            <div class="button-container">
-                <button type="button" class="btn-secondary">Volver</button>
-                <button type="submit" class="btn-primary">Continuar</button>
-            </div>
-        </form>
-    </div>
+        </div>
+
+        <input type="hidden" value="fechaNacimiento" id="fechaNacimiento" name="fechaNacimiento">
+
+        <div class="button-container">
+            <button type="button" class="btn btn-secondary">Volver</button>
+            <button type="submit" class="btn btn-primary">Continuar</button>
+        </div>
+    </form>
+</div>
+
 </body>

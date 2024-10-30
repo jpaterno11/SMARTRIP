@@ -2,24 +2,32 @@ html {
   font-size: 14px;
   min-height: 100%;
 }
-
 @media (min-width: 768px) {
   html {
-    font-size: 16px;
+      font-size: 16px;
   }
 }
-
-body {
-  margin: 10px;
-  padding: 10px;
+@font-face {
+  font-family: 'parrafos';
+  src: url('/tipografias/Mondapick.ttf') 
 }
+@font-face {
+  font-family: 'titulos';
+  src: url('/tipografias/coolvetica.otf') 
+}
+
 body {
   background-color: #f0f8ff;
   margin: 0;
   padding: 0;
-  font-family: Arial, sans-serif;
 }
-.container-fluid {
+h1, h2, h3 {
+  font-family: titulos;
+}
+p {
+  font-family: parrafos;
+}
+.container {
   padding: 20px 50px;
 }
 h2 {
@@ -48,7 +56,6 @@ select {
   justify-content: space-between;
   margin-top: 30px;
 }
-
 .btn-primary {
   width: 150px;
   background-color: #00bfff;
