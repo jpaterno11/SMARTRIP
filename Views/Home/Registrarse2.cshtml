@@ -2,7 +2,6 @@
         ViewData["Title"] = "Registrarse - SmarTrip";
     }
 <body>
- @ViewBag.Datos
     <form method="post" id="Registrarseform2" asp-controller="Account" onsubmit="return enviarForm();">
         <label id="contactoLabel" for="contacto">Ingrese su email: </label>
         <input type="email" id="contacto" name="email" placeholder="Introducir email" required>
@@ -17,4 +16,4 @@
         <input type="hidden" id ="genero" name="genero" value= "@ViewBag.Datos.genero" >
         <input type="submit" value="Continuar">
     </form>
-    </body>
+</body>
