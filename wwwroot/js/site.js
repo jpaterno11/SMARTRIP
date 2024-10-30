@@ -14,24 +14,22 @@
 
 
 function enviarFormulario() {
-  function enviarFormulario() {
-    const usuarioInput = document.getElementById('usuario').value;
-    const loginForm = document.getElementById('loginForm');
+    let usuarioInput = document.getElementById('usuario').value;
 
-    const hiddenEmailField = document.querySelector("input[name='email']");
-    const hiddenTelefonoField = document.querySelector("input[name='telefono']");
+    let hiddenEmailField = document.querySelector("input[name='email']");
+    let hiddenTelefonoField = document.querySelector("input[name='telefono']");
     if (hiddenEmailField) hiddenEmailField.remove();
     if (hiddenTelefonoField) hiddenTelefonoField.remove();
 
     let hiddenField;
     if (usuarioInput.includes('@')) {
-        loginForm.action = '/Account/IniciarSesionEmail';
+        document.getElementById('loginForm').action = '/Account/IniciarSesionEmail';
         hiddenField = document.createElement('input');
         hiddenField.type = 'hidden';
         hiddenField.name = 'email';
         hiddenField.value = usuarioInput;
     } else if (/^\d+$/.test(usuarioInput)) {
-        loginForm.action = '/Account/IniciarSesionTelefono';
+        document.getElementById('loginForm').action = '/Account/IniciarSesionTelefono';
         hiddenField = document.createElement('input');
         hiddenField.type = 'hidden';
         hiddenField.name = 'telefono';
@@ -43,7 +41,6 @@ function enviarFormulario() {
 
     loginForm.appendChild(hiddenField);
     loginForm.submit();
-}
 }
 
 

@@ -48,9 +48,12 @@ public class AccountController : Controller
         if(user == null)
         {
             ViewBag.Mensaje = "Lo sentimos, esa cuenta no existe.";
-            return View("Registrarse");
+            return View("/Views/Home/Login.cshtml");
         }
-        return View("Index");
+        
+        return View("/Views/Home/Index.cshtml");
+        
+        
     }
    [HttpPost] 
     public IActionResult IniciarSesionTelefono(int telefono, string contraseña)
@@ -59,8 +62,8 @@ public class AccountController : Controller
         if(user == null)
         {
             ViewBag.Mensaje = "Lo sentimos, esa cuenta no existe.";
-            return View("Registrarse");
+             return View("/Views/Home/Login.cshtml");
         }
-        return View("Index");
+        return View("/Views/Home/Index.cshtml");
     }
 }
