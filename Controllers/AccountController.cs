@@ -24,9 +24,9 @@ public class AccountController : Controller
         return View();
     }
     [HttpPost] 
-      public IActionResult registrarse(string nombre, string apellido, DateTime fecha, string genero)
+      public IActionResult registrarse(string nombre, string apellido, DateTime fechaNacimiento, string genero)
      {
-        USUARIO user = new USUARIO ("", "", ' ', nombre, apellido, fecha, genero); 
+        USUARIO user = new USUARIO ("", "", ' ', nombre, apellido, fechaNacimiento, genero); 
         ViewBag.Datos = user;
         return View("/Views/Home/Registrarse2.cshtml");
      }
@@ -37,31 +37,30 @@ public class AccountController : Controller
         user.telefono = telefono;
         user.contraseña = contraseña; 
         BD.AgregarUsuario(user);
-        return View("/Views/Home/Registrarse2.cshtml");
+        return View("/Views/Home/Index.cshtml");
      }
 
 
-//      [HttpPost] 
-//      public IActionResult IniciarSesionEmail(string email, string contraseña)
-//     {
-
-//         USUARIO user = BD.VerificarUsuarioEmail(email, contraseña);
-//         if(user == null)
-//         {
-//             ViewBag.Mensaje = "Lo sentimos, esa cuenta no existe.";
-//             return View("Registro");
-//         }
-//         return View("Index");
-//     }
-//    [HttpPost] 
-//     public IActionResult IniciarSesionTelefono(int telefono, string contraseña)
-//     {
-//         USUARIO user = BD.VerificarUsuarioTelefono(telefono, contraseña);
-//         if(user == null)
-//         {
-//             ViewBag.Mensaje = "Lo sentimos, esa cuenta no existe.";
-//             return View("Registro");
-//         }
-//         return View("Index");
-//     }
+     [HttpPost] 
+     public IActionResult IniciarSesionEmail(string email, string contraseña)
+    {
+        USUARIO user = BD.VerificarUsuarioEmail(email, contraseña);
+        if(user == null)
+        {
+            ViewBag.Mensaje = "Lo sentimos, esa cuenta no existe.";
+            return View("Registrarse");
+        }
+        return View("Index");
+    }
+   [HttpPost] 
+    public IActionResult IniciarSesionTelefono(int telefono, string contraseña)
+    {
+        USUARIO user = BD.VerificarUsuarioTelefono(telefono, contraseña);
+        if(user == null)
+        {
+            ViewBag.Mensaje = "Lo sentimos, esa cuenta no existe.";
+            return View("Registrarse");
+        }
+        return View("Index");
+    }
 }

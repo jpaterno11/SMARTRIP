@@ -6,12 +6,14 @@
     <title>Document</title>
 </head>
 <body>
-    <form method="post" id="loginForm" asp-controller="Account">
+    <form method="post" id="loginForm">
         <label for="usuario">Ingrese su email o teléfono:</label>
-            <input type="text" id="usuario" name="usuario" required>
+        <input type="text" id="usuario" name="usuario" required>
+        
         <label for="contraseña">Ingrese su contraseña:</label>
-            <input type="password" id="contraseña" name="contraseña" required>
-        <button type="submit" onclick="enviarFormulario()">Iniciar Sesión</button>
+        <input type="password" id="contraseña" name="contraseña" required>
+        
+        <button type="button" onclick="enviarFormulario()">Iniciar Sesión</button>
     </form>
 </body>
 </html>

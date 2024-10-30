@@ -11,7 +11,10 @@
         <input type="password" id="contraseña" name="contraseña" required>
         <label for="confirmar_contraseña">Confirme su contraseña: </label>
         <input type="password" id="confirmar_contraseña" name="confirmar_contraseña" required>
-        <input type="hidden" value= @ViewBag.Datos id ="user" name="user">
+        <input type="hidden" id="nombre" name="nombre" value = "@ViewBag.Datos.nombre">
+        <input type="hidden" id="apellido" name="apellido" value = "@ViewBag.Datos.apellido">
+        <input type="hidden" id="fechaNacimiento" name="fechaNacimiento" value = "@ViewBag.Datos.fechaNacimiento">
+        <input type="hidden" id ="genero" name="genero" value= "@ViewBag.Datos.genero" >
         <input type="submit" value="Continuar">
     </form>
     </body>
