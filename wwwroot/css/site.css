@@ -15,7 +15,23 @@ html {
   font-family: 'titulos';
   src: url('/tipografias/coolvetica.otf') 
 }
-
+input::placeholder
+  {
+    color: #03045E;
+  }
+input, select{
+  width: 100%;
+  height: 60px;
+  background-color: #CAF0F8;
+}
+.formcontrol
+{
+  font-size: larger;
+  padding: .375rem .75rem;
+  border: var(--bs-border-width) solid var(--bs-border-color);
+  border-radius: var(--bs-border-radius);
+  transition: border-color .15s ease-in-out, box-shadow .15s ease-in-out;
+}
 body {
   background-color: #f0f8ff;
   margin: 0;
@@ -38,17 +54,6 @@ h2 {
 label {
   font-weight: bold;
   color: #002060;
-}
-input[type="text"]{
-  background-color: #d9f0ff;
-  border: 2px solid #b0c4de;
-  input, select{
-    padding: 5%;
-  }  font-size: 16px;
-  width: 100%;
-  margin-bottom: 20px;
-  border-radius: 5px;
-  box-sizing: border-box;
 }
 .button-container {
   display: flex;
@@ -80,7 +85,7 @@ input[type="text"]{
   border-radius: 5px;
 }
 footer {
-  position: fixed;
+  
   bottom: 0;
   width: 100%;
   text-align: center;
@@ -104,8 +109,84 @@ footer {
 .registro{
   margin-top: 1%;
 }
-
 .margin{
   margin-top: 4%;
   margin-bottom: 4%;
+}
+
+.ingresosRegistrarse
+{
+  font-size: 30px;
+  font-weight:normal;
+}
+
+.button-container{
+  margin: 3%;
+}
+.navbar-custom {
+  background-color: #03045E; /* Azul oscuro */
+}
+.navbar-custom .navbar-brand,
+.navbar-custom .nav-link,
+.navbar-custom .navbar-text {
+  color: #FFFFFF;
+}
+.btn-register {
+  background-color: #00C8C8;
+  color: white;
+}
+.footer {
+  background-color: #03045E; /* Azul oscuro */
+  color: #FFFFFF;
+  padding: 20px 0;
+}
+.footer a {
+  color: #00C8C8;
+  text-decoration: none;
+}
+.footer a:hover {
+  text-decoration: underline;
+}
+
+.colorVolver{
+background-color: #caf0f8;
+}
+.bton
+{
+  --bs-btn-padding-x: 0.75rem;
+    --bs-btn-padding-y: 0.375rem;
+    --bs-btn-font-family: ;
+    --bs-btn-font-size: 1rem;
+    --bs-btn-font-weight: 400;
+    --bs-btn-line-height: 1.5;
+    --bs-btn-color: var(--bs-body-color);
+    --bs-btn-bg: transparent;
+    --bs-btn-border-width: var(--bs-border-width);
+    --bs-btn-border-color: transparent;
+    --bs-btn-border-radius: var(--bs-border-radius);
+    --bs-btn-hover-border-color: transparent;
+    --bs-btn-box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.15), 0 1px 1px rgba(0, 0, 0, 0.075);
+    --bs-btn-disabled-opacity: 0.65;
+    --bs-btn-focus-box-shadow: 0 0 0 0.25rem rgba(var(--bs-btn-focus-shadow-rgb), .5);
+    display: inline-block;
+    padding: var(--bs-btn-padding-y) var(--bs-btn-padding-x);
+    font-family: var(--bs-btn-font-family);
+    font-size: var(--bs-btn-font-size);
+    font-weight: var(--bs-btn-font-weight);
+    line-height: var(--bs-btn-line-height);
+    color: var(--bs-btn-color);
+    text-align: center;
+    text-decoration: none;
+    vertical-align: middle;
+    cursor: pointer;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    user-select: none;
+    border: var(--bs-btn-border-width) solid var(--bs-btn-border-color);
+    border-radius: var(--bs-btn-border-radius);
+    transition: color .15s ease-in-out, background-color .15s ease-in-out, border-color .15s ease-in-out, box-shadow .15s ease-in-out;
+}
+
+.colorContinuar{
+  background-color:#00B4D8;
 }
