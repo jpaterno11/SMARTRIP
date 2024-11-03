@@ -33,7 +33,7 @@ public class AccountController : Controller
         return View("/Views/Home/Registrarse2.cshtml");
      }
      [HttpPost] 
-      public IActionResult registrarse2(USUARIO user, string email, int telefono, string contraseña)
+      public IActionResult registrarse2(USUARIO user, string email, int? telefono, string contraseña)
      {
         user.email = email;
         user.telefono = telefono;

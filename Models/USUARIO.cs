@@ -13,13 +13,13 @@ namespace SMARTRIP.Models
         public DateTime fechaNacimiento {get;set;}
         public string genero {get;set;}
         public string email {get; set;}
-        public int telefono {get; set;}
+        public int? telefono {get; set;}
         
         
         public USUARIO()
         {}
 
-        public USUARIO(string contraseña, string email, int telefono, string nombre, string apellido, DateTime fechaNacimiento, string genero)
+        public USUARIO(string contraseña, string email, int? telefono, string nombre, string apellido, DateTime fechaNacimiento, string genero)
         {
             this.contraseña = contraseña;
             this.email = email;
