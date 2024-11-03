@@ -17,8 +17,10 @@ public class AccountController : Controller
     {
         return View();
     }
-
-
+     public IActionResult Registrarse()
+    {
+        return View("/Views/Home/Registrarse.cshtml");
+    }
     public IActionResult OlvideMiContraseña()
     {
         return View();

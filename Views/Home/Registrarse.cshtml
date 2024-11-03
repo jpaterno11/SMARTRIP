@@ -3,45 +3,40 @@
     }
 <body>
     <div class="container registro">
-    <form method="post" id="Registrarseform" asp-controller="Account" onsubmit="return enviarFecha();">
+    <form method="post" id="Registrarseform" onsubmit="return enviarFechayValidar();">
         <div class="form-group margin">
             <label for="nombre">Ingrese su nombre:</label>
-            <input type="text" class="form-control" id="nombre" name="nombre" placeholder="Introducir nombre" required>
+            <input type="text" class="form-control" id="nombre" name="nombre" placeholder="Introducir nombre" minlength="3" maxlength="100" required>
         </div>
-
         <div class="form-group margin">
             <label for="apellido">Ingrese su apellido:</label>
-            <input type="text" class="form-control" id="apellido" name="apellido" placeholder="Introducir apellido" required>
+            <input type="text" class="form-control" id="apellido" name="apellido" placeholder="Introducir apellido" minlength="3" maxlength="100" required>
         </div>
-
         <label>Ingrese su fecha de nacimiento y género:</label>
         <div class="row margin">
             <div class="col">
-                <input type="number" class="form-control" id="dia" name="dia" placeholder="Día" required>
+                <input type="number" class="form-control" id="dia" name="dia" placeholder="Día" min="1" max="31" required>
             </div>
             <div class="col">
                 <select class="form-control mes" id="mes" name="mes" required>
-                    <option value="" selected>Mes</option>
+                    <option value="0" selected>Mes</option>
                 </select>
             </div>
             <div class="col">
-                <input type="number" class="form-control" id="año" name="año" placeholder="Año" required>
+                <input type="number" class="form-control" id="año" name="año" placeholder="Año" min="1753" max="9999" required>
             </div>
         </div>
-
         <div class="form-group genero">
             <select class="form-control" id="genero" name="genero" required>
-                <option value="">Género</option>
+                <option value="0" selected>Género</option>
                 <option value="Hombre">Hombre</option>
                 <option value="Mujer">Mujer</option>
                 <option value="Otro">Otro</option>
             </select>
         </div>
-
         <input type="hidden" value="fechaNacimiento" id="fechaNacimiento" name="fechaNacimiento">
-
         <div class="button-container">
-            <button type="button" class="btn btn-secondary">Volver</button>
+            <a class="color" href="@Url.Action("Index", "Home")"><button type="button" class="btn btn-secondary">Volver</button></a>
             <button type="submit" class="btn btn-primary">Continuar</button>
         </div>
     </form>

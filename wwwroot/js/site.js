@@ -1,31 +1,27 @@
-﻿function validarContraseña() {
+﻿function validarContraseñayMail() {
+    let contacto = document.getElementById('contacto').value;
     let contraseña = document.getElementById('contraseña').value;
     let confirmar_contraseña = document.getElementById('confirmar_contraseña').value;
-
-
+    let contraseña_valida = false;
+    const mailValido = /^[a-z0-9]+@(gmail|hotmail|outlook)\.com$/.test(contacto);
+    const telefonoValido = /^\+54(?:15[0-9]{8}|11[0-9]{8})$/.test(contacto);
     const tieneMayuscula = /[A-Z]/.test(contraseña);
-    const tieneCaracterEspecial = /[!@#$%^&*(),.?":{}|<>]/.test(contraseña);
-
-    if (contraseña.length < 8) {
-        alert('La contraseña debe tener al menos 8 caracteres.');
-        return false;
-    } else if (!tieneMayuscula) {
-        alert('La contraseña debe contener al menos una letra mayúscula.');
-        return false;
-    } else if (!tieneCaracterEspecial) {
-        alert('La contraseña debe contener al menos un carácter especial.');
+    const tieneCaracterEspecial = /[!@#$%^&*(),.?":{}|<>-_]/.test(contraseña);
+    contraseña_valida = (contraseña.length >= 8 && tieneMayuscula && tieneCaracterEspecial && (contraseña === confirmar_contraseña));
+    if (!contraseña_valida) {
+        alert('Las contraseñas deben ser iguales, contener mayúsculas y caracteres especiales y tener al menos 8 caracteres.');
         return false;
     }
-    else if (confirmar_contraseña != contraseña)
-    {
-        alert('Las contraseñas deben ser iguales.');
+    if (!mailValido && !telefonoValido) {
+        console.log("no paso")
+        alert('El contacto debe ser un email válido o un número de teléfono válido.');
         return false;
     }
-
-    return true;
+    else {
+        console.log("paso")
+        return true;
+    }
 }
-
-
 function mostrarMensaje(mensaje) {
     const contenedorMensaje = document.getElementById('mensaje');
     contenedorMensaje.textContent = mensaje;
@@ -65,64 +61,69 @@ function enviarFormulario() {
 
 
 function toggleEmailPhone() {
-  var inputField = document.getElementById('contacto');
-  var toggleLink = document.getElementById('toggleLink');
-  var labelField = document.getElementById('contactoLabel');
-  if (inputField.type === 'email') {
-      inputField.type = 'tel';
-      inputField.placeholder = 'Introducir número de teléfono';
-      toggleLink.textContent = '¿Usar correo electrónico?';
-      labelField.textContent = 'Ingrese su teléfono:';
-      inputField.name = 'telefono';
-  } else {
-      inputField.type = 'email';
-      inputField.placeholder = 'Introducir email';
-      toggleLink.textContent = '¿Usar número de teléfono?';
-      labelField.textContent = 'Ingrese su email:';
-      inputField.name = 'email';
-  }
+var inputField = document.getElementById('contacto');
+var toggleLink = document.getElementById('toggleLink');
+var labelField = document.getElementById('contactoLabel');
+let inputType = (inputField.type  === 'email' ? true : false);
+inputField.type = (inputType ? 'tel' : 'email');
+inputField.placeholder = 'Introducir' + (inputType ? ' número de teléfono' : ' email') ;
+toggleLink.textContent = '¿Usar' + (inputType ? ' correo electrónico?' : ' número de teléfono?') ;
+labelField.textContent = 'Ingrese su' + (inputType ? ' teléfono:' : ' email:') ;
+inputField.name = (inputType ? 'telefono' : 'email') ;
 }
-const meses = [
-"Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio",
-"Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre"
-];
-
-const selectMes = document.getElementById('mes');
-
-meses.forEach((mes, index) => {
-const option = document.createElement('option');
-option.value = index;
-option.textContent = mes;
-selectMes.appendChild(option);
-});
 
 
-function enviarFecha() {
+
+
+    if (window.location.pathname.includes('/Home/Registrarse')) {
+        const meses = [
+            "Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio",
+            "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre"
+        ];
+        
+        const selectMes = document.getElementById('mes');
+        
+        meses.forEach((mes, index) => {
+            const option = document.createElement('option');
+            option.value = index;
+            option.textContent = mes;
+            selectMes.appendChild(option);
+        });
+    }
+
+
+function enviarFechayValidar() {
 const dia = document.getElementById('dia').value;
 const mes = document.getElementById('mes').value;
 const año = document.getElementById('año').value;
 const fechaNacimiento = `${año}-${mes}-${dia}`;
-console.log(fechaNacimiento);
+const nombre = document.getElementById('nombre').value;
+const apellido = document.getElementById('apellido').value;
+const genero = document.getElementById('genero').value;
 document.getElementById('fechaNacimiento').value = fechaNacimiento;
+document.getElementById('Registrarseform').setAttribute('asp-controller', 'Account');
 document.getElementById('Registrarseform').action = '/Account/registrarse';
+let mensajeError = '';
+mensajeError += (dia < 1 || dia > 31 ? 'El día debe estar entre 1 y 31.' : '') + (mes == 0 ? ' El mes no puede ser 0.' : '') + (año > 9999 || año < 1753 ? ' El año debe estar entre 1753 y 9999.' : '') + (genero == 0 ? ' Por favor seleccione un género.' : '') + (nombre.length < 3 ? ' El nombre debe tener al menos 3 caracteres.' : '') + (apellido.length < 3 ? ' El apellido debe tener al menos 3 caracteres.' : '');
+if (mensajeError !=  '') {
+    alert(mensajeError);
+    document.getElementById('Registrarseform').setAttribute('asp-controller', 'Home');
+    document.getElementById('Registrarseform').action = '/Home/Registrarse';
+}
 document.getElementById('Registrarseform').submit();
-return fechaNacimiento; 
+return fechaNacimiento;
 }
 
 
 function enviarForm(){
-document.getElementById('Registrarseform2').action = '/Account/registrarse2';
-if (validarContraseña)
-{
-    document.getElementById('Registrarseform2').action = '/Account/registrarse';
-}
+document.getElementById('Registrarseform2').action = (validarContraseñayMail ? '/Account/registrarse2' : '/Account/registrarse');
 document.getElementById('Registrarseform2').submit();
 }
 function enviarForm2(){
     document.getElementById('Olvidar').action = '/Account/Olvidar';
     document.getElementById('Olvidar').submit();
     }
-    function enviarForm3(){
+function enviarForm3(){
         document.getElementById('Olvidar2').action = '/Account/Olvidar2';
         document.getElementById('Olvidar2').submit();
-        }
+}

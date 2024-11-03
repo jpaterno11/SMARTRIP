@@ -1,6 +1,5 @@
 ﻿<!DOCTYPE html>
 <html lang="es">
-
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -9,43 +8,11 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
 </head>
-
 <body>
-
-    <style>
-        /* Estilos personalizados */
-        .navbar-custom {
-            background-color: #03045E; /* Azul oscuro */
-        }
-        .navbar-custom .navbar-brand,
-        .navbar-custom .nav-link,
-        .navbar-custom .navbar-text {
-            color: #FFFFFF;
-        }
-        .btn-register {
-            background-color: #00C8C8;
-            color: white;
-        }
-        .footer {
-            background-color: #03045E; /* Azul oscuro */
-            color: #FFFFFF;
-            padding: 20px 0;
-        }
-        .footer a {
-            color: #00C8C8;
-            text-decoration: none;
-        }
-        .footer a:hover {
-            text-decoration: underline;
-        }
-    </style>
-
-
-<!-- Navbar -->
 <nav class="navbar navbar-custom navbar-expand-lg">
   <div class="container-fluid">
     <a class="navbar-brand d-flex align-items-center" href="@Url.Action("Index", "Home")">
-      <img src="../img/Logo_claro.png" alt="Logo" style="height: 40px;"> <!-- Ajusta el tamaño aquí -->
+      <img src="../img/Logo_claro.png" alt="Logo" style="height: 40px;">
     </a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
@@ -67,16 +34,15 @@
           <a class="nav-link" href="@Url.Action("Login", "Home")">¿Ya tienes una cuenta?</a>
         </li>
         <li class="nav-item">
-          <button type="button" class="btn btn-primary"><a class="color" href="@Url.Action("Registrarse", "Home")">Registrarse</a></button>
+          <a class="color" href="@Url.Action("Registrarse", "Home")"><button type="button" class="btn btn-primary">Registrarse</button></a>
         </li>
       </ul>
     </div>
   </div>
 </nav>
-
-
-
-<!-- Footer -->
+    <main role="main">
+        @RenderBody()
+    </main>
 <footer class="footer">
     <div class="container text-center">
         <p>SmarTrip</p>
@@ -102,19 +68,6 @@
         </div>
     </div>
 </footer>
-
-    <header>
-   
-    </header>
-
-    <main role="main">
-        @RenderBody()
-    </main>
-
-    <footer>
-        
-    </footer>
-
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>
     @await RenderSectionAsync("Scripts", required: false)
