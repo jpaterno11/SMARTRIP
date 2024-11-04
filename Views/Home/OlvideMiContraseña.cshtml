@@ -2,10 +2,17 @@
         ViewData["Title"] = "¿Olvidaste tu contraseña? - SmarTrip";
     }
 <body>
+    <div class="container login">
     <form method="post" id="Olvidar" asp-controller="Account" onsubmit="return enviarForm2();">
-        <label id="contactoLabel" for="contacto">Ingrese su email: </label>
-        <input type="email" id="contacto" name="email" placeholder="Introducir email" required>
-       <a id="toggleLink" onclick="toggleEmailPhone()">¿Usar número de teléfono?</a>
-        <input type="submit" value="Continuar">
+        <div class="form-group">
+                <label id="contactoLabel" for="contacto">Ingrese su email: </label>
+                <input type="email" id="contacto" name="email" placeholder="Introducir email" required class="form-control">
+                <a id="toggleLink" onclick="toggleEmailPhone()" class="toggle-link">¿Usar número de teléfono?</a>
+         </div>
+         <div class="button-container">
+                <a class="color" href="@Url.Action("Login", "Home")"><button type="button" class="btn btn-secondary">Volver</button></a>
+                <button type="submit" class="btn btn-primary">Continuar</button>
+        </div>
     </form>
+            </div>
 </body>

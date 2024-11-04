@@ -24,6 +24,9 @@ input, select{
   height: 60px;
   background-color: #CAF0F8;
 }
+.navbar-nav {
+  --bs-nav-link-hover-color: #009acd !important;
+}
 .formcontrol
 {
   font-size: larger;
@@ -62,7 +65,8 @@ label {
   margin-top: 30px;
 }
 .btn-primary {
-  width: 150px;
+  font-family: 'parrafos';
+  width: 170px;
   background-color: #00bfff;
   border: none;
   padding: 10px;
@@ -75,7 +79,7 @@ label {
   background-color: #009acd;
 }
 .btn-secondary {
-  width: 150px;
+  width: 170px;
   background-color: #5a5a5a;
   border: none;
   padding: 10px;
@@ -106,6 +110,13 @@ footer {
 
 }
 
+
+.fa-youtube{
+  color: black;
+}
+
+
+
 .registro{
   margin-top: 1%;
 }
@@ -123,6 +134,11 @@ footer {
 .button-container{
   margin: 3%;
 }
+
+button[type=submit]
+{
+  font-family: 'parrafos';
+}
 .navbar-custom {
   background-color: #03045E; /* Azul oscuro */
 }
@@ -136,6 +152,7 @@ footer {
   color: white;
 }
 .footer {
+  position: fixed;
   background-color: #03045E; /* Azul oscuro */
   color: #FFFFFF;
   padding: 20px 0;

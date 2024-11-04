@@ -1,12 +1,19 @@
-<form method="post" id="Olvidar2" asp-controller="Account" onsubmit="return enviarForm3();">
-        <label for="contraseña">Ingrese su nueva contraseña: </label>
-        <input type="password" id="contraseña" name="contraseña" required>
-        <label for="confirmar_contraseña">Confirme su nueva contraseña: </label>
-        <input type="password" id="confirmar_contraseña" name="confirmar_contraseña" required>
-        <input type="hidden" id="email" name="email" value = "@ViewBag.user.email">
-        <input type="hidden" id="nombre" name="nombre" value = "@ViewBag.user.nombre">
-        <input type="hidden" id="apellido" name="apellido" value = "@ViewBag.user.apellido">
-        <input type="hidden" id="fechaNacimiento" name="fechaNacimiento" value = "@ViewBag.user.fechaNacimiento">
-        <input type="hidden" id ="genero" name="genero" value= "@ViewBag.user.genero" >
-        <input type="submit" value="Continuar">
-    </form>
+ @{
+        ViewData["Title"] = "¿Olvidaste tu contraseña? - SmarTrip";
+    }
+ <div class="container forgot-password-step2">
+        <form method="post" id="ForgotPasswordForm2" asp-controller="Account" onsubmit="return enviarForm();" class="form-forgot-password-step2">
+            <div class="form-group">
+                <label for="newPassword">Ingrese su nueva contraseña: </label>
+                <input type="password" id="newPassword" name="newPassword" required class="form-control" placeholder="Nueva contraseña">
+            </div>
+            <div class="form-group">
+                <label for="confirmPassword">Confirme su nueva contraseña: </label>
+                <input type="password" id="confirmPassword" name="confirmPassword" required class="form-control" placeholder="Confirmar contraseña">
+            </div>
+            <div class="button-container">
+                <a class="color" href="@Url.Action("Login", "Home")"><button type="button" class="btn btn-secondary">Volver</button></a>
+                <button type="submit" class="btn btn-primary">Actualizar Contraseña</button>
+            </div>
+        </form>
+    </div>

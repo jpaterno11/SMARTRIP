@@ -7,18 +7,23 @@
 </head>
 <body>
 <h2> @ViewBag.Mensaje </h2>
-    <form method="post" id="loginForm">
-        <label for="usuario">Ingrese su email o teléfono:</label>
-        <input type="text" id="usuario" name="usuario" required>
-        
-        <label for="contraseña">Ingrese su contraseña:</label>
-        <input type="password" id="contraseña" name="contraseña" required>
-        
-        <button type="button" onclick="enviarFormulario()">Iniciar Sesión</button>
-    </form>
-
-    <div class="d-grid gap-2 d-md-block">
-    <a href='@Url.Action("OlvideMiContraseña", "Home")' class="btn btn-primary" type="button">Olvidé mi contraseña</a>
+    <div class="container login">
+        <form method="post" id="LoginForm" asp-controller="Account" onsubmit="return enviarForm();" class="form-login">
+            <div class="form-group">
+                <label for="email">Ingrese su email: </label>
+                <input type="email" id="email" name="email" placeholder="Introducir email" required class="form-control">
+            </div>
+            <div class="form-group">
+                <label for="contraseña">Ingrese su contraseña: </label>
+                <input type="password" id="contraseña" name="contraseña" required class="form-control">
+            </div>
+            <div class="button-container">
+                <a class="color" href="@Url.Action("Registrarse", "Home")"><button type="button" class="btn btn-secondary">Registrarse</button></a>
+                <button type="submit" class="btn btn-primary">Iniciar Sesión</button>
+                <a class="color" href='@Url.Action("OlvideMiContraseña", "Home")'> <button type="button" class="btn btn-secondary">Olvidé mi contraseña </button></a>
+            </div>
+        </form>
     </div>
+
 </body>
 </html>
