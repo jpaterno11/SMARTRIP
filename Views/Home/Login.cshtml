@@ -1,9 +1,13 @@
+ @{
+        ViewData["Title"] = "Login - SmarTrip";
+    }
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Login</title>
 </head>
 <body>
 <h2> @ViewBag.Mensaje </h2>
@@ -15,7 +19,7 @@
             </div>
             <div class="form-group">
                 <label for="contraseña">Ingrese su contraseña: </label>
-                <input type="password" id="contraseña" name="contraseña" required class="form-control">
+                <input type="password" id="contraseña" name="contraseña" placeholder="Introducir contraseña" required class="form-control">
             </div>
             <div class="button-container">
                 <a class="color" href="@Url.Action("Registrarse", "Home")"><button type="button" class="btn btn-secondary">Registrarse</button></a>

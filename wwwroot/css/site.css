@@ -46,6 +46,7 @@ h1, h2, h3 {
 }
 p, a {
   font-family: 'parrafos';
+  font-size: 20px;
 }
 .container {
   padding: 20px 50px;
@@ -53,6 +54,13 @@ p, a {
 h2 {
   color: #002060;
   font-weight: bold;
+}
+
+h1{
+  color: #002060 !important;
+  font-weight: bold;
+  text-align: center;
+  margin-top: 5% !important;
 }
 label {
   font-weight: bold;
@@ -109,12 +117,6 @@ footer {
   text-decoration: none;
 
 }
-
-
-.fa-youtube{
-  color: black;
-}
-
 
 
 .registro{
@@ -233,20 +235,21 @@ background-color: #caf0f8;
 }
 
 .btn-outline-success{
+  width: 3.5%;
+  background-color: #03045E !important;
   --bs-btn-border-color: none !important;
-  --bs-btn-hover-bg: #03045E !important;
-  --bs-btn-color: #198754;
-  --bs-btn-border-color: #198754;
-  --bs-btn-hover-color: #fff;
-  --bs-btn-hover-bg: #198754;
-  --bs-btn-hover-border-color: #198754;
-  --bs-btn-focus-shadow-rgb: 25,135,84;
-  --bs-btn-active-color: #fff;
-  --bs-btn-active-bg: #198754;
-  --bs-btn-active-border-color: #198754;
-  --bs-btn-active-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.125);
-  --bs-btn-disabled-color: #198754;
-  --bs-btn-disabled-bg: transparent;
-  --bs-btn-disabled-border-color: #198754;
-  --bs-gradient: none;
+  --bs-btn-hover-bg: none !important;
+}
+.me-2{
+  width: 40% !important;
+}
+
+button img{
+  width: 100%;
+}
+
+.container-fluid
+{
+  margin-left: auto !important;
+  margin-right: auto !important;
 }

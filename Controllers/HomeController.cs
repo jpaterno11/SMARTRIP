@@ -42,7 +42,7 @@ public class HomeController : Controller
     }
 
 
-    public IActionResult QuienSomos()
+    public IActionResult QuienesSomos()
     {
         return View();
     }
