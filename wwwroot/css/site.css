@@ -52,8 +52,10 @@ p, a {
   padding: 20px 50px;
 }
 h2 {
-  color: #002060;
+  color: #002060 !important;
+  margin-top: 2% !important;
   font-weight: bold;
+  text-align: center;
 }
 
 h1{
@@ -97,16 +99,14 @@ label {
   border-radius: 5px;
 }
 footer {
-  
+  position: fixed;
+  left: 0;
   bottom: 0;
   width: 100%;
   text-align: center;
   padding: 10px;
   background-color: #ffffff;
   color: #5a5a5a;
-}
-
-footer {
   margin-top: 10px;
   padding: 10px;
   background-color: #f8f9fa;
@@ -252,4 +252,32 @@ button img{
 {
   margin-left: auto !important;
   margin-right: auto !important;
+}
+
+.ayuda{
+  width: 12%;
+}
+
+.flecha{
+  width: 7%;
+}
+
+.row{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.btn-outline-primary {
+  color: #03045E !important;
+  --bs-btn-color: #00B4D8 !important;
+  --bs-btn-border-color: #00B4D8 !important;
+  font-family: 'parrafos' !important;
+  font-size: 25px !important;
+  width: 50%;
+
+}
+.qs
+{
+  text-align: start !important;
 }

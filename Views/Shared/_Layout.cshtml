@@ -43,6 +43,7 @@
     <main role="main">
         @RenderBody()
     </main>
+<div class="d-flex justify-content-end">
 <footer class="footer">
     <div class="container text-center">
         <p>SmarTrip</p>
@@ -69,6 +70,7 @@
         
     </div>
 </footer>
+        </div>
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>
     @await RenderSectionAsync("Scripts", required: false)
