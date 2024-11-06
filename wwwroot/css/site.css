@@ -55,13 +55,15 @@ h2 {
   color: #002060 !important;
   margin-top: 2% !important;
   font-weight: bold;
-  text-align: center;
 }
 
+
+.toggle-link{
+  color: #0077b6 !important;
+}
 h1{
   color: #002060 !important;
   font-weight: bold;
-  text-align: center;
   margin-top: 5% !important;
 }
 label {
@@ -77,8 +79,8 @@ label {
 .btn-primary {
   font-family: 'parrafos';
   width: 170px;
-  background-color: #00bfff;
-  border: none;
+  background-color: #00b4d8 !important;
+  border: none !important;
   padding: 10px;
   font-size: 18px;
   color: white;
@@ -90,11 +92,11 @@ label {
 }
 .btn-secondary {
   width: 170px;
-  background-color: #5a5a5a;
-  border: none;
+  background-color: #caf0f8 !important;
+  border: none !important;
   padding: 10px;
   font-size: 18px;
-  color: white;
+  color: #03045e !important;
   cursor: pointer;
   border-radius: 5px;
 }
