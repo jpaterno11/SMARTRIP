@@ -1,0 +1,174 @@
+/* General Container */
+.centered-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+  }
+  
+  /* Main Content Section with Adjusted Spacing */
+  .main-content {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 100px; /* Increased gap between text and image */
+    padding: 20px;
+    margin-top: 20px;
+  }
+  
+  /* Adjusted width for alignment */
+  .text-section {
+    flex: 1;
+    max-width: 500px;
+    margin-left:8% !important; 
+    margin-top: 2% !important;
+  }
+  #comparaPrecios{
+    font-size: 400%;
+    max-width: 200%;
+   
+  }
+  .image-section {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    margin-top: 3%;
+  }
+  #text-2-index{
+    margin-left: 8% !important;
+    font-size: 250%;
+  }
+  #imgindex {
+    max-width: 80%;
+    height: auto;
+    border-radius: 10px;
+    margin-right: 5% !important;
+  }
+  
+  /* App Download Section with Centered Alignment */
+  .app-section {
+    text-align: center;
+    margin-top: 50px;
+  }
+  
+  /* Download options styling */
+  .download-options {
+    display: flex;
+    justify-content: center;
+    gap: 50px;
+    margin-top: 20px;
+  }
+  
+  .download-option {
+    background-color: #E0F3FF;
+    padding: 15px;
+    border-radius: 10px;
+    width: 150px;
+    text-align: center;
+  }
+  
+  
+  /* App Download Section */
+  .app-section {
+    text-align: center;
+    margin-top: 50px;
+  }
+  
+  .download-option {
+    background-color: #E0F3FF;
+    padding: 15px;
+    border-radius: 10px;
+    width: 150px;
+    text-align: center;
+  }
+  
+  .download-option img {
+    width: 80px;
+  }
+  
+  /* Partners Section */
+  .partners-section {
+    text-align: center;
+    margin-top: 50px;
+  }
+  
+  .partners {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    margin-top: 20px;
+  }
+  
+  .partners img {
+    width: 80px;
+    border-radius: 5px;
+    background-color: #E0F3FF;
+    padding: 10px;
+  }
+  
+  .input-buttons {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+  
+  
+  .cta-button {
+    background-color: #00B4D8; 
+    color: #CAF0F8; 
+    border: 2px solid transparent; 
+    border-radius: 30px; 
+    font-size: 17px;
+    padding: 10px 20px;
+    cursor: pointer;
+    transition: background-color 0.3s, color 0.3s;
+    max-width: 40%;
+    font-weight:500;
+    max-height: 4%;
+    margin-top: 1%;
+  }
+  
+  .cta-button:hover {
+    background-color: #0077B6; 
+  }
+  
+  .input-buttons {
+    margin-top: 30px; 
+  }
+  
+  #text-3-index{
+    color:#00B4D8;
+    font-size: 23px;
+  }
+  
+  .input-button img{
+  width: 8%;
+  }
+  
+  .input-container {
+    position: relative;
+    display: inline-block;
+    width: 300px; /* Ajusta el ancho según tus necesidades */
+    margin-top:3%;
+  }
+  
+  .input-field {
+    width: 100%;
+    padding: 10px 20px 10px 40px; /* Ajusta el padding para que el ícono no tape el texto */
+    border: none;
+    border-radius: 20px; /* Bordes redondeados */
+    background-color: #CAF0F8; /* Color de fondo */
+    outline: none;
+    font-size: 16px; /* Tamaño de fuente */
+    color: #0a014f; /* Color del texto */
+    height: 15%;
+  }
+  
+  .input-icon {
+    position: absolute;
+    top: 50%;
+    left: 20px; /* Ajusta la posición del ícono */
+    transform: translateY(-50%);
+    width: 20px; /* Tamaño del ícono */
+    pointer-events: none; /* Evita que el ícono bloquee el input */
+  }
+  
