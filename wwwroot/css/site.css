@@ -158,7 +158,7 @@ button[type=submit]
   padding: 20px 0;
 }
 .footer .social-icons a {
-  color: #00C8C8 !important;
+  color: #00B4D8 !important;
   text-decoration: none;
 }
 .footer a:hover {
@@ -579,6 +579,7 @@ button img{
 }
 
 .btn-outline-primary {
+  --bs-btn-hover-bg: #caf0f8 !important;
   color: #03045E !important;
   --bs-btn-color: #00B4D8 !important;
   --bs-btn-border-color: #00B4D8 !important;
@@ -642,4 +643,29 @@ button img{
 }
 .qs{
   width: max-content;
+}
+
+.quienesSomos{
+  color: #0077B6 !important; 
+  font-size: 50px;
+}
+
+.contenedor
+{
+  display: flex;
+  justify-content: space-between;
+}
+.QS{
+  float: left;
+  margin-left: 4% !important;
+  width: 50%;
+  margin: 1%;
+}
+
+.aQS{
+  margin: 3%;
+  align-items: end;
+  width: 40%;
+  height: 40%;
+  border-radius: 8%;
 }

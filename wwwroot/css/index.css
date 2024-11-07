@@ -58,18 +58,6 @@
     margin-top: 20px;
     color:#0a014f;
   }
-  
-  .download-option {
-    background-color: #CAF0F8;
-    border-radius: 10px;
-    max-width: 300%;
-    text-align: center;
-    margin:8% !important;
-    max-height: 180% !important;
-  }
-  
-  
-  /* App Download Section */
   .app-section {
     text-align: center;
     margin-top: 50px;
@@ -82,21 +70,30 @@
     display: flex; 
     align-items: center; 
     gap: 15px; 
-    max-width: 600%; /* Ajusta el tamaño máximo si es necesario */
-    text-align: left;
+    max-width: 70%;
+    text-align: center;
+    margin:8% !important;
+    max-height: 100% !important;
   }
   
   .download-option img {
-    width: 50%; 
-    height: auto;
+    width: 30%; 
   }
   
   .download-text {
-    display: flex;
+    margin-left: 1% !important;
     flex-direction: column; 
-    color: #0a014f;
+    color: #0077B6 !important;
+    font-size: 40px;
+    font-family: 'titulos';
   }
-  
+
+  .download-text p{
+    color: #03045E;
+    font-size: 40px;
+    text-align: left;
+  }
+
   
   /* Partners Section */
   .partners-section {
