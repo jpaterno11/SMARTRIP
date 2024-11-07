@@ -640,3 +640,6 @@ button img{
   display: flex !important;
   justify-content: space-between !important;
 }
+.qs{
+  width: max-content;
+}
