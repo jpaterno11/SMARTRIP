@@ -101,9 +101,6 @@ label {
   border-radius: 5px;
 }
 footer {
-  position: fixed;
-  left: 0;
-  bottom: 0;
   width: 100%;
   text-align: center;
   padding: 10px;
@@ -156,13 +153,12 @@ button[type=submit]
   color: white;
 }
 .footer {
-  position: fixed;
   background-color: #03045E; /* Azul oscuro */
   color: #FFFFFF;
   padding: 20px 0;
 }
-.footer a {
-  color: #00C8C8;
+.footer .social-icons a {
+  color: #00C8C8 !important;
   text-decoration: none;
 }
 .footer a:hover {
@@ -303,36 +299,10 @@ button img{
   gap: 10px;
 }
 .footer .logo-section img {
-  height: 40px;
+  width: 60%;
+  height: 30%;
 }
-.footer .links {
-  display: flex;
-  padding: 80px;
-  gap: 40px;
-  text-align: center;
-  border-right: SOLID 1px;
-  border-left: solid 1px;
-}
-.footer .links a {
-  color: #ffffff;
-  text-decoration: none;
-  font-size: 16px;
-}
-.footer .links a:hover {
-  text-decoration: underline;
-}
-/* Estilo de los íconos de redes sociales */
-.footer .social-icons {
-  display: flex;
-  gap: 15px;
-}
-.footer .social-icons a {
-  color: #00aaff;
-  font-size: 20px;
-}
-.footer .social-icons a:hover {
-  color: #0077cc;
-}
+
 .footerEspacio
 {
   display: flex !important;
@@ -443,9 +413,6 @@ label {
   border-radius: 5px;
 }
 footer {
-  position: fixed;
-  left: 0;
-  bottom: 0;
   width: 100%;
   text-align: center;
   padding: 10px;
@@ -498,7 +465,6 @@ button[type=submit]
   color: white;
 }
 .footer {
-  position: fixed;
   background-color: #03045E; /* Azul oscuro */
   color: #FFFFFF;
   padding: 20px 0;
@@ -644,12 +610,10 @@ button img{
   align-items: center;
   gap: 10px;
 }
-.footer .logo-section img {
-  height: 40px;
-}
 .footer .links {
   display: flex;
-  padding: 80px;
+  padding-left: 50%;
+  padding-right: 50%;
   gap: 40px;
   text-align: center;
   border-right: SOLID 1px;
@@ -663,14 +627,10 @@ button img{
 .footer .links a:hover {
   text-decoration: underline;
 }
-/* Estilo de los íconos de redes sociales */
+
 .footer .social-icons {
   display: flex;
   gap: 15px;
-}
-.footer .social-icons a {
-  color: #00aaff;
-  font-size: 20px;
 }
 .footer .social-icons a:hover {
   color: #0077cc;
@@ -682,10 +642,7 @@ button img{
 }
 
 
-
-
 ----------------------
-
 
 /* General Container */
 .centered-container {
