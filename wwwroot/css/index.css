@@ -56,14 +56,16 @@
     justify-content: center;
     gap: 50px;
     margin-top: 20px;
+    color:#0a014f;
   }
   
   .download-option {
-    background-color: #E0F3FF;
-    padding: 15px;
+    background-color: #CAF0F8;
     border-radius: 10px;
-    width: 150px;
+    max-width: 300%;
     text-align: center;
+    margin:8% !important;
+    max-height: 180% !important;
   }
   
   
@@ -74,16 +76,27 @@
   }
   
   .download-option {
-    background-color: #E0F3FF;
+    background-color: #CAF0F8;
+    border-radius: 15px;
     padding: 15px;
-    border-radius: 10px;
-    width: 150px;
-    text-align: center;
+    display: flex; 
+    align-items: center; 
+    gap: 15px; 
+    max-width: 600%; /* Ajusta el tamaño máximo si es necesario */
+    text-align: left;
   }
   
   .download-option img {
-    width: 80px;
+    width: 50%; 
+    height: auto;
   }
+  
+  .download-text {
+    display: flex;
+    flex-direction: column; 
+    color: #0a014f;
+  }
+  
   
   /* Partners Section */
   .partners-section {
