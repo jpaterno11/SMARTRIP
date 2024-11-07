@@ -719,8 +719,6 @@ button img{
   margin-top: 50px;
 }
 
-
-
 .download-option {
   background-color: #E0F3FF;
   padding: 15px;
@@ -759,34 +757,18 @@ button img{
   gap: 20px;
 }
 
-.input-button {
-  background-color: #CAF0F8; 
-  border: none;
-  border-radius: 30px; 
-  color: #03045E; 
-  font-size: 16px;
-  padding: 10px 20px;
-  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1); 
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  max-width: 60%;
-  font-weight:600;
-  max-height: 4%;
-  gap:20px;
-}
 
 .cta-button {
   background-color: #00B4D8; 
   color: #CAF0F8; 
   border: 2px solid transparent; 
   border-radius: 30px; 
-  font-size: 16px;
+  font-size: 17px;
   padding: 10px 20px;
   cursor: pointer;
   transition: background-color 0.3s, color 0.3s;
   max-width: 40%;
-  font-weight:600;
+  font-weight:500;
   max-height: 4%;
   margin-top: 1%;
 }
@@ -807,3 +789,32 @@ button img{
 .input-button img{
 width: 8%;
 }
+
+.input-container {
+  position: relative;
+  display: inline-block;
+  width: 300px; /* Ajusta el ancho según tus necesidades */
+  margin-top:3%;
+}
+
+.input-field {
+  width: 100%;
+  padding: 10px 20px 10px 40px; /* Ajusta el padding para que el ícono no tape el texto */
+  border: none;
+  border-radius: 20px; /* Bordes redondeados */
+  background-color: #CAF0F8; /* Color de fondo */
+  outline: none;
+  font-size: 16px; /* Tamaño de fuente */
+  color: #0a014f; /* Color del texto */
+  height: 15%;
+}
+
+.input-icon {
+  position: absolute;
+  top: 50%;
+  left: 20px; /* Ajusta la posición del ícono */
+  transform: translateY(-50%);
+  width: 20px; /* Tamaño del ícono */
+  pointer-events: none; /* Evita que el ícono bloquee el input */
+}
+
