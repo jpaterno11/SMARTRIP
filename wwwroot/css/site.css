@@ -669,3 +669,8 @@ button img{
   height: 40%;
   border-radius: 8%;
 }
+
+#map {
+  height: 500px;
+  width: 100%;
+}

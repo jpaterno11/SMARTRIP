@@ -127,3 +127,67 @@ function enviarForm3(){
         document.getElementById('Olvidar2').action = '/Account/Olvidar2';
         document.getElementById('Olvidar2').submit();
 }
+
+const map = L.map('map').setView([0, 0], 2); // Vista inicial
+
+// Capa de OpenStreetMap
+L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+    maxZoom: 19,
+    attribution: '© OpenStreetMap'
+}).addTo(map);
+
+// Variables para los marcadores
+let startMarker, endMarker;
+
+// Función para obtener coordenadas con Nominatim API
+async function obtenerCoordenadas(direccion) {
+    const response = await fetch(`https://nominatim.openstreetmap.org/search?format=json&q=${encodeURIComponent(direccion)}`);
+    const data = await response.json();
+    if (data.length > 0) {
+        return {
+            lat: parseFloat(data[0].lat),
+            lon: parseFloat(data[0].lon)
+        };
+    } else {
+        alert("Dirección no encontrada: " + direccion);
+        return null;
+    }
+}
+
+// Función para buscar y mostrar la ruta en el mapa
+async function buscarRuta() {
+    const start = document.getElementById('start').value;
+    const end = document.getElementById('end').value;
+
+    if (!start || !end) {
+        alert("Por favor, ingresa ambos lugares.");
+        return;
+    }
+
+    // Obtener coordenadas de los lugares
+    const startCoords = await obtenerCoordenadas(start);
+    const endCoords = await obtenerCoordenadas(end);
+
+    if (startCoords && endCoords) {
+        // Centrar el mapa entre los dos puntos
+        map.fitBounds([
+            [startCoords.lat, startCoords.lon],
+            [endCoords.lat, endCoords.lon]
+        ]);
+
+        // Limpiar marcadores anteriores
+        if (startMarker) map.removeLayer(startMarker);
+        if (endMarker) map.removeLayer(endMarker);
+
+        // Agregar marcadores
+        startMarker = L.marker([startCoords.lat, startCoords.lon]).addTo(map)
+            .bindPopup("Salida: " + start).openPopup();
+        endMarker = L.marker([endCoords.lat, endCoords.lon]).addTo(map)
+            .bindPopup("Llegada: " + end).openPopup();
+
+        // Opcional: Dibujar una línea entre los puntos
+        const routeLine = L.polyline([[startCoords.lat, startCoords.lon], [endCoords.lat, endCoords.lon]], {
+            color: 'blue'
+        }).addTo(map);
+    }
+}
