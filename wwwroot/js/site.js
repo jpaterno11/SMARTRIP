@@ -128,66 +128,72 @@ function enviarForm3(){
         document.getElementById('Olvidar2').submit();
 }
 
-const map = L.map('map').setView([0, 0], 2); // Vista inicial
 
-// Capa de OpenStreetMap
-L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-    maxZoom: 19,
-    attribution: '© OpenStreetMap'
-}).addTo(map);
 
-// Variables para los marcadores
-let startMarker, endMarker;
 
-// Función para obtener coordenadas con Nominatim API
-async function obtenerCoordenadas(direccion) {
-    const response = await fetch(`https://nominatim.openstreetmap.org/search?format=json&q=${encodeURIComponent(direccion)}`);
-    const data = await response.json();
-    if (data.length > 0) {
-        return {
-            lat: parseFloat(data[0].lat),
-            lon: parseFloat(data[0].lon)
-        };
-    } else {
-        alert("Dirección no encontrada: " + direccion);
-        return null;
+
+
+
+
+
+
+
+var map = L.map('map').setView([-34.6062, -58.4359], 15);
+
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+        maxZoom: 18,
+        attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+    }).addTo(map);
+    let startMarker, endMarker;
+    async function obtenerCoordenadas(direccion) {
+        // Define los límites de la Ciudad Autónoma de Buenos Aires
+        const viewbox = "-58.5317,-34.7054,-58.3352,-34.5215"; // Suroeste y noreste de CABA
+        const bounded = 1; // Limita los resultados a la vista de la caja
+    
+        // Construye la URL de búsqueda con los parámetros de limitación
+        const url = `https://nominatim.openstreetmap.org/search?format=json&q=${encodeURIComponent(direccion)}&viewbox=${viewbox}&bounded=${bounded}`;
+    
+        try {
+            const response = await fetch(url);
+            const data = await response.json();
+            if (data.length > 0) {
+                return {
+                    lat: parseFloat(data[0].lat),
+                    lon: parseFloat(data[0].lon)
+                };
+            } else {
+                alert("Dirección no encontrada en Buenos Aires: " + direccion);
+                return null;
+            }
+        } catch (error) {
+            console.error("Error al obtener coordenadas:", error);
+            alert("Hubo un problema al buscar la dirección.");
+            return null;
+        }
     }
-}
-
-// Función para buscar y mostrar la ruta en el mapa
-async function buscarRuta() {
-    const start = document.getElementById('start').value;
-    const end = document.getElementById('end').value;
-
-    if (!start || !end) {
-        alert("Por favor, ingresa ambos lugares.");
-        return;
+    async function buscarRuta() {
+        const start = document.getElementById('start').value;
+        const end = document.getElementById('end').value;
+        if (!start || !end) {
+            alert("Por favor, ingresa ambos lugares.");
+            return;
+        }
+        const startCoords = await obtenerCoordenadas(start);
+        const endCoords = await obtenerCoordenadas(end);
+        if (startCoords && endCoords) {
+            map.fitBounds([
+                [startCoords.lat, startCoords.lon],
+                [endCoords.lat, endCoords.lon]
+            ]);
+            if (startMarker) map.removeLayer(startMarker);
+            if (endMarker) map.removeLayer(endMarker);
+            startMarker = L.marker([startCoords.lat, startCoords.lon]).addTo(map)
+                .bindPopup("Salida: " + start).openPopup();
+            endMarker = L.marker([endCoords.lat, endCoords.lon]).addTo(map)
+                .bindPopup("Llegada: " + end).openPopup();
+            // Opcional: Dibujar una línea entre los puntos
+            const routeLine = L.polyline([[startCoords.lat, startCoords.lon], [endCoords.lat, endCoords.lon]], {
+                color: 'blue'
+            }).addTo(map);
+        }
     }
-
-    // Obtener coordenadas de los lugares
-    const startCoords = await obtenerCoordenadas(start);
-    const endCoords = await obtenerCoordenadas(end);
-
-    if (startCoords && endCoords) {
-        // Centrar el mapa entre los dos puntos
-        map.fitBounds([
-            [startCoords.lat, startCoords.lon],
-            [endCoords.lat, endCoords.lon]
-        ]);
-
-        // Limpiar marcadores anteriores
-        if (startMarker) map.removeLayer(startMarker);
-        if (endMarker) map.removeLayer(endMarker);
-
-        // Agregar marcadores
-        startMarker = L.marker([startCoords.lat, startCoords.lon]).addTo(map)
-            .bindPopup("Salida: " + start).openPopup();
-        endMarker = L.marker([endCoords.lat, endCoords.lon]).addTo(map)
-            .bindPopup("Llegada: " + end).openPopup();
-
-        // Opcional: Dibujar una línea entre los puntos
-        const routeLine = L.polyline([[startCoords.lat, startCoords.lon], [endCoords.lat, endCoords.lon]], {
-            color: 'blue'
-        }).addTo(map);
-    }
-}
