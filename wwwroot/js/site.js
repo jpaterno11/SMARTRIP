@@ -138,62 +138,106 @@ function enviarForm3(){
 
 
 
+// Inicializa el mapa de Leaflet con una vista centrada en Buenos Aires
 var map = L.map('map').setView([-34.6062, -58.4359], 15);
 
-    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-        maxZoom: 18,
-        attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-    }).addTo(map);
-    let startMarker, endMarker;
-    async function obtenerCoordenadas(direccion) {
-        // Define los límites de la Ciudad Autónoma de Buenos Aires
-        const viewbox = "-58.5317,-34.7054,-58.3352,-34.5215"; // Suroeste y noreste de CABA
-        const bounded = 1; // Limita los resultados a la vista de la caja
-    
-        // Construye la URL de búsqueda con los parámetros de limitación
-        const url = `https://nominatim.openstreetmap.org/search?format=json&q=${encodeURIComponent(direccion)}&viewbox=${viewbox}&bounded=${bounded}`;
-    
-        try {
-            const response = await fetch(url);
-            const data = await response.json();
-            if (data.length > 0) {
-                return {
-                    lat: parseFloat(data[0].lat),
-                    lon: parseFloat(data[0].lon)
-                };
-            } else {
-                alert("Dirección no encontrada en Buenos Aires: " + direccion);
-                return null;
-            }
-        } catch (error) {
-            console.error("Error al obtener coordenadas:", error);
-            alert("Hubo un problema al buscar la dirección.");
+L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+    maxZoom: 18,
+    attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+}).addTo(map);
+
+let startMarker, endMarker;
+
+// Función para obtener las coordenadas de una dirección usando Nominatim
+async function obtenerCoordenadas(direccion) {
+    // Limitar los resultados a la Ciudad Autónoma de Buenos Aires
+    const viewbox = "-58.5317,-34.7054,-58.3352,-34.5215"; // Suroeste y noreste de CABA
+    const bounded = 1; // Limita los resultados a la caja
+
+    // URL de búsqueda con parámetros
+    const url = `https://nominatim.openstreetmap.org/search?format=json&q=${encodeURIComponent(direccion)}&viewbox=${viewbox}&bounded=${bounded}`;
+
+    try {
+        const response = await fetch(url);
+        const data = await response.json();
+        if (data.length > 0) {
+            return {
+                lat: parseFloat(data[0].lat),
+                lon: parseFloat(data[0].lon)
+            };
+        } else {
+            alert("Dirección no encontrada en Buenos Aires: " + direccion);
             return null;
         }
+    } catch (error) {
+        console.error("Error al obtener coordenadas:", error);
+        alert("Hubo un problema al buscar la dirección.");
+        return null;
     }
-    async function buscarRuta() {
-        const start = document.getElementById('start').value;
-        const end = document.getElementById('end').value;
-        if (!start || !end) {
-            alert("Por favor, ingresa ambos lugares.");
-            return;
-        }
-        const startCoords = await obtenerCoordenadas(start);
-        const endCoords = await obtenerCoordenadas(end);
-        if (startCoords && endCoords) {
-            map.fitBounds([
-                [startCoords.lat, startCoords.lon],
-                [endCoords.lat, endCoords.lon]
-            ]);
-            if (startMarker) map.removeLayer(startMarker);
-            if (endMarker) map.removeLayer(endMarker);
-            startMarker = L.marker([startCoords.lat, startCoords.lon]).addTo(map)
-                .bindPopup("Salida: " + start).openPopup();
-            endMarker = L.marker([endCoords.lat, endCoords.lon]).addTo(map)
-                .bindPopup("Llegada: " + end).openPopup();
-            // Opcional: Dibujar una línea entre los puntos
-            const routeLine = L.polyline([[startCoords.lat, startCoords.lon], [endCoords.lat, endCoords.lon]], {
-                color: 'blue'
+}
+
+async function buscarRuta() {
+    const start = document.getElementById('start').value;
+    const end = document.getElementById('end').value;
+
+    if (!start || !end) {
+        alert("Por favor, ingresa ambos lugares.");
+        return;
+    }
+
+    const startCoords = await obtenerCoordenadas(start);
+    const endCoords = await obtenerCoordenadas(end);
+
+    // Verificar que las coordenadas son válidas
+    console.log("Coordenadas de inicio:", startCoords);
+    console.log("Coordenadas de destino:", endCoords);
+
+    if (startCoords && endCoords) {
+        map.fitBounds([
+            [startCoords.lat, startCoords.lon],
+            [endCoords.lat, endCoords.lon]
+        ]);
+
+        // Eliminar los marcadores anteriores si existen
+        if (startMarker) map.removeLayer(startMarker);
+        if (endMarker) map.removeLayer(endMarker);
+
+        // Agregar nuevos marcadores
+        startMarker = L.marker([startCoords.lat, startCoords.lon]).addTo(map)
+            .bindPopup("Salida: " + start).openPopup();
+        endMarker = L.marker([endCoords.lat, endCoords.lon]).addTo(map)
+            .bindPopup("Llegada: " + end).openPopup();
+
+        // Verifica las coordenadas antes de crear la polilínea
+        if (startCoords.lat && startCoords.lon && endCoords.lat && endCoords.lon) {
+            var pointList = [
+                [startCoords, startCoords],
+                [endCoords, endCoords]
+            ];
+
+            var firstpolyline = new L.Polyline(pointList, {
+                color: 'red',
+                weight: 3,
+                opacity: 0.5,
+                smoothFactor: 1
             }).addTo(map);
+        } else {
+            console.error("Coordenadas inválidas para el path:", startCoords, endCoords);
         }
+    } else {
+        console.error("No se pudieron obtener las coordenadas.");
     }
+
+}
+$(document).ready(function () {
+    // Cuando se haga clic en el botón de abrir el modal
+    $("#openModalBtn").click(function () {
+        $("#overlay").fadeIn();  // Muestra el overlay
+    });
+    // Cerrar el overlay si se hace clic fuera del contenido del overlay
+    $(window).click(function (event) {
+        if ($(event.target).is("#overlay")) {
+            $("#overlay").fadeOut();  // Ocultar el overlay si se hace clic fuera de él
+        }
+    });
+});

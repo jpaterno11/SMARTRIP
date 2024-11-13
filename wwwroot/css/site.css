@@ -673,10 +673,69 @@ button img{
 #map {
   height: 500px;
   width: 100%;
+  border-radius: 5%;
 }
 .viajar
 {
   display: flex;
   justify-content: space-around;
   margin-top: 4%;
+  margin-bottom: 4%;
+  /* Estilos para el overlay */
+.overlay {
+  position: fixed;
+  position: absolute; /* Posicionamiento absoluto en la página */
+  top: 350px; /* Desde la parte superior de la página */
+  left: 680px; /* Desde la izquierda de la página */
+  width: 100%;
+  height: 100%;
+  display: none; /* El overlay está oculto por defecto */
+  justify-content: center;
+  align-items: center;
+  z-index: 9999; /* Asegura que el overlay esté sobre otros elementos */
+}
+
+/* Estilo del contenido dentro del overlay */
+.overlay-content {
+  background-color: white;
+  padding: 20px;
+  border-radius: 8px;
+  text-align: center;
+  width: 60%;
+  max-width: 400px;
+}
+
+/* Botón para cerrar el overlay */
+.close-btn {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  font-size: 30px;
+  color: black;
+  cursor: pointer;
+}
+
+}
+
+.contPrecio{
+  display: flex;
+    width: 100%;
+    margin: 20px auto;
+    padding: 2%;
+    background-color: #CAF0F8;
+    border-radius: 25px; /* Ajuste del borde redondeado */
+    overflow: hidden;
+    margin-top: 3%;
+    margin-bottom: 5%;
+}
+
+.contPrecio img{
+  width: 20%;
+  height: 20%;
+  border-radius: 9px;
+}
+
+.auto{
+  width: 100%;
+  height: 100%;
 }
