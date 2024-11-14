@@ -681,14 +681,8 @@ button img{
   justify-content: space-around;
   margin-top: 4%;
   margin-bottom: 4%;
-  /* Estilos para el overlay */
 .overlay {
-  position: fixed;
-  position: absolute; /* Posicionamiento absoluto en la página */
-  top: 350px; /* Desde la parte superior de la página */
-  left: 680px; /* Desde la izquierda de la página */
-  width: 100%;
-  height: 100%;
+display: flex;
   display: none; /* El overlay está oculto por defecto */
   justify-content: center;
   align-items: center;
@@ -717,22 +711,32 @@ button img{
 
 }
 
+#eligeRuta{
+  font-size: 230%;
+  font-family: parrafos;
+  color:#03045E;
+}
 .contPrecio{
   display: flex;
-    width: 100%;
+    width: 180%;
     margin: 20px auto;
-    padding: 2%;
+    padding: 4%;
+    padding-left: 5%;
     background-color: #CAF0F8;
-    border-radius: 25px; /* Ajuste del borde redondeado */
+    border-radius: 25px;
     overflow: hidden;
     margin-top: 3%;
     margin-bottom: 5%;
 }
-
+#auto{
+  margin-top: -1.5%;
+  width: 30%;
+  height: 30%;;
+}
 .contPrecio img{
   width: 20%;
   height: 20%;
-  border-radius: 9px;
+  border-radius: 15px;
 }
 
 .auto{

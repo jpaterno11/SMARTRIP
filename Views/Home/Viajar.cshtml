@@ -2,52 +2,47 @@
         ViewData["Title"] = "Viajar - SmarTrip";
     }
 <div class ="viajar">
-
-<div>
+<div><!--primer div-->
 <h2> Consultá un viaje </h2>
-<div class="text-section">
-<div class="input-container">
-  <input type="text" class="input-field" id="start" placeholder="Ingresá tu ubicación">
-  <img src="~/img/ingresarUbi.png" alt="Icono de ubicación" class="input-icon">
-</div>
-<div class="input-container">
-  <input type="text" class="input-field" id="end" placeholder="Ingresá tu destino">
-  <img src="~/img/ingresarDest.png" alt="Icono de ubicación" class="input-icon">
-</div>
-<div class="input-container">
-  <label for="fecha">Fecha:</label>
-  <input type="date" class="input-field" id="fecha" placeholder="Selecciona la fecha">
-</div>
-<div class="input-container">
-  <label for="hora">Hora:</label>
-  <input type="time" class="input-field" id="hora" placeholder="Selecciona la hora">
-</div>
-<!-- El modal (overlay) -->
-<div id="overlay" class="overlay">
-    <div class="overlay-content">
-        <span id="closeModalBtn" class="close-btn">&times;</span>
-        <h3>Elige tu ruta</h3>
-         <div class="contPrecio">
-            <img src="~/img/didi.png" alt="DiDi Logo">
-            <img src="~/img/auto png.png" alt="auto png">
-        </div>
-        <div class="contPrecio">
-          <img src="~/img/uber.png" alt="Uber Logo">
-          <img src="~/img/auto png.png" alt="auto png">
-        </div>
-        <div class="contPrecio">
-            <img src="~/img/cabify.png" alt="Cabify Logo">
-            <img class = "auto" src="~/img/auto png.png" alt="auto png">
-        </div>
+  <div class="text-section">
+    <div class="input-container">
+      <input type="text" class="input-field" id="start" placeholder="Ingresá tu ubicación">
+      <img src="~/img/ingresarUbi.png" alt="Icono de ubicación" class="input-icon">
     </div>
-</div>
-
-<!-- El resto de tu contenido de la página va aquí -->
-
+    <div class="input-container">
+      <input type="text" class="input-field" id="end" placeholder="Ingresá tu destino">
+      <img src="~/img/ingresarDest.png" alt="Icono de ubicación" class="input-icon">
+    </div>
+    <div class="input-container">
+      <label for="fecha">Fecha:</label>
+      <input type="date" class="input-field" id="fecha" placeholder="Selecciona la fecha">
+    </div>
+    <div class="input-container">
+      <label for="hora">Hora:</label>
+      <input type="time" class="input-field" id="hora" placeholder="Selecciona la hora">
+    </div>
     <div class="input-buttons">
-    <button id="openModalBtn" type="submit" onclick="buscarRuta()" class="cta-button">Ver precios</button> 
+      <button id="openModalBtn" type="submit" onclick="buscarRuta()" class="cta-button">Ver precios</button> 
+    </div>
+  </div>
 </div>
-</div>
+<div id="overlay" class="overlay"> <!--SEGUNDO-->
+  <div class="overlay-content">
+    <span id="closeModalBtn" class="close-btn">&times;</span>
+    <h3 id="eligeRuta">Elige un viaje</h3>
+    <div class="contPrecio">
+      <img src="~/img/didi.png" alt="DiDi Logo">
+      <img id = "auto" src="~/img/auto png.png" alt="auto png">
+    </div>
+    <div class="contPrecio">
+      <img src="~/img/uber.png" alt="Uber Logo">
+      <img id = "auto" src="~/img/auto png.png" alt="auto png">
+    </div>
+    <div class="contPrecio">
+      <img src="~/img/cabify.png" alt="Cabify Logo">
+      <img id = "auto" src="~/img/auto png.png" alt="auto png">
+    </div>
+  </div>
 </div>
 <div id="map" style="height: 600px; width: 30%;"></div>
 </div>
