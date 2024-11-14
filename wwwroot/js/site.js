@@ -179,6 +179,7 @@ async function obtenerCoordenadas(direccion) {
 async function buscarRuta() {
     const start = document.getElementById('start').value;
     const end = document.getElementById('end').value;
+    const precio = document.getElementById("precio");
 
     if (!start || !end) {
         alert("Por favor, ingresa ambos lugares.");
@@ -188,7 +189,6 @@ async function buscarRuta() {
     const startCoords = await obtenerCoordenadas(start);
     const endCoords = await obtenerCoordenadas(end);
 
-    // Verificar que las coordenadas son válidas
     console.log("Coordenadas de inicio:", startCoords);
     console.log("Coordenadas de destino:", endCoords);
 
@@ -198,17 +198,14 @@ async function buscarRuta() {
             [endCoords.lat, endCoords.lon]
         ]);
 
-        // Eliminar los marcadores anteriores si existen
         if (startMarker) map.removeLayer(startMarker);
         if (endMarker) map.removeLayer(endMarker);
 
-        // Agregar nuevos marcadores
         startMarker = L.marker([startCoords.lat, startCoords.lon]).addTo(map)
             .bindPopup("Salida: " + start).openPopup();
         endMarker = L.marker([endCoords.lat, endCoords.lon]).addTo(map)
             .bindPopup("Llegada: " + end).openPopup();
 
-        // Verifica las coordenadas antes de crear la polilínea
         if (startCoords.lat && startCoords.lon && endCoords.lat && endCoords.lon) {
             var pointList = [
                 [startCoords, startCoords],
@@ -227,17 +224,16 @@ async function buscarRuta() {
     } else {
         console.error("No se pudieron obtener las coordenadas.");
     }
+    precio.innerText = [startCoords, startCoords] * 100 - [endCoords, endCoords] * 100;
 
 }
 $(document).ready(function () {
-    // Cuando se haga clic en el botón de abrir el modal
     $("#openModalBtn").click(function () {
-        $("#overlay").fadeIn();  // Muestra el overlay
+        $("#overlay").fadeIn(); 
     });
-    // Cerrar el overlay si se hace clic fuera del contenido del overlay
     $(window).click(function (event) {
         if ($(event.target).is("#overlay")) {
-            $("#overlay").fadeOut();  // Ocultar el overlay si se hace clic fuera de él
+            $("#overlay").fadeOut();
         }
     });
 });

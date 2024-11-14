@@ -682,21 +682,16 @@ button img{
   margin-top: 4%;
   margin-bottom: 4%;
 .overlay {
-display: flex;
-  display: none; /* El overlay está oculto por defecto */
-  justify-content: center;
-  align-items: center;
-  z-index: 9999; /* Asegura que el overlay esté sobre otros elementos */
+  display: none; 
+  margin-left: 3%;
 }
-
-/* Estilo del contenido dentro del overlay */
 .overlay-content {
   background-color: white;
   padding: 20px;
   border-radius: 8px;
-  text-align: center;
   width: 60%;
   max-width: 400px;
+  margin-left: -10%;
 }
 
 /* Botón para cerrar el overlay */
@@ -716,11 +711,17 @@ display: flex;
   font-family: parrafos;
   color:#03045E;
 }
+.texto{
+  text-align: center;
+  margin-top: 2%;
+margin-left: 7%;
+}
 .contPrecio{
   display: flex;
     width: 180%;
     margin: 20px auto;
     padding: 4%;
+    margin-left: -30%;
     padding-left: 5%;
     background-color: #CAF0F8;
     border-radius: 25px;
