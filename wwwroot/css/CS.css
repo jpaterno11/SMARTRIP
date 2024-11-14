@@ -1,0 +1,30 @@
+.rating {
+    display: flex;
+    justify-content: left;
+    flex-direction: row-reverse;
+}
+.estrella {
+    font-size: 40px;
+    margin: 0.2%;
+    cursor: pointer;
+    color: #90e0ef;
+}
+.rating input[type="radio"] {
+    display: none;
+}
+
+.rating input[type="radio"]:checked ~ label,
+.rating input[type="radio"]:checked ~ label ~ label {
+    color: #00b4d8;
+}
+
+.form-control{
+    resize: none;
+    height: 60%;
+    width: 70%;
+    margin-top: 1% !important;
+}
+
+.form-floating label {
+    color: #8ec7d1 !important;
+}

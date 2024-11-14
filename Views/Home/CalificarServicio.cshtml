@@ -1,0 +1,57 @@
+@{
+        ViewData["Title"] = "Calificar Servicio - SmarTrip";
+}
+
+<div class = "container calificar">
+<form method="post" id="EnviarCalificacion" asp-controller="Account" onsubmit="return enviarCalificacion();">
+<div class="form-group margin">
+        <label>Califique al conductor:</label>
+        <div class="rating">
+            <input type="radio" id="star1" name="CalificacionConductor" value="1" />
+            <label for="star1" class="estrella">☆</label>
+            
+            <input type="radio" id="star2" name="CalificacionConductor" value="2" />
+            <label for="star2" class="estrella">☆</label>
+            
+            <input type="radio" id="star3" name="CalificacionConductor" value="3" />
+            <label for="star3" class="estrella">☆</label>
+            
+            <input type="radio" id="star4" name="CalificacionConductor" value="4" />
+            <label for="star4" class="estrella">☆</label>
+            
+            <input type="radio" id="star5" name="CalificacionConductor" value="5" />
+            <label for="star5" class="estrella">☆</label>
+        </div>
+</div>
+<div class="form-group margin">
+        <label>Califique el estado y comodidad del vehículo:</label>
+        <div class="rating">
+            <input type="radio" id="vehiculo-star1" name="CalificacionVehiculo" value="1" />
+            <label for="vehiculo-star1" class="estrella">☆</label>
+            
+            <input type="radio" id="vehiculo-star2" name="CalificacionVehiculo" value="2" />
+            <label for="vehiculo-star2" class="estrella">☆</label>
+            
+            <input type="radio" id="vehiculo-star3" name="CalificacionVehiculo" value="3" />
+            <label for="vehiculo-star3" class="estrella">☆</label>
+            
+            <input type="radio" id="vehiculo-star4" name="CalificacionVehiculo" value="4" />
+            <label for="vehiculo-star4" class="estrella">☆</label>
+            
+            <input type="radio" id="vehiculo-star5" name="CalificacionVehiculo" value="5" />
+            <label for="vehiculo-star5" class="estrella">☆</label>
+        </div>
+    </div>
+<div class="form-group margin">
+       <label for ="Comentario">¿Tiene algún comentario, pregunta o problema con el servicio?</label>
+       <div class="form-floating">
+        <textarea class="form-control" placeholder="Escríbalo aquí" name="Comentario" id="floatingTextarea"></textarea>
+         <label for="floatingTextarea">Escriba su comentario aquí</label>
+        </div>
+</div>
+<div class="button-container">
+    <button type="submit" class="btn btn-primary">Enviar</button>
+    <a class="color" href='@Url.Action("Index", "Home")'> <button type="button" class="btn btn-secondary">Omitir </button></a>
+</div>
+</form>
+</div>

@@ -88,4 +88,9 @@ public class AccountController : Controller
         BD.ActualizarContraseña(user);
         return View("/Views/Home/Index.cshtml");
      }
+
+    //  [HttpPost] 
+    //   public IActionResult Calificar()
+    //  {
+    //  }
 }

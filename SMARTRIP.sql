@@ -1,15 +1,15 @@
 USE [master]
 GO
-/****** Object:  Database [SMARTRIP]    Script Date: 6/11/2024 13:38:00 ******/
+/****** Object:  Database [SMARTRIP]    Script Date: 14/11/2024 11:18:32 ******/
 CREATE DATABASE [SMARTRIP]
  CONTAINMENT = NONE
  
 USE [SMARTRIP]
 GO
-/****** Object:  User [alumno]    Script Date: 6/11/2024 13:38:00 ******/
+/****** Object:  User [alumno]    Script Date: 14/11/2024 11:18:33 ******/
 CREATE USER [alumno] FOR LOGIN [alumno] WITH DEFAULT_SCHEMA=[dbo]
 GO
-/****** Object:  Table [dbo].[AUTOS]    Script Date: 6/11/2024 13:38:01 ******/
+/****** Object:  Table [dbo].[AUTOS]    Script Date: 14/11/2024 11:18:33 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -26,7 +26,7 @@ CREATE TABLE [dbo].[AUTOS](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[EMPRESA]    Script Date: 6/11/2024 13:38:01 ******/
+/****** Object:  Table [dbo].[EMPRESA]    Script Date: 14/11/2024 11:18:33 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -41,7 +41,7 @@ CREATE TABLE [dbo].[EMPRESA](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[PAGOS]    Script Date: 6/11/2024 13:38:01 ******/
+/****** Object:  Table [dbo].[PAGOS]    Script Date: 14/11/2024 11:18:33 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -58,7 +58,7 @@ CREATE TABLE [dbo].[PAGOS](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[RESEÑAS]    Script Date: 6/11/2024 13:38:01 ******/
+/****** Object:  Table [dbo].[RESEÑAS]    Script Date: 14/11/2024 11:18:33 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -77,7 +77,7 @@ CREATE TABLE [dbo].[RESEÑAS](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[USUARIO]    Script Date: 6/11/2024 13:38:01 ******/
+/****** Object:  Table [dbo].[USUARIO]    Script Date: 14/11/2024 11:18:33 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -97,7 +97,7 @@ CREATE TABLE [dbo].[USUARIO](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[VIAJES]    Script Date: 6/11/2024 13:38:01 ******/
+/****** Object:  Table [dbo].[VIAJES]    Script Date: 14/11/2024 11:18:33 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -106,10 +106,8 @@ CREATE TABLE [dbo].[VIAJES](
 	[Fecha] [date] NOT NULL,
 	[UbicacionInicial] [varchar](100) NOT NULL,
 	[UbicacionFinal] [varchar](100) NOT NULL,
-	[AutoDisponible] [bit] NOT NULL,
 	[IDUsuario] [int] NOT NULL,
 	[Costo] [decimal](10, 2) NOT NULL,
-	[Estado] [varchar](50) NOT NULL,
 	[IDViaje] [int] IDENTITY(1,1) NOT NULL,
  CONSTRAINT [PK_VIAJES_1] PRIMARY KEY CLUSTERED 
 (
@@ -117,7 +115,7 @@ CREATE TABLE [dbo].[VIAJES](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[VIAJESxAUTOS]    Script Date: 6/11/2024 13:38:01 ******/
+/****** Object:  Table [dbo].[VIAJESxAUTOS]    Script Date: 14/11/2024 11:18:33 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -133,7 +131,7 @@ CREATE TABLE [dbo].[VIAJESxAUTOS](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[ZONA]    Script Date: 6/11/2024 13:38:01 ******/
+/****** Object:  Table [dbo].[ZONA]    Script Date: 14/11/2024 11:18:33 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -147,7 +145,7 @@ CREATE TABLE [dbo].[ZONA](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[ZONAxAUTOS]    Script Date: 6/11/2024 13:38:01 ******/
+/****** Object:  Table [dbo].[ZONAxAUTOS]    Script Date: 14/11/2024 11:18:33 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -953,197 +951,197 @@ SET IDENTITY_INSERT [dbo].[USUARIO] OFF
 GO
 SET IDENTITY_INSERT [dbo].[VIAJES] ON 
 GO
-INSERT [dbo].[VIAJES] ([Fecha], [UbicacionInicial], [UbicacionFinal], [AutoDisponible], [IDUsuario], [Costo], [Estado], [IDViaje]) VALUES (CAST(N'2023-01-15' AS Date), N'Comuna 1', N'Comuna 2', 0, 11, CAST(5000.00 AS Decimal(10, 2)), N'en progreso', 1)
+INSERT [dbo].[VIAJES] ([Fecha], [UbicacionInicial], [UbicacionFinal], [IDUsuario], [Costo], [IDViaje]) VALUES (CAST(N'2023-01-15' AS Date), N'Comuna 1', N'Comuna 2', 11, CAST(5000.00 AS Decimal(10, 2)), 1)
 GO
-INSERT [dbo].[VIAJES] ([Fecha], [UbicacionInicial], [UbicacionFinal], [AutoDisponible], [IDUsuario], [Costo], [Estado], [IDViaje]) VALUES (CAST(N'2023-02-20' AS Date), N'Comuna 3', N'Comuna 4', 1, 12, CAST(6000.00 AS Decimal(10, 2)), N'finalizado', 2)
+INSERT [dbo].[VIAJES] ([Fecha], [UbicacionInicial], [UbicacionFinal], [IDUsuario], [Costo], [IDViaje]) VALUES (CAST(N'2023-02-20' AS Date), N'Comuna 3', N'Comuna 4', 12, CAST(6000.00 AS Decimal(10, 2)), 2)
 GO
-INSERT [dbo].[VIAJES] ([Fecha], [UbicacionInicial], [UbicacionFinal], [AutoDisponible], [IDUsuario], [Costo], [Estado], [IDViaje]) VALUES (CAST(N'2023-03-10' AS Date), N'Comuna 5', N'Comuna 6', 0, 13, CAST(7000.00 AS Decimal(10, 2)), N'no empezado', 3)
+INSERT [dbo].[VIAJES] ([Fecha], [UbicacionInicial], [UbicacionFinal], [IDUsuario], [Costo], [IDViaje]) VALUES (CAST(N'2023-03-10' AS Date), N'Comuna 5', N'Comuna 6', 13, CAST(7000.00 AS Decimal(10, 2)), 3)
 GO
-INSERT [dbo].[VIAJES] ([Fecha], [UbicacionInicial], [UbicacionFinal], [AutoDisponible], [IDUsuario], [Costo], [Estado], [IDViaje]) VALUES (CAST(N'2023-04-05' AS Date), N'Comuna 1', N'Comuna 3', 1, 14, CAST(8000.00 AS Decimal(10, 2)), N'en progreso', 4)
+INSERT [dbo].[VIAJES] ([Fecha], [UbicacionInicial], [UbicacionFinal], [IDUsuario], [Costo], [IDViaje]) VALUES (CAST(N'2023-04-05' AS Date), N'Comuna 1', N'Comuna 3', 14, CAST(8000.00 AS Decimal(10, 2)), 4)
 GO
-INSERT [dbo].[VIAJES] ([Fecha], [UbicacionInicial], [UbicacionFinal], [AutoDisponible], [IDUsuario], [Costo], [Estado], [IDViaje]) VALUES (CAST(N'2023-05-25' AS Date), N'Comuna 2', N'Comuna 5', 0, 15, CAST(5500.00 AS Decimal(10, 2)), N'finalizado', 5)
+INSERT [dbo].[VIAJES] ([Fecha], [UbicacionInicial], [UbicacionFinal], [IDUsuario], [Costo], [IDViaje]) VALUES (CAST(N'2023-05-25' AS Date), N'Comuna 2', N'Comuna 5', 15, CAST(5500.00 AS Decimal(10, 2)), 5)
 GO
-INSERT [dbo].[VIAJES] ([Fecha], [UbicacionInicial], [UbicacionFinal], [AutoDisponible], [IDUsuario], [Costo], [Estado], [IDViaje]) VALUES (CAST(N'2023-06-30' AS Date), N'Comuna 4', N'Comuna 6', 1, 16, CAST(7500.00 AS Decimal(10, 2)), N'no empezado', 6)
+INSERT [dbo].[VIAJES] ([Fecha], [UbicacionInicial], [UbicacionFinal], [IDUsuario], [Costo], [IDViaje]) VALUES (CAST(N'2023-06-30' AS Date), N'Comuna 4', N'Comuna 6', 16, CAST(7500.00 AS Decimal(10, 2)), 6)
 GO
-INSERT [dbo].[VIAJES] ([Fecha], [UbicacionInicial], [UbicacionFinal], [AutoDisponible], [IDUsuario], [Costo], [Estado], [IDViaje]) VALUES (CAST(N'2023-07-15' AS Date), N'Comuna 1', N'Comuna 2', 0, 17, CAST(5000.00 AS Decimal(10, 2)), N'en progreso', 7)
+INSERT [dbo].[VIAJES] ([Fecha], [UbicacionInicial], [UbicacionFinal], [IDUsuario], [Costo], [IDViaje]) VALUES (CAST(N'2023-07-15' AS Date), N'Comuna 1', N'Comuna 2', 17, CAST(5000.00 AS Decimal(10, 2)), 7)
 GO
-INSERT [dbo].[VIAJES] ([Fecha], [UbicacionInicial], [UbicacionFinal], [AutoDisponible], [IDUsuario], [Costo], [Estado], [IDViaje]) VALUES (CAST(N'2023-08-20' AS Date), N'Comuna 3', N'Comuna 4', 1, 18, CAST(6000.00 AS Decimal(10, 2)), N'finalizado', 8)
+INSERT [dbo].[VIAJES] ([Fecha], [UbicacionInicial], [UbicacionFinal], [IDUsuario], [Costo], [IDViaje]) VALUES (CAST(N'2023-08-20' AS Date), N'Comuna 3', N'Comuna 4', 18, CAST(6000.00 AS Decimal(10, 2)), 8)
 GO
-INSERT [dbo].[VIAJES] ([Fecha], [UbicacionInicial], [UbicacionFinal], [AutoDisponible], [IDUsuario], [Costo], [Estado], [IDViaje]) VALUES (CAST(N'2023-09-10' AS Date), N'Comuna 5', N'Comuna 6', 0, 19, CAST(7000.00 AS Decimal(10, 2)), N'no empezado', 9)
+INSERT [dbo].[VIAJES] ([Fecha], [UbicacionInicial], [UbicacionFinal], [IDUsuario], [Costo], [IDViaje]) VALUES (CAST(N'2023-09-10' AS Date), N'Comuna 5', N'Comuna 6', 19, CAST(7000.00 AS Decimal(10, 2)), 9)
 GO
-INSERT [dbo].[VIAJES] ([Fecha], [UbicacionInicial], [UbicacionFinal], [AutoDisponible], [IDUsuario], [Costo], [Estado], [IDViaje]) VALUES (CAST(N'2023-10-05' AS Date), N'Comuna 1', N'Comuna 3', 1, 20, CAST(8000.00 AS Decimal(10, 2)), N'en progreso', 10)
+INSERT [dbo].[VIAJES] ([Fecha], [UbicacionInicial], [UbicacionFinal], [IDUsuario], [Costo], [IDViaje]) VALUES (CAST(N'2023-10-05' AS Date), N'Comuna 1', N'Comuna 3', 20, CAST(8000.00 AS Decimal(10, 2)), 10)
 GO
-INSERT [dbo].[VIAJES] ([Fecha], [UbicacionInicial], [UbicacionFinal], [AutoDisponible], [IDUsuario], [Costo], [Estado], [IDViaje]) VALUES (CAST(N'2023-11-25' AS Date), N'Comuna 2', N'Comuna 5', 0, 21, CAST(5500.00 AS Decimal(10, 2)), N'finalizado', 11)
+INSERT [dbo].[VIAJES] ([Fecha], [UbicacionInicial], [UbicacionFinal], [IDUsuario], [Costo], [IDViaje]) VALUES (CAST(N'2023-11-25' AS Date), N'Comuna 2', N'Comuna 5', 21, CAST(5500.00 AS Decimal(10, 2)), 11)
 GO
-INSERT [dbo].[VIAJES] ([Fecha], [UbicacionInicial], [UbicacionFinal], [AutoDisponible], [IDUsuario], [Costo], [Estado], [IDViaje]) VALUES (CAST(N'2023-12-30' AS Date), N'Comuna 4', N'Comuna 6', 1, 22, CAST(7500.00 AS Decimal(10, 2)), N'no empezado', 12)
+INSERT [dbo].[VIAJES] ([Fecha], [UbicacionInicial], [UbicacionFinal], [IDUsuario], [Costo], [IDViaje]) VALUES (CAST(N'2023-12-30' AS Date), N'Comuna 4', N'Comuna 6', 22, CAST(7500.00 AS Decimal(10, 2)), 12)
 GO
-INSERT [dbo].[VIAJES] ([Fecha], [UbicacionInicial], [UbicacionFinal], [AutoDisponible], [IDUsuario], [Costo], [Estado], [IDViaje]) VALUES (CAST(N'2023-01-20' AS Date), N'Comuna 1', N'Comuna 2', 0, 23, CAST(5000.00 AS Decimal(10, 2)), N'en progreso', 13)
+INSERT [dbo].[VIAJES] ([Fecha], [UbicacionInicial], [UbicacionFinal], [IDUsuario], [Costo], [IDViaje]) VALUES (CAST(N'2023-01-20' AS Date), N'Comuna 1', N'Comuna 2', 23, CAST(5000.00 AS Decimal(10, 2)), 13)
 GO
-INSERT [dbo].[VIAJES] ([Fecha], [UbicacionInicial], [UbicacionFinal], [AutoDisponible], [IDUsuario], [Costo], [Estado], [IDViaje]) VALUES (CAST(N'2023-02-18' AS Date), N'Comuna 3', N'Comuna 4', 1, 24, CAST(6000.00 AS Decimal(10, 2)), N'finalizado', 14)
+INSERT [dbo].[VIAJES] ([Fecha], [UbicacionInicial], [UbicacionFinal], [IDUsuario], [Costo], [IDViaje]) VALUES (CAST(N'2023-02-18' AS Date), N'Comuna 3', N'Comuna 4', 24, CAST(6000.00 AS Decimal(10, 2)), 14)
 GO
-INSERT [dbo].[VIAJES] ([Fecha], [UbicacionInicial], [UbicacionFinal], [AutoDisponible], [IDUsuario], [Costo], [Estado], [IDViaje]) VALUES (CAST(N'2023-03-15' AS Date), N'Comuna 5', N'Comuna 6', 0, 25, CAST(7000.00 AS Decimal(10, 2)), N'no empezado', 15)
+INSERT [dbo].[VIAJES] ([Fecha], [UbicacionInicial], [UbicacionFinal], [IDUsuario], [Costo], [IDViaje]) VALUES (CAST(N'2023-03-15' AS Date), N'Comuna 5', N'Comuna 6', 25, CAST(7000.00 AS Decimal(10, 2)), 15)
 GO
-INSERT [dbo].[VIAJES] ([Fecha], [UbicacionInicial], [UbicacionFinal], [AutoDisponible], [IDUsuario], [Costo], [Estado], [IDViaje]) VALUES (CAST(N'2023-04-22' AS Date), N'Comuna 1', N'Comuna 3', 1, 26, CAST(8000.00 AS Decimal(10, 2)), N'en progreso', 16)
+INSERT [dbo].[VIAJES] ([Fecha], [UbicacionInicial], [UbicacionFinal], [IDUsuario], [Costo], [IDViaje]) VALUES (CAST(N'2023-04-22' AS Date), N'Comuna 1', N'Comuna 3', 26, CAST(8000.00 AS Decimal(10, 2)), 16)
 GO
-INSERT [dbo].[VIAJES] ([Fecha], [UbicacionInicial], [UbicacionFinal], [AutoDisponible], [IDUsuario], [Costo], [Estado], [IDViaje]) VALUES (CAST(N'2023-05-24' AS Date), N'Comuna 2', N'Comuna 5', 0, 27, CAST(5500.00 AS Decimal(10, 2)), N'finalizado', 17)
+INSERT [dbo].[VIAJES] ([Fecha], [UbicacionInicial], [UbicacionFinal], [IDUsuario], [Costo], [IDViaje]) VALUES (CAST(N'2023-05-24' AS Date), N'Comuna 2', N'Comuna 5', 27, CAST(5500.00 AS Decimal(10, 2)), 17)
 GO
-INSERT [dbo].[VIAJES] ([Fecha], [UbicacionInicial], [UbicacionFinal], [AutoDisponible], [IDUsuario], [Costo], [Estado], [IDViaje]) VALUES (CAST(N'2023-06-19' AS Date), N'Comuna 4', N'Comuna 6', 1, 28, CAST(7500.00 AS Decimal(10, 2)), N'no empezado', 18)
+INSERT [dbo].[VIAJES] ([Fecha], [UbicacionInicial], [UbicacionFinal], [IDUsuario], [Costo], [IDViaje]) VALUES (CAST(N'2023-06-19' AS Date), N'Comuna 4', N'Comuna 6', 28, CAST(7500.00 AS Decimal(10, 2)), 18)
 GO
-INSERT [dbo].[VIAJES] ([Fecha], [UbicacionInicial], [UbicacionFinal], [AutoDisponible], [IDUsuario], [Costo], [Estado], [IDViaje]) VALUES (CAST(N'2023-07-11' AS Date), N'Comuna 1', N'Comuna 2', 0, 29, CAST(5000.00 AS Decimal(10, 2)), N'en progreso', 19)
+INSERT [dbo].[VIAJES] ([Fecha], [UbicacionInicial], [UbicacionFinal], [IDUsuario], [Costo], [IDViaje]) VALUES (CAST(N'2023-07-11' AS Date), N'Comuna 1', N'Comuna 2', 29, CAST(5000.00 AS Decimal(10, 2)), 19)
 GO
-INSERT [dbo].[VIAJES] ([Fecha], [UbicacionInicial], [UbicacionFinal], [AutoDisponible], [IDUsuario], [Costo], [Estado], [IDViaje]) VALUES (CAST(N'2023-08-30' AS Date), N'Comuna 3', N'Comuna 4', 1, 30, CAST(6000.00 AS Decimal(10, 2)), N'finalizado', 20)
+INSERT [dbo].[VIAJES] ([Fecha], [UbicacionInicial], [UbicacionFinal], [IDUsuario], [Costo], [IDViaje]) VALUES (CAST(N'2023-08-30' AS Date), N'Comuna 3', N'Comuna 4', 30, CAST(6000.00 AS Decimal(10, 2)), 20)
 GO
-INSERT [dbo].[VIAJES] ([Fecha], [UbicacionInicial], [UbicacionFinal], [AutoDisponible], [IDUsuario], [Costo], [Estado], [IDViaje]) VALUES (CAST(N'2023-09-25' AS Date), N'Comuna 5', N'Comuna 6', 0, 31, CAST(7000.00 AS Decimal(10, 2)), N'no empezado', 21)
+INSERT [dbo].[VIAJES] ([Fecha], [UbicacionInicial], [UbicacionFinal], [IDUsuario], [Costo], [IDViaje]) VALUES (CAST(N'2023-09-25' AS Date), N'Comuna 5', N'Comuna 6', 31, CAST(7000.00 AS Decimal(10, 2)), 21)
 GO
-INSERT [dbo].[VIAJES] ([Fecha], [UbicacionInicial], [UbicacionFinal], [AutoDisponible], [IDUsuario], [Costo], [Estado], [IDViaje]) VALUES (CAST(N'2023-10-15' AS Date), N'Comuna 1', N'Comuna 3', 1, 32, CAST(8000.00 AS Decimal(10, 2)), N'en progreso', 22)
+INSERT [dbo].[VIAJES] ([Fecha], [UbicacionInicial], [UbicacionFinal], [IDUsuario], [Costo], [IDViaje]) VALUES (CAST(N'2023-10-15' AS Date), N'Comuna 1', N'Comuna 3', 32, CAST(8000.00 AS Decimal(10, 2)), 22)
 GO
-INSERT [dbo].[VIAJES] ([Fecha], [UbicacionInicial], [UbicacionFinal], [AutoDisponible], [IDUsuario], [Costo], [Estado], [IDViaje]) VALUES (CAST(N'2023-11-05' AS Date), N'Comuna 2', N'Comuna 5', 0, 33, CAST(5500.00 AS Decimal(10, 2)), N'finalizado', 23)
+INSERT [dbo].[VIAJES] ([Fecha], [UbicacionInicial], [UbicacionFinal], [IDUsuario], [Costo], [IDViaje]) VALUES (CAST(N'2023-11-05' AS Date), N'Comuna 2', N'Comuna 5', 33, CAST(5500.00 AS Decimal(10, 2)), 23)
 GO
-INSERT [dbo].[VIAJES] ([Fecha], [UbicacionInicial], [UbicacionFinal], [AutoDisponible], [IDUsuario], [Costo], [Estado], [IDViaje]) VALUES (CAST(N'2023-12-20' AS Date), N'Comuna 4', N'Comuna 6', 1, 34, CAST(7500.00 AS Decimal(10, 2)), N'no empezado', 24)
+INSERT [dbo].[VIAJES] ([Fecha], [UbicacionInicial], [UbicacionFinal], [IDUsuario], [Costo], [IDViaje]) VALUES (CAST(N'2023-12-20' AS Date), N'Comuna 4', N'Comuna 6', 34, CAST(7500.00 AS Decimal(10, 2)), 24)
 GO
-INSERT [dbo].[VIAJES] ([Fecha], [UbicacionInicial], [UbicacionFinal], [AutoDisponible], [IDUsuario], [Costo], [Estado], [IDViaje]) VALUES (CAST(N'2023-01-30' AS Date), N'Comuna 1', N'Comuna 2', 0, 35, CAST(5000.00 AS Decimal(10, 2)), N'en progreso', 25)
+INSERT [dbo].[VIAJES] ([Fecha], [UbicacionInicial], [UbicacionFinal], [IDUsuario], [Costo], [IDViaje]) VALUES (CAST(N'2023-01-30' AS Date), N'Comuna 1', N'Comuna 2', 35, CAST(5000.00 AS Decimal(10, 2)), 25)
 GO
-INSERT [dbo].[VIAJES] ([Fecha], [UbicacionInicial], [UbicacionFinal], [AutoDisponible], [IDUsuario], [Costo], [Estado], [IDViaje]) VALUES (CAST(N'2023-02-25' AS Date), N'Comuna 3', N'Comuna 4', 1, 36, CAST(6000.00 AS Decimal(10, 2)), N'finalizado', 26)
+INSERT [dbo].[VIAJES] ([Fecha], [UbicacionInicial], [UbicacionFinal], [IDUsuario], [Costo], [IDViaje]) VALUES (CAST(N'2023-02-25' AS Date), N'Comuna 3', N'Comuna 4', 36, CAST(6000.00 AS Decimal(10, 2)), 26)
 GO
-INSERT [dbo].[VIAJES] ([Fecha], [UbicacionInicial], [UbicacionFinal], [AutoDisponible], [IDUsuario], [Costo], [Estado], [IDViaje]) VALUES (CAST(N'2023-03-20' AS Date), N'Comuna 5', N'Comuna 6', 0, 37, CAST(7000.00 AS Decimal(10, 2)), N'no empezado', 27)
+INSERT [dbo].[VIAJES] ([Fecha], [UbicacionInicial], [UbicacionFinal], [IDUsuario], [Costo], [IDViaje]) VALUES (CAST(N'2023-03-20' AS Date), N'Comuna 5', N'Comuna 6', 37, CAST(7000.00 AS Decimal(10, 2)), 27)
 GO
-INSERT [dbo].[VIAJES] ([Fecha], [UbicacionInicial], [UbicacionFinal], [AutoDisponible], [IDUsuario], [Costo], [Estado], [IDViaje]) VALUES (CAST(N'2023-04-10' AS Date), N'Comuna 1', N'Comuna 3', 1, 38, CAST(8000.00 AS Decimal(10, 2)), N'en progreso', 28)
+INSERT [dbo].[VIAJES] ([Fecha], [UbicacionInicial], [UbicacionFinal], [IDUsuario], [Costo], [IDViaje]) VALUES (CAST(N'2023-04-10' AS Date), N'Comuna 1', N'Comuna 3', 38, CAST(8000.00 AS Decimal(10, 2)), 28)
 GO
-INSERT [dbo].[VIAJES] ([Fecha], [UbicacionInicial], [UbicacionFinal], [AutoDisponible], [IDUsuario], [Costo], [Estado], [IDViaje]) VALUES (CAST(N'2023-05-15' AS Date), N'Comuna 2', N'Comuna 5', 0, 39, CAST(5500.00 AS Decimal(10, 2)), N'finalizado', 29)
+INSERT [dbo].[VIAJES] ([Fecha], [UbicacionInicial], [UbicacionFinal], [IDUsuario], [Costo], [IDViaje]) VALUES (CAST(N'2023-05-15' AS Date), N'Comuna 2', N'Comuna 5', 39, CAST(5500.00 AS Decimal(10, 2)), 29)
 GO
-INSERT [dbo].[VIAJES] ([Fecha], [UbicacionInicial], [UbicacionFinal], [AutoDisponible], [IDUsuario], [Costo], [Estado], [IDViaje]) VALUES (CAST(N'2023-06-25' AS Date), N'Comuna 4', N'Comuna 6', 1, 40, CAST(7500.00 AS Decimal(10, 2)), N'no empezado', 30)
+INSERT [dbo].[VIAJES] ([Fecha], [UbicacionInicial], [UbicacionFinal], [IDUsuario], [Costo], [IDViaje]) VALUES (CAST(N'2023-06-25' AS Date), N'Comuna 4', N'Comuna 6', 40, CAST(7500.00 AS Decimal(10, 2)), 30)
 GO
-INSERT [dbo].[VIAJES] ([Fecha], [UbicacionInicial], [UbicacionFinal], [AutoDisponible], [IDUsuario], [Costo], [Estado], [IDViaje]) VALUES (CAST(N'2023-07-20' AS Date), N'Comuna 1', N'Comuna 2', 0, 41, CAST(5000.00 AS Decimal(10, 2)), N'en progreso', 31)
+INSERT [dbo].[VIAJES] ([Fecha], [UbicacionInicial], [UbicacionFinal], [IDUsuario], [Costo], [IDViaje]) VALUES (CAST(N'2023-07-20' AS Date), N'Comuna 1', N'Comuna 2', 41, CAST(5000.00 AS Decimal(10, 2)), 31)
 GO
-INSERT [dbo].[VIAJES] ([Fecha], [UbicacionInicial], [UbicacionFinal], [AutoDisponible], [IDUsuario], [Costo], [Estado], [IDViaje]) VALUES (CAST(N'2023-08-15' AS Date), N'Comuna 3', N'Comuna 4', 1, 42, CAST(6000.00 AS Decimal(10, 2)), N'finalizado', 32)
+INSERT [dbo].[VIAJES] ([Fecha], [UbicacionInicial], [UbicacionFinal], [IDUsuario], [Costo], [IDViaje]) VALUES (CAST(N'2023-08-15' AS Date), N'Comuna 3', N'Comuna 4', 42, CAST(6000.00 AS Decimal(10, 2)), 32)
 GO
-INSERT [dbo].[VIAJES] ([Fecha], [UbicacionInicial], [UbicacionFinal], [AutoDisponible], [IDUsuario], [Costo], [Estado], [IDViaje]) VALUES (CAST(N'2023-09-05' AS Date), N'Comuna 5', N'Comuna 6', 0, 43, CAST(7000.00 AS Decimal(10, 2)), N'no empezado', 33)
+INSERT [dbo].[VIAJES] ([Fecha], [UbicacionInicial], [UbicacionFinal], [IDUsuario], [Costo], [IDViaje]) VALUES (CAST(N'2023-09-05' AS Date), N'Comuna 5', N'Comuna 6', 43, CAST(7000.00 AS Decimal(10, 2)), 33)
 GO
-INSERT [dbo].[VIAJES] ([Fecha], [UbicacionInicial], [UbicacionFinal], [AutoDisponible], [IDUsuario], [Costo], [Estado], [IDViaje]) VALUES (CAST(N'2023-10-30' AS Date), N'Comuna 1', N'Comuna 3', 1, 44, CAST(8000.00 AS Decimal(10, 2)), N'en progreso', 34)
+INSERT [dbo].[VIAJES] ([Fecha], [UbicacionInicial], [UbicacionFinal], [IDUsuario], [Costo], [IDViaje]) VALUES (CAST(N'2023-10-30' AS Date), N'Comuna 1', N'Comuna 3', 44, CAST(8000.00 AS Decimal(10, 2)), 34)
 GO
-INSERT [dbo].[VIAJES] ([Fecha], [UbicacionInicial], [UbicacionFinal], [AutoDisponible], [IDUsuario], [Costo], [Estado], [IDViaje]) VALUES (CAST(N'2023-11-10' AS Date), N'Comuna 2', N'Comuna 5', 0, 45, CAST(5500.00 AS Decimal(10, 2)), N'finalizado', 35)
+INSERT [dbo].[VIAJES] ([Fecha], [UbicacionInicial], [UbicacionFinal], [IDUsuario], [Costo], [IDViaje]) VALUES (CAST(N'2023-11-10' AS Date), N'Comuna 2', N'Comuna 5', 45, CAST(5500.00 AS Decimal(10, 2)), 35)
 GO
-INSERT [dbo].[VIAJES] ([Fecha], [UbicacionInicial], [UbicacionFinal], [AutoDisponible], [IDUsuario], [Costo], [Estado], [IDViaje]) VALUES (CAST(N'2023-12-15' AS Date), N'Comuna 4', N'Comuna 6', 1, 46, CAST(7500.00 AS Decimal(10, 2)), N'no empezado', 36)
+INSERT [dbo].[VIAJES] ([Fecha], [UbicacionInicial], [UbicacionFinal], [IDUsuario], [Costo], [IDViaje]) VALUES (CAST(N'2023-12-15' AS Date), N'Comuna 4', N'Comuna 6', 46, CAST(7500.00 AS Decimal(10, 2)), 36)
 GO
-INSERT [dbo].[VIAJES] ([Fecha], [UbicacionInicial], [UbicacionFinal], [AutoDisponible], [IDUsuario], [Costo], [Estado], [IDViaje]) VALUES (CAST(N'2023-01-05' AS Date), N'Comuna 1', N'Comuna 2', 0, 47, CAST(5000.00 AS Decimal(10, 2)), N'en progreso', 37)
+INSERT [dbo].[VIAJES] ([Fecha], [UbicacionInicial], [UbicacionFinal], [IDUsuario], [Costo], [IDViaje]) VALUES (CAST(N'2023-01-05' AS Date), N'Comuna 1', N'Comuna 2', 47, CAST(5000.00 AS Decimal(10, 2)), 37)
 GO
-INSERT [dbo].[VIAJES] ([Fecha], [UbicacionInicial], [UbicacionFinal], [AutoDisponible], [IDUsuario], [Costo], [Estado], [IDViaje]) VALUES (CAST(N'2023-02-10' AS Date), N'Comuna 3', N'Comuna 4', 1, 48, CAST(6000.00 AS Decimal(10, 2)), N'finalizado', 38)
+INSERT [dbo].[VIAJES] ([Fecha], [UbicacionInicial], [UbicacionFinal], [IDUsuario], [Costo], [IDViaje]) VALUES (CAST(N'2023-02-10' AS Date), N'Comuna 3', N'Comuna 4', 48, CAST(6000.00 AS Decimal(10, 2)), 38)
 GO
-INSERT [dbo].[VIAJES] ([Fecha], [UbicacionInicial], [UbicacionFinal], [AutoDisponible], [IDUsuario], [Costo], [Estado], [IDViaje]) VALUES (CAST(N'2023-03-30' AS Date), N'Comuna 5', N'Comuna 6', 0, 49, CAST(7000.00 AS Decimal(10, 2)), N'no empezado', 39)
+INSERT [dbo].[VIAJES] ([Fecha], [UbicacionInicial], [UbicacionFinal], [IDUsuario], [Costo], [IDViaje]) VALUES (CAST(N'2023-03-30' AS Date), N'Comuna 5', N'Comuna 6', 49, CAST(7000.00 AS Decimal(10, 2)), 39)
 GO
-INSERT [dbo].[VIAJES] ([Fecha], [UbicacionInicial], [UbicacionFinal], [AutoDisponible], [IDUsuario], [Costo], [Estado], [IDViaje]) VALUES (CAST(N'2023-04-15' AS Date), N'Comuna 1', N'Comuna 3', 1, 50, CAST(8000.00 AS Decimal(10, 2)), N'en progreso', 40)
+INSERT [dbo].[VIAJES] ([Fecha], [UbicacionInicial], [UbicacionFinal], [IDUsuario], [Costo], [IDViaje]) VALUES (CAST(N'2023-04-15' AS Date), N'Comuna 1', N'Comuna 3', 50, CAST(8000.00 AS Decimal(10, 2)), 40)
 GO
-INSERT [dbo].[VIAJES] ([Fecha], [UbicacionInicial], [UbicacionFinal], [AutoDisponible], [IDUsuario], [Costo], [Estado], [IDViaje]) VALUES (CAST(N'2023-05-05' AS Date), N'Comuna 2', N'Comuna 5', 0, 51, CAST(5500.00 AS Decimal(10, 2)), N'finalizado', 41)
+INSERT [dbo].[VIAJES] ([Fecha], [UbicacionInicial], [UbicacionFinal], [IDUsuario], [Costo], [IDViaje]) VALUES (CAST(N'2023-05-05' AS Date), N'Comuna 2', N'Comuna 5', 51, CAST(5500.00 AS Decimal(10, 2)), 41)
 GO
-INSERT [dbo].[VIAJES] ([Fecha], [UbicacionInicial], [UbicacionFinal], [AutoDisponible], [IDUsuario], [Costo], [Estado], [IDViaje]) VALUES (CAST(N'2023-06-10' AS Date), N'Comuna 4', N'Comuna 6', 1, 52, CAST(7500.00 AS Decimal(10, 2)), N'no empezado', 42)
+INSERT [dbo].[VIAJES] ([Fecha], [UbicacionInicial], [UbicacionFinal], [IDUsuario], [Costo], [IDViaje]) VALUES (CAST(N'2023-06-10' AS Date), N'Comuna 4', N'Comuna 6', 52, CAST(7500.00 AS Decimal(10, 2)), 42)
 GO
-INSERT [dbo].[VIAJES] ([Fecha], [UbicacionInicial], [UbicacionFinal], [AutoDisponible], [IDUsuario], [Costo], [Estado], [IDViaje]) VALUES (CAST(N'2023-07-25' AS Date), N'Comuna 1', N'Comuna 2', 0, 53, CAST(5000.00 AS Decimal(10, 2)), N'en progreso', 43)
+INSERT [dbo].[VIAJES] ([Fecha], [UbicacionInicial], [UbicacionFinal], [IDUsuario], [Costo], [IDViaje]) VALUES (CAST(N'2023-07-25' AS Date), N'Comuna 1', N'Comuna 2', 53, CAST(5000.00 AS Decimal(10, 2)), 43)
 GO
-INSERT [dbo].[VIAJES] ([Fecha], [UbicacionInicial], [UbicacionFinal], [AutoDisponible], [IDUsuario], [Costo], [Estado], [IDViaje]) VALUES (CAST(N'2023-08-05' AS Date), N'Comuna 3', N'Comuna 4', 1, 54, CAST(6000.00 AS Decimal(10, 2)), N'finalizado', 44)
+INSERT [dbo].[VIAJES] ([Fecha], [UbicacionInicial], [UbicacionFinal], [IDUsuario], [Costo], [IDViaje]) VALUES (CAST(N'2023-08-05' AS Date), N'Comuna 3', N'Comuna 4', 54, CAST(6000.00 AS Decimal(10, 2)), 44)
 GO
-INSERT [dbo].[VIAJES] ([Fecha], [UbicacionInicial], [UbicacionFinal], [AutoDisponible], [IDUsuario], [Costo], [Estado], [IDViaje]) VALUES (CAST(N'2023-09-15' AS Date), N'Comuna 5', N'Comuna 6', 0, 55, CAST(7000.00 AS Decimal(10, 2)), N'no empezado', 45)
+INSERT [dbo].[VIAJES] ([Fecha], [UbicacionInicial], [UbicacionFinal], [IDUsuario], [Costo], [IDViaje]) VALUES (CAST(N'2023-09-15' AS Date), N'Comuna 5', N'Comuna 6', 55, CAST(7000.00 AS Decimal(10, 2)), 45)
 GO
-INSERT [dbo].[VIAJES] ([Fecha], [UbicacionInicial], [UbicacionFinal], [AutoDisponible], [IDUsuario], [Costo], [Estado], [IDViaje]) VALUES (CAST(N'2023-10-25' AS Date), N'Comuna 1', N'Comuna 3', 1, 56, CAST(8000.00 AS Decimal(10, 2)), N'en progreso', 46)
+INSERT [dbo].[VIAJES] ([Fecha], [UbicacionInicial], [UbicacionFinal], [IDUsuario], [Costo], [IDViaje]) VALUES (CAST(N'2023-10-25' AS Date), N'Comuna 1', N'Comuna 3', 56, CAST(8000.00 AS Decimal(10, 2)), 46)
 GO
-INSERT [dbo].[VIAJES] ([Fecha], [UbicacionInicial], [UbicacionFinal], [AutoDisponible], [IDUsuario], [Costo], [Estado], [IDViaje]) VALUES (CAST(N'2023-11-30' AS Date), N'Comuna 2', N'Comuna 5', 0, 57, CAST(5500.00 AS Decimal(10, 2)), N'finalizado', 47)
+INSERT [dbo].[VIAJES] ([Fecha], [UbicacionInicial], [UbicacionFinal], [IDUsuario], [Costo], [IDViaje]) VALUES (CAST(N'2023-11-30' AS Date), N'Comuna 2', N'Comuna 5', 57, CAST(5500.00 AS Decimal(10, 2)), 47)
 GO
-INSERT [dbo].[VIAJES] ([Fecha], [UbicacionInicial], [UbicacionFinal], [AutoDisponible], [IDUsuario], [Costo], [Estado], [IDViaje]) VALUES (CAST(N'2023-12-25' AS Date), N'Comuna 4', N'Comuna 6', 1, 58, CAST(7500.00 AS Decimal(10, 2)), N'no empezado', 48)
+INSERT [dbo].[VIAJES] ([Fecha], [UbicacionInicial], [UbicacionFinal], [IDUsuario], [Costo], [IDViaje]) VALUES (CAST(N'2023-12-25' AS Date), N'Comuna 4', N'Comuna 6', 58, CAST(7500.00 AS Decimal(10, 2)), 48)
 GO
-INSERT [dbo].[VIAJES] ([Fecha], [UbicacionInicial], [UbicacionFinal], [AutoDisponible], [IDUsuario], [Costo], [Estado], [IDViaje]) VALUES (CAST(N'2023-01-12' AS Date), N'Comuna 1', N'Comuna 2', 0, 59, CAST(5000.00 AS Decimal(10, 2)), N'en progreso', 49)
+INSERT [dbo].[VIAJES] ([Fecha], [UbicacionInicial], [UbicacionFinal], [IDUsuario], [Costo], [IDViaje]) VALUES (CAST(N'2023-01-12' AS Date), N'Comuna 1', N'Comuna 2', 59, CAST(5000.00 AS Decimal(10, 2)), 49)
 GO
-INSERT [dbo].[VIAJES] ([Fecha], [UbicacionInicial], [UbicacionFinal], [AutoDisponible], [IDUsuario], [Costo], [Estado], [IDViaje]) VALUES (CAST(N'2023-02-22' AS Date), N'Comuna 3', N'Comuna 4', 1, 60, CAST(6000.00 AS Decimal(10, 2)), N'finalizado', 50)
+INSERT [dbo].[VIAJES] ([Fecha], [UbicacionInicial], [UbicacionFinal], [IDUsuario], [Costo], [IDViaje]) VALUES (CAST(N'2023-02-22' AS Date), N'Comuna 3', N'Comuna 4', 60, CAST(6000.00 AS Decimal(10, 2)), 50)
 GO
-INSERT [dbo].[VIAJES] ([Fecha], [UbicacionInicial], [UbicacionFinal], [AutoDisponible], [IDUsuario], [Costo], [Estado], [IDViaje]) VALUES (CAST(N'2023-03-12' AS Date), N'Comuna 5', N'Comuna 6', 0, 61, CAST(7000.00 AS Decimal(10, 2)), N'no empezado', 51)
+INSERT [dbo].[VIAJES] ([Fecha], [UbicacionInicial], [UbicacionFinal], [IDUsuario], [Costo], [IDViaje]) VALUES (CAST(N'2023-03-12' AS Date), N'Comuna 5', N'Comuna 6', 61, CAST(7000.00 AS Decimal(10, 2)), 51)
 GO
-INSERT [dbo].[VIAJES] ([Fecha], [UbicacionInicial], [UbicacionFinal], [AutoDisponible], [IDUsuario], [Costo], [Estado], [IDViaje]) VALUES (CAST(N'2023-04-28' AS Date), N'Comuna 1', N'Comuna 3', 1, 62, CAST(8000.00 AS Decimal(10, 2)), N'en progreso', 52)
+INSERT [dbo].[VIAJES] ([Fecha], [UbicacionInicial], [UbicacionFinal], [IDUsuario], [Costo], [IDViaje]) VALUES (CAST(N'2023-04-28' AS Date), N'Comuna 1', N'Comuna 3', 62, CAST(8000.00 AS Decimal(10, 2)), 52)
 GO
-INSERT [dbo].[VIAJES] ([Fecha], [UbicacionInicial], [UbicacionFinal], [AutoDisponible], [IDUsuario], [Costo], [Estado], [IDViaje]) VALUES (CAST(N'2023-05-18' AS Date), N'Comuna 2', N'Comuna 5', 0, 63, CAST(5500.00 AS Decimal(10, 2)), N'finalizado', 53)
+INSERT [dbo].[VIAJES] ([Fecha], [UbicacionInicial], [UbicacionFinal], [IDUsuario], [Costo], [IDViaje]) VALUES (CAST(N'2023-05-18' AS Date), N'Comuna 2', N'Comuna 5', 63, CAST(5500.00 AS Decimal(10, 2)), 53)
 GO
-INSERT [dbo].[VIAJES] ([Fecha], [UbicacionInicial], [UbicacionFinal], [AutoDisponible], [IDUsuario], [Costo], [Estado], [IDViaje]) VALUES (CAST(N'2023-06-14' AS Date), N'Comuna 4', N'Comuna 6', 1, 64, CAST(7500.00 AS Decimal(10, 2)), N'no empezado', 54)
+INSERT [dbo].[VIAJES] ([Fecha], [UbicacionInicial], [UbicacionFinal], [IDUsuario], [Costo], [IDViaje]) VALUES (CAST(N'2023-06-14' AS Date), N'Comuna 4', N'Comuna 6', 64, CAST(7500.00 AS Decimal(10, 2)), 54)
 GO
-INSERT [dbo].[VIAJES] ([Fecha], [UbicacionInicial], [UbicacionFinal], [AutoDisponible], [IDUsuario], [Costo], [Estado], [IDViaje]) VALUES (CAST(N'2023-07-30' AS Date), N'Comuna 1', N'Comuna 2', 0, 65, CAST(5000.00 AS Decimal(10, 2)), N'en progreso', 55)
+INSERT [dbo].[VIAJES] ([Fecha], [UbicacionInicial], [UbicacionFinal], [IDUsuario], [Costo], [IDViaje]) VALUES (CAST(N'2023-07-30' AS Date), N'Comuna 1', N'Comuna 2', 65, CAST(5000.00 AS Decimal(10, 2)), 55)
 GO
-INSERT [dbo].[VIAJES] ([Fecha], [UbicacionInicial], [UbicacionFinal], [AutoDisponible], [IDUsuario], [Costo], [Estado], [IDViaje]) VALUES (CAST(N'2023-08-15' AS Date), N'Comuna 3', N'Comuna 4', 1, 66, CAST(6000.00 AS Decimal(10, 2)), N'finalizado', 56)
+INSERT [dbo].[VIAJES] ([Fecha], [UbicacionInicial], [UbicacionFinal], [IDUsuario], [Costo], [IDViaje]) VALUES (CAST(N'2023-08-15' AS Date), N'Comuna 3', N'Comuna 4', 66, CAST(6000.00 AS Decimal(10, 2)), 56)
 GO
-INSERT [dbo].[VIAJES] ([Fecha], [UbicacionInicial], [UbicacionFinal], [AutoDisponible], [IDUsuario], [Costo], [Estado], [IDViaje]) VALUES (CAST(N'2023-09-20' AS Date), N'Comuna 5', N'Comuna 6', 0, 67, CAST(7000.00 AS Decimal(10, 2)), N'no empezado', 57)
+INSERT [dbo].[VIAJES] ([Fecha], [UbicacionInicial], [UbicacionFinal], [IDUsuario], [Costo], [IDViaje]) VALUES (CAST(N'2023-09-20' AS Date), N'Comuna 5', N'Comuna 6', 67, CAST(7000.00 AS Decimal(10, 2)), 57)
 GO
-INSERT [dbo].[VIAJES] ([Fecha], [UbicacionInicial], [UbicacionFinal], [AutoDisponible], [IDUsuario], [Costo], [Estado], [IDViaje]) VALUES (CAST(N'2023-10-10' AS Date), N'Comuna 1', N'Comuna 3', 1, 68, CAST(8000.00 AS Decimal(10, 2)), N'en progreso', 58)
+INSERT [dbo].[VIAJES] ([Fecha], [UbicacionInicial], [UbicacionFinal], [IDUsuario], [Costo], [IDViaje]) VALUES (CAST(N'2023-10-10' AS Date), N'Comuna 1', N'Comuna 3', 68, CAST(8000.00 AS Decimal(10, 2)), 58)
 GO
-INSERT [dbo].[VIAJES] ([Fecha], [UbicacionInicial], [UbicacionFinal], [AutoDisponible], [IDUsuario], [Costo], [Estado], [IDViaje]) VALUES (CAST(N'2023-11-20' AS Date), N'Comuna 2', N'Comuna 5', 0, 69, CAST(5500.00 AS Decimal(10, 2)), N'finalizado', 59)
+INSERT [dbo].[VIAJES] ([Fecha], [UbicacionInicial], [UbicacionFinal], [IDUsuario], [Costo], [IDViaje]) VALUES (CAST(N'2023-11-20' AS Date), N'Comuna 2', N'Comuna 5', 69, CAST(5500.00 AS Decimal(10, 2)), 59)
 GO
-INSERT [dbo].[VIAJES] ([Fecha], [UbicacionInicial], [UbicacionFinal], [AutoDisponible], [IDUsuario], [Costo], [Estado], [IDViaje]) VALUES (CAST(N'2023-12-05' AS Date), N'Comuna 4', N'Comuna 6', 1, 70, CAST(7500.00 AS Decimal(10, 2)), N'no empezado', 60)
+INSERT [dbo].[VIAJES] ([Fecha], [UbicacionInicial], [UbicacionFinal], [IDUsuario], [Costo], [IDViaje]) VALUES (CAST(N'2023-12-05' AS Date), N'Comuna 4', N'Comuna 6', 70, CAST(7500.00 AS Decimal(10, 2)), 60)
 GO
-INSERT [dbo].[VIAJES] ([Fecha], [UbicacionInicial], [UbicacionFinal], [AutoDisponible], [IDUsuario], [Costo], [Estado], [IDViaje]) VALUES (CAST(N'2023-01-07' AS Date), N'Comuna 1', N'Comuna 2', 0, 71, CAST(5000.00 AS Decimal(10, 2)), N'en progreso', 61)
+INSERT [dbo].[VIAJES] ([Fecha], [UbicacionInicial], [UbicacionFinal], [IDUsuario], [Costo], [IDViaje]) VALUES (CAST(N'2023-01-07' AS Date), N'Comuna 1', N'Comuna 2', 71, CAST(5000.00 AS Decimal(10, 2)), 61)
 GO
-INSERT [dbo].[VIAJES] ([Fecha], [UbicacionInicial], [UbicacionFinal], [AutoDisponible], [IDUsuario], [Costo], [Estado], [IDViaje]) VALUES (CAST(N'2023-02-03' AS Date), N'Comuna 3', N'Comuna 4', 1, 72, CAST(6000.00 AS Decimal(10, 2)), N'finalizado', 62)
+INSERT [dbo].[VIAJES] ([Fecha], [UbicacionInicial], [UbicacionFinal], [IDUsuario], [Costo], [IDViaje]) VALUES (CAST(N'2023-02-03' AS Date), N'Comuna 3', N'Comuna 4', 72, CAST(6000.00 AS Decimal(10, 2)), 62)
 GO
-INSERT [dbo].[VIAJES] ([Fecha], [UbicacionInicial], [UbicacionFinal], [AutoDisponible], [IDUsuario], [Costo], [Estado], [IDViaje]) VALUES (CAST(N'2023-03-07' AS Date), N'Comuna 5', N'Comuna 6', 0, 73, CAST(7000.00 AS Decimal(10, 2)), N'no empezado', 63)
+INSERT [dbo].[VIAJES] ([Fecha], [UbicacionInicial], [UbicacionFinal], [IDUsuario], [Costo], [IDViaje]) VALUES (CAST(N'2023-03-07' AS Date), N'Comuna 5', N'Comuna 6', 73, CAST(7000.00 AS Decimal(10, 2)), 63)
 GO
-INSERT [dbo].[VIAJES] ([Fecha], [UbicacionInicial], [UbicacionFinal], [AutoDisponible], [IDUsuario], [Costo], [Estado], [IDViaje]) VALUES (CAST(N'2023-04-22' AS Date), N'Comuna 1', N'Comuna 3', 1, 74, CAST(8000.00 AS Decimal(10, 2)), N'en progreso', 64)
+INSERT [dbo].[VIAJES] ([Fecha], [UbicacionInicial], [UbicacionFinal], [IDUsuario], [Costo], [IDViaje]) VALUES (CAST(N'2023-04-22' AS Date), N'Comuna 1', N'Comuna 3', 74, CAST(8000.00 AS Decimal(10, 2)), 64)
 GO
-INSERT [dbo].[VIAJES] ([Fecha], [UbicacionInicial], [UbicacionFinal], [AutoDisponible], [IDUsuario], [Costo], [Estado], [IDViaje]) VALUES (CAST(N'2023-05-11' AS Date), N'Comuna 2', N'Comuna 5', 0, 75, CAST(5500.00 AS Decimal(10, 2)), N'finalizado', 65)
+INSERT [dbo].[VIAJES] ([Fecha], [UbicacionInicial], [UbicacionFinal], [IDUsuario], [Costo], [IDViaje]) VALUES (CAST(N'2023-05-11' AS Date), N'Comuna 2', N'Comuna 5', 75, CAST(5500.00 AS Decimal(10, 2)), 65)
 GO
-INSERT [dbo].[VIAJES] ([Fecha], [UbicacionInicial], [UbicacionFinal], [AutoDisponible], [IDUsuario], [Costo], [Estado], [IDViaje]) VALUES (CAST(N'2023-06-30' AS Date), N'Comuna 4', N'Comuna 6', 1, 76, CAST(7500.00 AS Decimal(10, 2)), N'no empezado', 66)
+INSERT [dbo].[VIAJES] ([Fecha], [UbicacionInicial], [UbicacionFinal], [IDUsuario], [Costo], [IDViaje]) VALUES (CAST(N'2023-06-30' AS Date), N'Comuna 4', N'Comuna 6', 76, CAST(7500.00 AS Decimal(10, 2)), 66)
 GO
-INSERT [dbo].[VIAJES] ([Fecha], [UbicacionInicial], [UbicacionFinal], [AutoDisponible], [IDUsuario], [Costo], [Estado], [IDViaje]) VALUES (CAST(N'2023-07-12' AS Date), N'Comuna 1', N'Comuna 2', 0, 77, CAST(5000.00 AS Decimal(10, 2)), N'en progreso', 67)
+INSERT [dbo].[VIAJES] ([Fecha], [UbicacionInicial], [UbicacionFinal], [IDUsuario], [Costo], [IDViaje]) VALUES (CAST(N'2023-07-12' AS Date), N'Comuna 1', N'Comuna 2', 77, CAST(5000.00 AS Decimal(10, 2)), 67)
 GO
-INSERT [dbo].[VIAJES] ([Fecha], [UbicacionInicial], [UbicacionFinal], [AutoDisponible], [IDUsuario], [Costo], [Estado], [IDViaje]) VALUES (CAST(N'2023-08-09' AS Date), N'Comuna 3', N'Comuna 4', 1, 78, CAST(6000.00 AS Decimal(10, 2)), N'finalizado', 68)
+INSERT [dbo].[VIAJES] ([Fecha], [UbicacionInicial], [UbicacionFinal], [IDUsuario], [Costo], [IDViaje]) VALUES (CAST(N'2023-08-09' AS Date), N'Comuna 3', N'Comuna 4', 78, CAST(6000.00 AS Decimal(10, 2)), 68)
 GO
-INSERT [dbo].[VIAJES] ([Fecha], [UbicacionInicial], [UbicacionFinal], [AutoDisponible], [IDUsuario], [Costo], [Estado], [IDViaje]) VALUES (CAST(N'2023-09-18' AS Date), N'Comuna 5', N'Comuna 6', 0, 79, CAST(7000.00 AS Decimal(10, 2)), N'no empezado', 69)
+INSERT [dbo].[VIAJES] ([Fecha], [UbicacionInicial], [UbicacionFinal], [IDUsuario], [Costo], [IDViaje]) VALUES (CAST(N'2023-09-18' AS Date), N'Comuna 5', N'Comuna 6', 79, CAST(7000.00 AS Decimal(10, 2)), 69)
 GO
-INSERT [dbo].[VIAJES] ([Fecha], [UbicacionInicial], [UbicacionFinal], [AutoDisponible], [IDUsuario], [Costo], [Estado], [IDViaje]) VALUES (CAST(N'2023-10-27' AS Date), N'Comuna 1', N'Comuna 3', 1, 80, CAST(8000.00 AS Decimal(10, 2)), N'en progreso', 70)
+INSERT [dbo].[VIAJES] ([Fecha], [UbicacionInicial], [UbicacionFinal], [IDUsuario], [Costo], [IDViaje]) VALUES (CAST(N'2023-10-27' AS Date), N'Comuna 1', N'Comuna 3', 80, CAST(8000.00 AS Decimal(10, 2)), 70)
 GO
-INSERT [dbo].[VIAJES] ([Fecha], [UbicacionInicial], [UbicacionFinal], [AutoDisponible], [IDUsuario], [Costo], [Estado], [IDViaje]) VALUES (CAST(N'2023-11-15' AS Date), N'Comuna 2', N'Comuna 5', 0, 81, CAST(5500.00 AS Decimal(10, 2)), N'finalizado', 71)
+INSERT [dbo].[VIAJES] ([Fecha], [UbicacionInicial], [UbicacionFinal], [IDUsuario], [Costo], [IDViaje]) VALUES (CAST(N'2023-11-15' AS Date), N'Comuna 2', N'Comuna 5', 81, CAST(5500.00 AS Decimal(10, 2)), 71)
 GO
-INSERT [dbo].[VIAJES] ([Fecha], [UbicacionInicial], [UbicacionFinal], [AutoDisponible], [IDUsuario], [Costo], [Estado], [IDViaje]) VALUES (CAST(N'2023-12-22' AS Date), N'Comuna 4', N'Comuna 6', 1, 82, CAST(7500.00 AS Decimal(10, 2)), N'no empezado', 72)
+INSERT [dbo].[VIAJES] ([Fecha], [UbicacionInicial], [UbicacionFinal], [IDUsuario], [Costo], [IDViaje]) VALUES (CAST(N'2023-12-22' AS Date), N'Comuna 4', N'Comuna 6', 82, CAST(7500.00 AS Decimal(10, 2)), 72)
 GO
-INSERT [dbo].[VIAJES] ([Fecha], [UbicacionInicial], [UbicacionFinal], [AutoDisponible], [IDUsuario], [Costo], [Estado], [IDViaje]) VALUES (CAST(N'2023-01-28' AS Date), N'Comuna 1', N'Comuna 2', 0, 83, CAST(5000.00 AS Decimal(10, 2)), N'en progreso', 73)
+INSERT [dbo].[VIAJES] ([Fecha], [UbicacionInicial], [UbicacionFinal], [IDUsuario], [Costo], [IDViaje]) VALUES (CAST(N'2023-01-28' AS Date), N'Comuna 1', N'Comuna 2', 83, CAST(5000.00 AS Decimal(10, 2)), 73)
 GO
-INSERT [dbo].[VIAJES] ([Fecha], [UbicacionInicial], [UbicacionFinal], [AutoDisponible], [IDUsuario], [Costo], [Estado], [IDViaje]) VALUES (CAST(N'2023-02-15' AS Date), N'Comuna 3', N'Comuna 4', 1, 84, CAST(6000.00 AS Decimal(10, 2)), N'finalizado', 74)
+INSERT [dbo].[VIAJES] ([Fecha], [UbicacionInicial], [UbicacionFinal], [IDUsuario], [Costo], [IDViaje]) VALUES (CAST(N'2023-02-15' AS Date), N'Comuna 3', N'Comuna 4', 84, CAST(6000.00 AS Decimal(10, 2)), 74)
 GO
-INSERT [dbo].[VIAJES] ([Fecha], [UbicacionInicial], [UbicacionFinal], [AutoDisponible], [IDUsuario], [Costo], [Estado], [IDViaje]) VALUES (CAST(N'2023-03-25' AS Date), N'Comuna 5', N'Comuna 6', 0, 85, CAST(7000.00 AS Decimal(10, 2)), N'no empezado', 75)
+INSERT [dbo].[VIAJES] ([Fecha], [UbicacionInicial], [UbicacionFinal], [IDUsuario], [Costo], [IDViaje]) VALUES (CAST(N'2023-03-25' AS Date), N'Comuna 5', N'Comuna 6', 85, CAST(7000.00 AS Decimal(10, 2)), 75)
 GO
-INSERT [dbo].[VIAJES] ([Fecha], [UbicacionInicial], [UbicacionFinal], [AutoDisponible], [IDUsuario], [Costo], [Estado], [IDViaje]) VALUES (CAST(N'2023-04-12' AS Date), N'Comuna 1', N'Comuna 3', 1, 86, CAST(8000.00 AS Decimal(10, 2)), N'en progreso', 76)
+INSERT [dbo].[VIAJES] ([Fecha], [UbicacionInicial], [UbicacionFinal], [IDUsuario], [Costo], [IDViaje]) VALUES (CAST(N'2023-04-12' AS Date), N'Comuna 1', N'Comuna 3', 86, CAST(8000.00 AS Decimal(10, 2)), 76)
 GO
-INSERT [dbo].[VIAJES] ([Fecha], [UbicacionInicial], [UbicacionFinal], [AutoDisponible], [IDUsuario], [Costo], [Estado], [IDViaje]) VALUES (CAST(N'2023-05-30' AS Date), N'Comuna 2', N'Comuna 5', 0, 87, CAST(5500.00 AS Decimal(10, 2)), N'finalizado', 77)
+INSERT [dbo].[VIAJES] ([Fecha], [UbicacionInicial], [UbicacionFinal], [IDUsuario], [Costo], [IDViaje]) VALUES (CAST(N'2023-05-30' AS Date), N'Comuna 2', N'Comuna 5', 87, CAST(5500.00 AS Decimal(10, 2)), 77)
 GO
-INSERT [dbo].[VIAJES] ([Fecha], [UbicacionInicial], [UbicacionFinal], [AutoDisponible], [IDUsuario], [Costo], [Estado], [IDViaje]) VALUES (CAST(N'2023-06-20' AS Date), N'Comuna 4', N'Comuna 6', 1, 88, CAST(7500.00 AS Decimal(10, 2)), N'no empezado', 78)
+INSERT [dbo].[VIAJES] ([Fecha], [UbicacionInicial], [UbicacionFinal], [IDUsuario], [Costo], [IDViaje]) VALUES (CAST(N'2023-06-20' AS Date), N'Comuna 4', N'Comuna 6', 88, CAST(7500.00 AS Decimal(10, 2)), 78)
 GO
-INSERT [dbo].[VIAJES] ([Fecha], [UbicacionInicial], [UbicacionFinal], [AutoDisponible], [IDUsuario], [Costo], [Estado], [IDViaje]) VALUES (CAST(N'2023-07-05' AS Date), N'Comuna 1', N'Comuna 2', 0, 89, CAST(5000.00 AS Decimal(10, 2)), N'en progreso', 79)
+INSERT [dbo].[VIAJES] ([Fecha], [UbicacionInicial], [UbicacionFinal], [IDUsuario], [Costo], [IDViaje]) VALUES (CAST(N'2023-07-05' AS Date), N'Comuna 1', N'Comuna 2', 89, CAST(5000.00 AS Decimal(10, 2)), 79)
 GO
-INSERT [dbo].[VIAJES] ([Fecha], [UbicacionInicial], [UbicacionFinal], [AutoDisponible], [IDUsuario], [Costo], [Estado], [IDViaje]) VALUES (CAST(N'2023-08-22' AS Date), N'Comuna 3', N'Comuna 4', 1, 90, CAST(6000.00 AS Decimal(10, 2)), N'finalizado', 80)
+INSERT [dbo].[VIAJES] ([Fecha], [UbicacionInicial], [UbicacionFinal], [IDUsuario], [Costo], [IDViaje]) VALUES (CAST(N'2023-08-22' AS Date), N'Comuna 3', N'Comuna 4', 90, CAST(6000.00 AS Decimal(10, 2)), 80)
 GO
-INSERT [dbo].[VIAJES] ([Fecha], [UbicacionInicial], [UbicacionFinal], [AutoDisponible], [IDUsuario], [Costo], [Estado], [IDViaje]) VALUES (CAST(N'2023-09-30' AS Date), N'Comuna 5', N'Comuna 6', 0, 91, CAST(7000.00 AS Decimal(10, 2)), N'no empezado', 81)
+INSERT [dbo].[VIAJES] ([Fecha], [UbicacionInicial], [UbicacionFinal], [IDUsuario], [Costo], [IDViaje]) VALUES (CAST(N'2023-09-30' AS Date), N'Comuna 5', N'Comuna 6', 91, CAST(7000.00 AS Decimal(10, 2)), 81)
 GO
-INSERT [dbo].[VIAJES] ([Fecha], [UbicacionInicial], [UbicacionFinal], [AutoDisponible], [IDUsuario], [Costo], [Estado], [IDViaje]) VALUES (CAST(N'2023-10-15' AS Date), N'Comuna 1', N'Comuna 3', 1, 92, CAST(8000.00 AS Decimal(10, 2)), N'en progreso', 82)
+INSERT [dbo].[VIAJES] ([Fecha], [UbicacionInicial], [UbicacionFinal], [IDUsuario], [Costo], [IDViaje]) VALUES (CAST(N'2023-10-15' AS Date), N'Comuna 1', N'Comuna 3', 92, CAST(8000.00 AS Decimal(10, 2)), 82)
 GO
-INSERT [dbo].[VIAJES] ([Fecha], [UbicacionInicial], [UbicacionFinal], [AutoDisponible], [IDUsuario], [Costo], [Estado], [IDViaje]) VALUES (CAST(N'2023-11-25' AS Date), N'Comuna 2', N'Comuna 5', 0, 93, CAST(5500.00 AS Decimal(10, 2)), N'finalizado', 83)
+INSERT [dbo].[VIAJES] ([Fecha], [UbicacionInicial], [UbicacionFinal], [IDUsuario], [Costo], [IDViaje]) VALUES (CAST(N'2023-11-25' AS Date), N'Comuna 2', N'Comuna 5', 93, CAST(5500.00 AS Decimal(10, 2)), 83)
 GO
-INSERT [dbo].[VIAJES] ([Fecha], [UbicacionInicial], [UbicacionFinal], [AutoDisponible], [IDUsuario], [Costo], [Estado], [IDViaje]) VALUES (CAST(N'2023-12-10' AS Date), N'Comuna 4', N'Comuna 6', 1, 94, CAST(7500.00 AS Decimal(10, 2)), N'no empezado', 84)
+INSERT [dbo].[VIAJES] ([Fecha], [UbicacionInicial], [UbicacionFinal], [IDUsuario], [Costo], [IDViaje]) VALUES (CAST(N'2023-12-10' AS Date), N'Comuna 4', N'Comuna 6', 94, CAST(7500.00 AS Decimal(10, 2)), 84)
 GO
-INSERT [dbo].[VIAJES] ([Fecha], [UbicacionInicial], [UbicacionFinal], [AutoDisponible], [IDUsuario], [Costo], [Estado], [IDViaje]) VALUES (CAST(N'2023-01-18' AS Date), N'Comuna 1', N'Comuna 2', 0, 95, CAST(5000.00 AS Decimal(10, 2)), N'en progreso', 85)
+INSERT [dbo].[VIAJES] ([Fecha], [UbicacionInicial], [UbicacionFinal], [IDUsuario], [Costo], [IDViaje]) VALUES (CAST(N'2023-01-18' AS Date), N'Comuna 1', N'Comuna 2', 95, CAST(5000.00 AS Decimal(10, 2)), 85)
 GO
-INSERT [dbo].[VIAJES] ([Fecha], [UbicacionInicial], [UbicacionFinal], [AutoDisponible], [IDUsuario], [Costo], [Estado], [IDViaje]) VALUES (CAST(N'2023-02-28' AS Date), N'Comuna 3', N'Comuna 4', 1, 96, CAST(6000.00 AS Decimal(10, 2)), N'finalizado', 86)
+INSERT [dbo].[VIAJES] ([Fecha], [UbicacionInicial], [UbicacionFinal], [IDUsuario], [Costo], [IDViaje]) VALUES (CAST(N'2023-02-28' AS Date), N'Comuna 3', N'Comuna 4', 96, CAST(6000.00 AS Decimal(10, 2)), 86)
 GO
-INSERT [dbo].[VIAJES] ([Fecha], [UbicacionInicial], [UbicacionFinal], [AutoDisponible], [IDUsuario], [Costo], [Estado], [IDViaje]) VALUES (CAST(N'2023-03-21' AS Date), N'Comuna 5', N'Comuna 6', 0, 97, CAST(7000.00 AS Decimal(10, 2)), N'no empezado', 87)
+INSERT [dbo].[VIAJES] ([Fecha], [UbicacionInicial], [UbicacionFinal], [IDUsuario], [Costo], [IDViaje]) VALUES (CAST(N'2023-03-21' AS Date), N'Comuna 5', N'Comuna 6', 97, CAST(7000.00 AS Decimal(10, 2)), 87)
 GO
-INSERT [dbo].[VIAJES] ([Fecha], [UbicacionInicial], [UbicacionFinal], [AutoDisponible], [IDUsuario], [Costo], [Estado], [IDViaje]) VALUES (CAST(N'2023-04-17' AS Date), N'Comuna 1', N'Comuna 3', 1, 98, CAST(8000.00 AS Decimal(10, 2)), N'en progreso', 88)
+INSERT [dbo].[VIAJES] ([Fecha], [UbicacionInicial], [UbicacionFinal], [IDUsuario], [Costo], [IDViaje]) VALUES (CAST(N'2023-04-17' AS Date), N'Comuna 1', N'Comuna 3', 98, CAST(8000.00 AS Decimal(10, 2)), 88)
 GO
-INSERT [dbo].[VIAJES] ([Fecha], [UbicacionInicial], [UbicacionFinal], [AutoDisponible], [IDUsuario], [Costo], [Estado], [IDViaje]) VALUES (CAST(N'2023-05-09' AS Date), N'Comuna 2', N'Comuna 5', 0, 99, CAST(5500.00 AS Decimal(10, 2)), N'finalizado', 89)
+INSERT [dbo].[VIAJES] ([Fecha], [UbicacionInicial], [UbicacionFinal], [IDUsuario], [Costo], [IDViaje]) VALUES (CAST(N'2023-05-09' AS Date), N'Comuna 2', N'Comuna 5', 99, CAST(5500.00 AS Decimal(10, 2)), 89)
 GO
-INSERT [dbo].[VIAJES] ([Fecha], [UbicacionInicial], [UbicacionFinal], [AutoDisponible], [IDUsuario], [Costo], [Estado], [IDViaje]) VALUES (CAST(N'2023-06-15' AS Date), N'Comuna 4', N'Comuna 6', 1, 100, CAST(7500.00 AS Decimal(10, 2)), N'no empezado', 90)
+INSERT [dbo].[VIAJES] ([Fecha], [UbicacionInicial], [UbicacionFinal], [IDUsuario], [Costo], [IDViaje]) VALUES (CAST(N'2023-06-15' AS Date), N'Comuna 4', N'Comuna 6', 100, CAST(7500.00 AS Decimal(10, 2)), 90)
 GO
-INSERT [dbo].[VIAJES] ([Fecha], [UbicacionInicial], [UbicacionFinal], [AutoDisponible], [IDUsuario], [Costo], [Estado], [IDViaje]) VALUES (CAST(N'2023-07-08' AS Date), N'Comuna 1', N'Comuna 2', 0, 101, CAST(5000.00 AS Decimal(10, 2)), N'en progreso', 91)
+INSERT [dbo].[VIAJES] ([Fecha], [UbicacionInicial], [UbicacionFinal], [IDUsuario], [Costo], [IDViaje]) VALUES (CAST(N'2023-07-08' AS Date), N'Comuna 1', N'Comuna 2', 101, CAST(5000.00 AS Decimal(10, 2)), 91)
 GO
-INSERT [dbo].[VIAJES] ([Fecha], [UbicacionInicial], [UbicacionFinal], [AutoDisponible], [IDUsuario], [Costo], [Estado], [IDViaje]) VALUES (CAST(N'2023-08-11' AS Date), N'Comuna 3', N'Comuna 4', 1, 102, CAST(6000.00 AS Decimal(10, 2)), N'finalizado', 92)
+INSERT [dbo].[VIAJES] ([Fecha], [UbicacionInicial], [UbicacionFinal], [IDUsuario], [Costo], [IDViaje]) VALUES (CAST(N'2023-08-11' AS Date), N'Comuna 3', N'Comuna 4', 102, CAST(6000.00 AS Decimal(10, 2)), 92)
 GO
-INSERT [dbo].[VIAJES] ([Fecha], [UbicacionInicial], [UbicacionFinal], [AutoDisponible], [IDUsuario], [Costo], [Estado], [IDViaje]) VALUES (CAST(N'2023-09-14' AS Date), N'Comuna 5', N'Comuna 6', 0, 103, CAST(7000.00 AS Decimal(10, 2)), N'no empezado', 93)
+INSERT [dbo].[VIAJES] ([Fecha], [UbicacionInicial], [UbicacionFinal], [IDUsuario], [Costo], [IDViaje]) VALUES (CAST(N'2023-09-14' AS Date), N'Comuna 5', N'Comuna 6', 103, CAST(7000.00 AS Decimal(10, 2)), 93)
 GO
-INSERT [dbo].[VIAJES] ([Fecha], [UbicacionInicial], [UbicacionFinal], [AutoDisponible], [IDUsuario], [Costo], [Estado], [IDViaje]) VALUES (CAST(N'2023-10-21' AS Date), N'Comuna 1', N'Comuna 3', 1, 104, CAST(8000.00 AS Decimal(10, 2)), N'en progreso', 94)
+INSERT [dbo].[VIAJES] ([Fecha], [UbicacionInicial], [UbicacionFinal], [IDUsuario], [Costo], [IDViaje]) VALUES (CAST(N'2023-10-21' AS Date), N'Comuna 1', N'Comuna 3', 104, CAST(8000.00 AS Decimal(10, 2)), 94)
 GO
-INSERT [dbo].[VIAJES] ([Fecha], [UbicacionInicial], [UbicacionFinal], [AutoDisponible], [IDUsuario], [Costo], [Estado], [IDViaje]) VALUES (CAST(N'2023-11-12' AS Date), N'Comuna 2', N'Comuna 5', 0, 105, CAST(5500.00 AS Decimal(10, 2)), N'finalizado', 95)
+INSERT [dbo].[VIAJES] ([Fecha], [UbicacionInicial], [UbicacionFinal], [IDUsuario], [Costo], [IDViaje]) VALUES (CAST(N'2023-11-12' AS Date), N'Comuna 2', N'Comuna 5', 105, CAST(5500.00 AS Decimal(10, 2)), 95)
 GO
-INSERT [dbo].[VIAJES] ([Fecha], [UbicacionInicial], [UbicacionFinal], [AutoDisponible], [IDUsuario], [Costo], [Estado], [IDViaje]) VALUES (CAST(N'2023-12-01' AS Date), N'Comuna 4', N'Comuna 6', 1, 106, CAST(7500.00 AS Decimal(10, 2)), N'no empezado', 96)
+INSERT [dbo].[VIAJES] ([Fecha], [UbicacionInicial], [UbicacionFinal], [IDUsuario], [Costo], [IDViaje]) VALUES (CAST(N'2023-12-01' AS Date), N'Comuna 4', N'Comuna 6', 106, CAST(7500.00 AS Decimal(10, 2)), 96)
 GO
 SET IDENTITY_INSERT [dbo].[VIAJES] OFF
 GO

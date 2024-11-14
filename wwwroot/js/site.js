@@ -241,3 +241,11 @@ $(document).ready(function () {
         }
     });
 });
+
+function EnviarCalificacion() {
+    let calificacionConductor = document.getElementById('CalificacionConductor').value;
+    let calificacionAuto = document.getElementById('CalificacionVehiculo').value;
+    let comentario = document.getElementById('Comentario').value;
+
+    EnviarCalificacion.submit();
+}
