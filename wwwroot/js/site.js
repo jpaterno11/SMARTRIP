@@ -208,8 +208,8 @@ async function buscarRuta() {
 
         if (startCoords.lat && startCoords.lon && endCoords.lat && endCoords.lon) {
             var pointList = [
-                [startCoords, startCoords],
-                [endCoords, endCoords]
+                [startCoords.lat, startCoords.lon],
+                [endCoords.lat, endCoords.lon]
             ];
 
             var firstpolyline = new L.Polyline(pointList, {
@@ -218,14 +218,37 @@ async function buscarRuta() {
                 opacity: 0.5,
                 smoothFactor: 1
             }).addTo(map);
+            const distance = calcularDistancia(startCoords.lat, startCoords.lon, endCoords.lat, endCoords.lon);
+            const precioCalculado = calcularPrecio(distance); 
+
+            precio.innerHTML = `$${precioCalculado} AR$`;
         } else {
             console.error("Coordenadas inválidas para el path:", startCoords, endCoords);
         }
     } else {
         console.error("No se pudieron obtener las coordenadas.");
     }
-    precio.innerText = [startCoords, startCoords] * 100 - [endCoords, endCoords] * 100;
+}
 
+function calcularDistancia(lat1, lon1, lat2, lon2) {
+    const R = 6371; 
+    const dLat = degToRad(lat2 - lat1);
+    const dLon = degToRad(lon2 - lon1);
+    const a = Math.sin(dLat / 2) * Math.sin(dLat / 2) +
+              Math.cos(degToRad(lat1)) * Math.cos(degToRad(lat2)) *
+              Math.sin(dLon / 2) * Math.sin(dLon / 2);
+    const c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
+    return R * c;
+}
+
+function degToRad(deg) {
+    return deg * (Math.PI / 180);
+}
+
+function calcularPrecio(distancia) {
+    const tarifaBase = 50; 
+    const costoPorKilometro = 25; 
+    return Math.round(tarifaBase + (distancia * costoPorKilometro));  
 }
 $(document).ready(function () {
     $("#openModalBtn").click(function () {

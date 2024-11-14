@@ -690,9 +690,8 @@ button img{
   background-color: white;
   padding: 20px;
   border-radius: 8px;
-  width: 60%;
   max-width: 400px;
-  margin-left: -10%;
+  margin-left: -4%;
 }
 
 /* Botón para cerrar el overlay */
@@ -722,7 +721,7 @@ margin-left: 7%;
     width: 100%;
     margin: 20px auto;
     padding: 4%;
-    margin-left: -30%;
+    margin-left: -20%;
     padding-left: 5%;
     background-color: #CAF0F8;
     border-radius: 25px; /* Ajuste del borde redondeado */
