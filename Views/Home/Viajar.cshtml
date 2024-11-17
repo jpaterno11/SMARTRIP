@@ -22,19 +22,19 @@
       <input type="time" class="input-field" id="hora" placeholder="Selecciona la hora">
     </div>
     <div class="input-buttons">
-      <button id="openModalBtn" type="submit" onclick="buscarRuta()" class="cta-button">Ver precios</button> 
+      <button id="openModalBtn" type="submit" onclick="buscarRutaDesdeFormulario()" class="cta-button">Ver precios</button> 
     </div>
   </div>
 </div>
-<div id="overlay" class="overlay"> <!--SEGUNDO-->
+<div id="overlay" class="overlay">
   <div class="overlay-content">
     <h3 id="eligeRuta">Elige un viaje</h3>
     <div class="contPrecio">
       <img src="~/img/didi.png" alt="DiDi Logo">
       <img id = "auto" src="~/img/auto png.png" alt="auto png">
       <div class = "texto">
-      <h4>$3.590 AR$</h4>
-      <h6><i class="fa-regular fa-clock"></i> 7 - 10 min</h6>
+      <h4 id = "precio1">--</h4>
+      <h6 class="tiempo" id = "tiempo">--</h6>
     </div>
     </div>
     
@@ -42,8 +42,8 @@
       <img src="~/img/uber.png" alt="Uber Logo">
       <img id = "auto" src="~/img/auto png.png" alt="auto png">
       <div class = "texto">
-      <h4>$3.590 AR$</h4>
-      <h6><i class="fa-regular fa-clock"></i> 7 - 10 min</h6>
+      <h4 id = "precio2">--</h4>
+      <h6 class="tiempo" id = "tiempo1">--</h6>
     </div>
     </div>
     <div class="contPrecio">
@@ -51,7 +51,7 @@
       <img id = "auto" src="~/img/auto png.png" alt="auto png">
       <div class = "texto">
       <h4 id = "precio">--</h4>
-      <h6><i class="fa-regular fa-clock"></i> 7 - 10 min</h6>
+      <h6 class="tiempo" id = "tiempo2">--</h6>
     </div>
     </div>
   </div>

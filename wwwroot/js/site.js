@@ -138,7 +138,6 @@ function enviarForm3(){
 
 
 
-// Inicializa el mapa de Leaflet con una vista centrada en Buenos Aires
 var map = L.map('map').setView([-34.6062, -58.4359], 15);
 
 L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
@@ -147,14 +146,9 @@ L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
 }).addTo(map);
 
 let startMarker, endMarker;
-
-// Función para obtener las coordenadas de una dirección usando Nominatim
 async function obtenerCoordenadas(direccion) {
-    // Limitar los resultados a la Ciudad Autónoma de Buenos Aires
-    const viewbox = "-58.5317,-34.7054,-58.3352,-34.5215"; // Suroeste y noreste de CABA
-    const bounded = 1; // Limita los resultados a la caja
-
-    // URL de búsqueda con parámetros
+    const viewbox = "-58.5317,-34.7054,-58.3352,-34.5215";
+    const bounded = 1;
     const url = `https://nominatim.openstreetmap.org/search?format=json&q=${encodeURIComponent(direccion)}&viewbox=${viewbox}&bounded=${bounded}`;
 
     try {
@@ -175,61 +169,109 @@ async function obtenerCoordenadas(direccion) {
         return null;
     }
 }
-
-async function buscarRuta() {
-    const start = document.getElementById('start').value;
-    const end = document.getElementById('end').value;
-    const precio = document.getElementById("precio");
-
-    if (!start || !end) {
-        alert("Por favor, ingresa ambos lugares.");
+function buscarRutaDesdeFormulario() {
+    const direccionInicio = document.getElementById('start').value;
+    const direccionDestino = document.getElementById('end').value;
+    buscarRuta(direccionInicio, direccionDestino);
+}
+async function buscarRuta(direccionInicio, direccionDestino) {
+    if (!direccionInicio || !direccionDestino) {
+        alert("Por favor, ingresa ambas direcciones.");
         return;
     }
 
-    const startCoords = await obtenerCoordenadas(start);
-    const endCoords = await obtenerCoordenadas(end);
-
-    console.log("Coordenadas de inicio:", startCoords);
-    console.log("Coordenadas de destino:", endCoords);
-
-    if (startCoords && endCoords) {
+    try {
+        const startCoords = await obtenerCoordenadas(direccionInicio);
+        const endCoords = await obtenerCoordenadas(direccionDestino);
+        if (!startCoords || !endCoords || 
+            typeof startCoords.lat !== 'number' || typeof startCoords.lon !== 'number' || 
+            typeof endCoords.lat !== 'number' || typeof endCoords.lon !== 'number') {
+            throw new Error("Coordenadas inválidas para uno o ambos lugares.");
+        }
         map.fitBounds([
             [startCoords.lat, startCoords.lon],
             [endCoords.lat, endCoords.lon]
         ]);
-
         if (startMarker) map.removeLayer(startMarker);
         if (endMarker) map.removeLayer(endMarker);
-
         startMarker = L.marker([startCoords.lat, startCoords.lon]).addTo(map)
-            .bindPopup("Salida: " + start).openPopup();
+            .bindPopup("Salida: " + direccionInicio).openPopup();
         endMarker = L.marker([endCoords.lat, endCoords.lon]).addTo(map)
-            .bindPopup("Llegada: " + end).openPopup();
-
-        if (startCoords.lat && startCoords.lon && endCoords.lat && endCoords.lon) {
-            var pointList = [
+            .bindPopup("Llegada: " + direccionDestino).openPopup();
+            var latlngs = [
                 [startCoords.lat, startCoords.lon],
-                [endCoords.lat, endCoords.lon]
+            [endCoords.lat, endCoords.lon]
             ];
-
-            var firstpolyline = new L.Polyline(pointList, {
-                color: 'red',
-                weight: 3,
-                opacity: 0.5,
-                smoothFactor: 1
-            }).addTo(map);
-            const distance = calcularDistancia(startCoords.lat, startCoords.lon, endCoords.lat, endCoords.lon);
-            const precioCalculado = calcularPrecio(distance); 
-
-            precio.innerHTML = `$${precioCalculado} AR$`;
-        } else {
-            console.error("Coordenadas inválidas para el path:", startCoords, endCoords);
-        }
-    } else {
-        console.error("No se pudieron obtener las coordenadas.");
+            var polyline = L.polyline(latlngs, { color: 'red' }).addTo(map);
+            map.fitBounds(polyline.getBounds());
+        setTimeout(() => {
+            cambiarTexto(startCoords.lat, startCoords.lon, endCoords.lat, endCoords.lon);
+        }, 10);
+        
+    } catch (error) {
+        console.error("Error al buscar la ruta:", error.message);
+        alert("No se pudo obtener la ruta. Por favor, verifica las direcciones ingresadas.");
     }
 }
+function cambiarTexto(lat1, lon1, lat2, lon2) {
+    const precio = document.getElementById("precio");
+    const precio1 = document.getElementById("precio1");
+    const precio2 = document.getElementById("precio2");
+    const distance = calcularDistancia(lat1, lon1, lat2, lon2);
+    const precioCalculado = calcularPrecio(distance, 'precio1'); 
+    const precioCalculado1 = calcularPrecio(distance, 'precio2');
+    const precioCalculado2 = calcularPrecio(distance, 'precio3');
+    precio.innerHTML = `$${precioCalculado.toLocaleString('es-AR')} AR$`;
+    precio1.innerHTML = `$${precioCalculado1.toLocaleString('es-AR')} AR$`;
+    precio2.innerHTML = `$${precioCalculado2.toLocaleString('es-AR')} AR$`;
+    const hora = document.getElementById("hora").value;
+    const fechaInput = document.getElementById("fecha").value;
+    const fecha = fechaInput ? new Date(fechaInput) : null;
+    if (!fecha && hora == "") {
+    const tiempo = document.getElementById("tiempo");
+    const tiempo1 = document.getElementById("tiempo1");
+    const tiempo2 = document.getElementById("tiempo2");
+    const [time1A, time2A] = randomizarTiempo();
+    const [time1B, time2B] = randomizarTiempo();
+    const [time1C, time2C] = randomizarTiempo();
+    tiempo.innerHTML = `<i class="fa-regular fa-clock"></i> ${time1A} - ${time2A} min`;
+    tiempo1.innerHTML = `<i class="fa-regular fa-clock"></i> ${time1B} - ${time2B} min`;
+    tiempo2.innerHTML = `<i class="fa-regular fa-clock"></i> ${time1C} - ${time2C} min`;
+    }
+    else {
+        const tiempos = document.getElementsByClassName("tiempo"); 
+        for (let i = 0; i < tiempos.length; i++) {
+            tiempos[i].textContent = "Estimado: " + (fecha.getDate() + 1) + "/" + (fecha.getMonth() + 1) + " " + hora;
+        }
+    }
+   
+}
 
+function redondearADecena(precio) {
+    return Math.round(precio / 50) * 50;
+}
+function randomizarTiempo() {
+    let first = Math.floor(Math.random() * 10) + 1; 
+    let second;
+
+    do {
+        second = Math.floor(Math.random() * 10) + 1; 
+    } while (second <= first);
+
+    return [first, second];
+}
+
+function calcularPrecio(distancia, tipoPrecio) {
+    const tarifas = {
+        precio1: { tarifaBase: 3000, costoPorKilometro: 1200 },
+        precio2: { tarifaBase: 3500, costoPorKilometro: 1500 },
+        precio3: { tarifaBase: 4000, costoPorKilometro: 1800 }
+    };
+
+    const { tarifaBase, costoPorKilometro } = tarifas[tipoPrecio];
+    const precioTotal = tarifaBase + (distancia * costoPorKilometro);
+    return redondearADecena(precioTotal);
+}
 function calcularDistancia(lat1, lon1, lat2, lon2) {
     const R = 6371; 
     const dLat = degToRad(lat2 - lat1);
@@ -245,11 +287,7 @@ function degToRad(deg) {
     return deg * (Math.PI / 180);
 }
 
-function calcularPrecio(distancia) {
-    const tarifaBase = 50; 
-    const costoPorKilometro = 25; 
-    return Math.round(tarifaBase + (distancia * costoPorKilometro));  
-}
+
 $(document).ready(function () {
     $("#openModalBtn").click(function () {
         $("#overlay").fadeIn(); 
