@@ -138,19 +138,38 @@ function enviarForm3(){
 
 
 
-var map = L.map('map').setView([-34.6062, -58.4359], 15);
+var map = new maplibregl.Map({
+    container: 'map',
+    style: {
+        version: 8,
+        sources: {
+            carto: {
+                type: 'raster',
+                tiles: [
+                    'https://{a-c}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png'
+                ],
+                tileSize: 256
+            }
+        },
+        layers: [
+            {
+                id: 'carto-tiles',
+                type: 'raster',
+                source: 'carto',
+                minzoom: 0,
+                maxzoom: 19
+            }
+        ]
+    },
+    center: [-58.3816, -34.6037],
+    zoom: 12
+});
 
-L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-    maxZoom: 18,
-    attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-}).addTo(map);
-
-let startMarker, endMarker;
+let startMarker, endMarker, routeLayer;
 async function obtenerCoordenadas(direccion) {
     const viewbox = "-58.5317,-34.7054,-58.3352,-34.5215";
     const bounded = 1;
     const url = `https://nominatim.openstreetmap.org/search?format=json&q=${encodeURIComponent(direccion)}&viewbox=${viewbox}&bounded=${bounded}`;
-
     try {
         const response = await fetch(url);
         const data = await response.json();
@@ -183,35 +202,66 @@ async function buscarRuta(direccionInicio, direccionDestino) {
     try {
         const startCoords = await obtenerCoordenadas(direccionInicio);
         const endCoords = await obtenerCoordenadas(direccionDestino);
-        if (!startCoords || !endCoords || 
-            typeof startCoords.lat !== 'number' || typeof startCoords.lon !== 'number' || 
-            typeof endCoords.lat !== 'number' || typeof endCoords.lon !== 'number') {
-            throw new Error("Coordenadas inválidas para uno o ambos lugares.");
-        }
+
+        if (!startCoords || !endCoords) return;
+
+        // Centrar mapa
         map.fitBounds([
-            [startCoords.lat, startCoords.lon],
-            [endCoords.lat, endCoords.lon]
+            [startCoords.lon, startCoords.lat],
+            [endCoords.lon, endCoords.lat]
         ]);
-        if (startMarker) map.removeLayer(startMarker);
-        if (endMarker) map.removeLayer(endMarker);
-        startMarker = L.marker([startCoords.lat, startCoords.lon]).addTo(map)
-            .bindPopup("Salida: " + direccionInicio).openPopup();
-        endMarker = L.marker([endCoords.lat, endCoords.lon]).addTo(map)
-            .bindPopup("Llegada: " + direccionDestino).openPopup();
-            var latlngs = [
-                [startCoords.lat, startCoords.lon],
-            [endCoords.lat, endCoords.lon]
-            ];
-            var polyline = L.polyline(latlngs, { color: 'red' }).addTo(map);
-            map.fitBounds(polyline.getBounds());
+
+        // Agregar marcadores
+        if (startMarker) startMarker.remove();
+        if (endMarker) endMarker.remove();
+
+        startMarker = new maplibregl.Marker()
+            .setLngLat([startCoords.lon, startCoords.lat])
+            .setPopup(new maplibregl.Popup().setText("Salida: " + direccionInicio))
+            .addTo(map);
+
+        endMarker = new maplibregl.Marker()
+            .setLngLat([endCoords.lon, endCoords.lat])
+            .setPopup(new maplibregl.Popup().setText("Llegada: " + direccionDestino))
+            .addTo(map);
+
+        // Dibujar la ruta
+        if (routeLayer) map.removeLayer('route');
+        if (map.getSource('route')) map.removeSource('route');
+
+        map.addSource('route', {
+            type: 'geojson',
+            data: {
+                type: 'Feature',
+                geometry: {
+                    type: 'LineString',
+                    coordinates: [
+                        [startCoords.lon, startCoords.lat],
+                        [endCoords.lon, endCoords.lat]
+                    ]
+                }
+            }
+        });
         setTimeout(() => {
             cambiarTexto(startCoords.lat, startCoords.lon, endCoords.lat, endCoords.lon);
         }, 10);
-        
+        map.addLayer({
+            id: 'route',
+            type: 'line',
+            source: 'route',
+            layout: {},
+            paint: {
+                'line-color': '#FF0000',
+                'line-width': 4
+            }
+        }
+    
+    );
     } catch (error) {
-        console.error("Error al buscar la ruta:", error.message);
+        console.error("Error al buscar la ruta:", error);
         alert("No se pudo obtener la ruta. Por favor, verifica las direcciones ingresadas.");
     }
+    
 }
 function cambiarTexto(lat1, lon1, lat2, lon2) {
     const precio = document.getElementById("precio");
