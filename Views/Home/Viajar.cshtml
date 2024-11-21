@@ -6,20 +6,20 @@
         <div class="text-section">
             <h2>Consultá un viaje</h2>
             <div class="input-container">
-                <input type="text" class="input-field" id="start" placeholder="Ingresá tu ubicación">
+                <input type="text" class="input-field" id="start" placeholder="Ingresá tu ubicación" required>
                 <img src="~/img/ingresarUbi.png" alt="Icono de ubicación" class="input-icon">
             </div>
             <div class="input-container">
-                <input type="text" class="input-field" id="end" placeholder="Ingresá tu destino">
+                <input type="text" class="input-field" id="end" placeholder="Ingresá tu destino" required>
                 <img src="~/img/ingresarDest.png" alt="Icono de ubicación" class="input-icon">
             </div>
             <div class="input-container">
                 <label for="fecha">Fecha:</label>
-                <input type="date" class="input-field" id="fecha" placeholder="Selecciona la fecha">
+                <input type="date" class="input-field" id="fecha" placeholder="Selecciona la fecha" required>
             </div>
             <div class="input-container">
                 <label for="hora">Hora:</label>
-                <input type="time" class="input-field" id="hora" placeholder="Selecciona la hora">
+                <input type="time" class="input-field" id="hora" placeholder="Selecciona la hora" required>
             </div>
             <div class="input-buttons">
                 <button id="openModalBtn" type="submit" onclick="buscarRutaDesdeFormulario()" class="cta-button">Ver precios</button>
@@ -56,5 +56,5 @@
     </div>
   </div>
 </div>
-    <div id="map" style="height: 600px; width: 30%;"></div>
+    <div id="map" style="height: 100%; width: 30%;"></div>
 </div>

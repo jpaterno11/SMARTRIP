@@ -3,9 +3,7 @@ GO
 /****** Object:  Database [SMARTRIP]    Script Date: 20/11/2024 14:05:40 ******/
 CREATE DATABASE [SMARTRIP]
  CONTAINMENT = NONE
- ON  PRIMARY 
 
-GO
 USE [SMARTRIP]
 /****** Object:  Table [dbo].[AUTOS]    Script Date: 20/11/2024 14:05:40 ******/
 SET ANSI_NULLS ON

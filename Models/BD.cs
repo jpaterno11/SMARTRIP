@@ -59,6 +59,15 @@ namespace SMARTRIP.Models
             }
         }
 
+        public static void AgregarViaje(VIAJES viaje)
+        {
+            string sql = "INSERT INTO VIAJES (Fecha, UbicacionInicial, UbicacionFinal, IDUsuario, Costo, Hora) VALUES (@PFecha, @PUbicacionInicial, @PUbicacionFinal, @PIDUsuario, @PCosto, @PHora)";
+            using (SqlConnection db = new SqlConnection(_connectionString))
+            {
+                db.Execute(sql, new {PFecha = viaje.fecha, PUbicacionInicial = viaje.ubicacionInicial, PUbicacionFinal = viaje.ubicacionFinal, PIDUsuario = viaje.IDUsuario, PCosto = viaje.costo, PHora = viaje.hora});
+            }
+        }
+
 
     }
 }
