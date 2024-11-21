@@ -12,18 +12,20 @@ namespace SMARTRIP.Models
         public DateTime fecha {get;set;}
         public int IDUsuario {get;set;}
         public double costo {get; set;}
+        public DateTime hora {get; set;}
         
         
         public VIAJES()
         {}
 
-        public VIAJES(int IDUsuario, string ubicacionInicial, string ubicacionFinal, double costo, DateTime fecha)
+        public VIAJES(int IDUsuario, string ubicacionInicial, string ubicacionFinal, double costo, DateTime fecha, DateTime hora)
         {
            this.IDUsuario= IDUsuario;
            this.ubicacionInicial = ubicacionInicial;
            this.ubicacionFinal = ubicacionFinal;
            this.costo = costo;
            this.fecha = fecha;
+           this.hora = hora;
         }
     }   
 }

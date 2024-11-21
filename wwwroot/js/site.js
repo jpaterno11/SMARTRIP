@@ -133,11 +133,6 @@ function enviarForm3(){
 
 
 
-
-
-
-
-
 var map = new maplibregl.Map({
     container: 'map',
     style: {
