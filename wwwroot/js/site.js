@@ -138,27 +138,28 @@ var map = new maplibregl.Map({
     style: {
         version: 8,
         sources: {
-            carto: {
-                type: 'raster',
-                tiles: [
-                    'https://{a-c}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png'
+            "osm-tiles": { // Match this name exactly in the layer
+                "type": "raster",
+                "tiles": [
+                    "https://tile.openstreetmap.org/{z}/{x}/{y}.png"
                 ],
-                tileSize: 256
+                "tileSize": 256
             }
         },
         layers: [
             {
-                id: 'carto-tiles',
-                type: 'raster',
-                source: 'carto',
-                minzoom: 0,
-                maxzoom: 19
+                "id": "osm-layer",
+                "type": "raster",
+                "source": "osm-tiles", // Reference the defined source here
+                "paint": {}
             }
         ]
     },
     center: [-58.3816, -34.6037],
     zoom: 12
 });
+
+
 
 let startMarker, endMarker, routeLayer;
 async function obtenerCoordenadas(direccion) {
