@@ -1,7 +1,6 @@
-using System.Diagnostics;
+ using System.Diagnostics;
 using Microsoft.AspNetCore.Mvc;
 using SMARTRIP.Models;
-using System.Text;
 
 namespace SMARTRIP.Controllers;
 
