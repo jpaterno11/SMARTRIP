@@ -599,6 +599,14 @@ button img{
   font-family: Arial, sans-serif;
   width: 100%;
 }
+.botonlupa{
+  margin-top: 1%;
+}
+.footer2 {
+  border: none;
+  background-color: #ffffff;
+  margin-top: 9%;
+}
 .footer .container {
   display: flex;
   justify-content: space-between;
@@ -665,9 +673,10 @@ button img{
 .aQS{
   margin: 3%;
   align-items: end;
-  width: 40%;
-  height: 40%;
+  width: 30%;
+  height: 30%;
   border-radius: 8%;
+
 }
 
 #map {

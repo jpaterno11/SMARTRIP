@@ -37,7 +37,7 @@ public class AccountController : Controller
      {
         user.email = email;
         user.telefono = telefono;
-        user.contraseña = contraseña; 
+        user.contrasena = contraseña; 
         BD.AgregarUsuario(user);
         return View("/Views/Home/Index.cshtml");
      }
@@ -78,13 +78,13 @@ public class AccountController : Controller
      [HttpPost] 
       public IActionResult Olvidar2(USUARIO user, string contraseña)
      {
-        if(contraseña == user.contraseña)
+        if(contraseña == user.contrasena)
         {
             ViewBag.user = user;
             ViewBag.Mensaje = "Ingrese una contraseña diferente";
             return View("/Views/Home/OlvideMiContraseña2.cshtml");
         }
-        user.contraseña = contraseña;
+        user.contrasena = contraseña;
         BD.ActualizarContraseña(user);
         return View("/Views/Home/Index.cshtml");
      }

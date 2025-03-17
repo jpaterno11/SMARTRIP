@@ -7,7 +7,7 @@ namespace SMARTRIP.Models
 {
     public class USUARIO
     {
-        public string contraseña {get; set;}
+        public string contrasena {get; set;}
         public string nombre {get; set;}
         public string apellido {get; set;}
         public DateTime fechaNacimiento {get;set;}
@@ -19,9 +19,9 @@ namespace SMARTRIP.Models
         public USUARIO()
         {}
 
-        public USUARIO(string contraseña, string email, int? telefono, string nombre, string apellido, DateTime fechaNacimiento, string genero)
+        public USUARIO(string contrasena, string email, int? telefono, string nombre, string apellido, DateTime fechaNacimiento, string genero)
         {
-            this.contraseña = contraseña;
+            this.contrasena = contrasena;
             this.email = email;
             this.telefono = telefono;
             this.nombre = nombre;
