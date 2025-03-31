@@ -138,7 +138,7 @@ var map = new maplibregl.Map({
     style: {
         version: 8,
         sources: {
-            "osm-tiles": { // Match this name exactly in the layer
+            "osm-tiles": { 
                 "type": "raster",
                 "tiles": [
                     "https://tile.openstreetmap.org/{z}/{x}/{y}.png"
@@ -185,26 +185,32 @@ async function obtenerCoordenadas(direccion) {
     }
 }
 function buscarRutaDesdeFormulario() {
-    const direccionInicio = document.getElementById('start').value;
-    const direccionDestino = document.getElementById('end').value;
-    buscarRuta(direccionInicio, direccionDestino);
-}
-async function buscarRuta(direccionInicio, direccionDestino) {
-    if (!direccionInicio || !direccionDestino) {
-        alert("Por favor, ingresa ambas direcciones.");
+    const startInput = document.getElementById('start');
+    const endInput = document.getElementById('end');
+
+    // Obtener coordenadas desde los atributos data-*
+    const startCoords = {
+        lat: parseFloat(startInput.dataset.lat),
+        lon: parseFloat(startInput.dataset.lon)
+    };
+    const endCoords = {
+        lat: parseFloat(endInput.dataset.lat),
+        lon: parseFloat(endInput.dataset.lon)
+    };
+
+    if (isNaN(startCoords.lat) || isNaN(startCoords.lon) || isNaN(endCoords.lat) || isNaN(endCoords.lon)) {
+        alert("Seleccioná direcciones válidas del autocompletado.");
         return;
     }
 
+    buscarRuta(startCoords.lat, startCoords.lon, endCoords.lat, endCoords.lon);
+}
+async function buscarRuta(startLat, startLon, endLat, endLon) {
     try {
-        const startCoords = await obtenerCoordenadas(direccionInicio);
-        const endCoords = await obtenerCoordenadas(direccionDestino);
-
-        if (!startCoords || !endCoords) return;
-
-        // Centrar mapa
+        // Centrar el mapa en los puntos de inicio y destino
         map.fitBounds([
-            [startCoords.lon, startCoords.lat],
-            [endCoords.lon, endCoords.lat]
+            [startLon, startLat],
+            [endLon, endLat]
         ]);
 
         // Agregar marcadores
@@ -212,16 +218,16 @@ async function buscarRuta(direccionInicio, direccionDestino) {
         if (endMarker) endMarker.remove();
 
         startMarker = new maplibregl.Marker()
-            .setLngLat([startCoords.lon, startCoords.lat])
-            .setPopup(new maplibregl.Popup().setText("Salida: " + direccionInicio))
+            .setLngLat([startLon, startLat])
+            .setPopup(new maplibregl.Popup().setText("Salida"))
             .addTo(map);
 
         endMarker = new maplibregl.Marker()
-            .setLngLat([endCoords.lon, endCoords.lat])
-            .setPopup(new maplibregl.Popup().setText("Llegada: " + direccionDestino))
+            .setLngLat([endLon, endLat])
+            .setPopup(new maplibregl.Popup().setText("Llegada"))
             .addTo(map);
 
-        // Dibujar la ruta
+        // Dibujar la ruta en el mapa
         if (routeLayer) map.removeLayer('route');
         if (map.getSource('route')) map.removeSource('route');
 
@@ -232,15 +238,17 @@ async function buscarRuta(direccionInicio, direccionDestino) {
                 geometry: {
                     type: 'LineString',
                     coordinates: [
-                        [startCoords.lon, startCoords.lat],
-                        [endCoords.lon, endCoords.lat]
+                        [startLon, startLat],
+                        [endLon, endLat]
                     ]
                 }
             }
         });
+
         setTimeout(() => {
-            cambiarTexto(startCoords.lat, startCoords.lon, endCoords.lat, endCoords.lon);
+            cambiarTexto(startLat, startLon, endLat, endLon);
         }, 10);
+
         map.addLayer({
             id: 'route',
             type: 'line',
@@ -250,15 +258,70 @@ async function buscarRuta(direccionInicio, direccionDestino) {
                 'line-color': '#FF0000',
                 'line-width': 4
             }
-        }
-    
-    );
+        });
+
     } catch (error) {
         console.error("Error al buscar la ruta:", error);
-        alert("No se pudo obtener la ruta. Por favor, verifica las direcciones ingresadas.");
+        alert("No se pudo obtener la ruta. Verificá las direcciones ingresadas.");
     }
-    
 }
+
+
+
+
+function predictDire(dire) {
+    const direccion = document.getElementById(dire).value;
+    const suggestionBox = document.getElementById(dire + "-suggestions");
+
+    if (!suggestionBox) {
+        console.error(`No se encontró el elemento ${dire}-suggestions en el DOM`);
+        return;
+    }
+
+    if (direccion.length < 3) { 
+        suggestionBox.innerHTML = ""; 
+        return;
+    }
+
+    fetch(`https://api.geoapify.com/v1/geocode/autocomplete?text=${direccion}&country=Argentina&apiKey=4f7308f9824a47c0b95dfd57db6b5e23`)
+        .then(response => response.json())
+        .then(result => {
+            suggestionBox.innerHTML = "";
+            
+            if (!result.features.length) {
+                suggestionBox.innerHTML = "<li>No se encontraron resultados</li>";
+                return;
+            }
+
+            result.features.forEach((place) => {
+                const li = document.createElement("li");
+                li.textContent = place.properties.formatted;
+
+                li.onclick = () => {
+                    // Asignar la dirección seleccionada al input
+                    const inputField = document.getElementById(dire);
+                    inputField.value = place.properties.formatted;
+
+                    // Guardar coordenadas en el input usando atributos data-*
+                    inputField.dataset.lat = place.geometry.coordinates[1];
+                    inputField.dataset.lon = place.geometry.coordinates[0];
+
+                    suggestionBox.innerHTML = "";
+                };
+
+                suggestionBox.appendChild(li);
+            });
+        })
+        .catch(error => console.log('Error:', error));
+}
+
+
+
+
+
+
+
+
 function cambiarTexto(lat1, lon1, lat2, lon2) {
     const precio = document.getElementById("precio");
     const precio1 = document.getElementById("precio1");

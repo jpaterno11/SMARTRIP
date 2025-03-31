@@ -6,12 +6,14 @@
         <div class="text-section">
             <h2>Consultá un viaje</h2>
             <div class="input-container">
-                <input type="text" class="input-field" id="start" placeholder="Ingresá tu ubicación" required>
+                <input type="text" class="input-field" id="start" placeholder="Ingresá tu ubicación" onkeyup="predictDire('start')" required>
                 <img src="~/img/ingresarUbi.png" alt="Icono de ubicación" class="input-icon">
+                <ul id="start-suggestions" class="suggestions-list"></ul>
             </div>
             <div class="input-container">
-                <input type="text" class="input-field" id="end" placeholder="Ingresá tu destino" required>
+                <input type="text" class="input-field" id="end" placeholder="Ingresá tu destino" onkeyup="predictDire('end')" required>
                 <img src="~/img/ingresarDest.png" alt="Icono de ubicación" class="input-icon">
+                <ul id="end-suggestions" class="suggestions-list"></ul>
             </div>
             <div class="input-container">
                 <label for="fecha">Fecha:</label>
