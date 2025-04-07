@@ -352,3 +352,27 @@ function EnviarCalificacion() {
 
     EnviarCalificacion.submit();
 }
+
+function reservar() {
+    let start = document.getElementById("start").value.trim();
+    let end = document.getElementById("end").value.trim();
+    let fecha = document.getElementById("fecha").value.trim();
+    let hora = document.getElementById("hora").value.trim();
+    let viajeSeleccionado = document.querySelector('input[name="opcionViaje"]:checked');
+    let metodoPago = document.getElementById("metodoPago").value;
+    
+    if (!start || !end || !fecha || !hora) {
+        alert("Por favor, completa todos los campos del viaje.");
+        return;
+    }
+    if (!viajeSeleccionado) {
+        alert("Por favor, selecciona una opción de viaje.");
+        return;
+    }
+    if (metodoPago === "") {
+        alert("Por favor, selecciona un método de pago.");
+        return;
+    }
+    
+    document.getElementById("viajeForm").submit();
+}
