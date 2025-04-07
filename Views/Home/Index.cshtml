@@ -7,19 +7,25 @@
     <div class="text-section">
         <h1 id="comparaPrecios">Compará precios en un solo lugar</h1>
         <p ID="text-3-index">Con SmarTrip todo es más rápido</p>
-<div class="input-container">
-  <input type="text" class="input-field" placeholder="Ingresá tu ubicación">
-  <img src="~/img/ingresarUbi.png" alt="Icono de ubicación" class="input-icon">
-</div>
-<div class="input-container">
-  <input type="text" class="input-field" placeholder="Ingresá tu destino">
-  <img src="~/img/ingresarDest.png" alt="Icono de ubicación" class="input-icon">
-</div>
+<form method="get" action="@Url.Action("Viajar", "Home")">
+    <div class="text-section">
+        <h2>Consultá un viaje</h2>
+        <div class="input-container">
+            <input type="text" class="input-field" id="start" name="start" placeholder="Ingresá tu ubicación" onkeyup="predictDire('start')" required>
+            <img src="~/img/ingresarUbi.png" alt="Icono de ubicación" class="input-icon">
+            <ul id="start-suggestions" class="suggestions-list"></ul>
+        </div>
+        <div class="input-container">
+                    <input type="text" class="input-field" id="end" name="end" placeholder="Ingresá tu destino" onkeyup="predictDire('end')" required>
+            <img src="~/img/ingresarDest.png" alt="Icono de ubicación" class="input-icon">
+            <ul id="end-suggestions" class="suggestions-list"></ul>
+        </div>
+    </div>
 
-<div class="input-buttons">
-<a class="color" href="@Url.Action("Viajar", "Home")"><button type="submit" class="cta-button">Ver precios</button> </a>
- 
-</div>
+    <div class="input-buttons">
+        <button type="submit" class="cta-button color">Ver precios</button>
+    </div>
+</form>
 
     </div>
     <div class="image-section">
