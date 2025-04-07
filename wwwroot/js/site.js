@@ -204,6 +204,8 @@ function buscarRutaDesdeFormulario() {
     }
 
     buscarRuta(startCoords.lat, startCoords.lon, endCoords.lat, endCoords.lon);
+    let fecha = document.getElementById('fecha');
+    let hora = document.getElementById('hora');
 }
 async function buscarRuta(startLat, startLon, endLat, endLon) {
     try {

@@ -2,72 +2,76 @@
     ViewData["Title"] = "Viajar - SmarTrip";
 }
 <div class="viajar">
-    <form id="viajeForm" onsubmit="procesarFormulario(event)">
-        <div>
-            <div class="text-section">
-                <h2>Consultá un viaje</h2>
-                <div class="input-container">
-                    <input type="text" class="input-field" id="start" name="start" placeholder="Ingresá tu ubicación" onkeyup="predictDire('start')" required>
-                    <img src="~/img/ingresarUbi.png" alt="Icono de ubicación" class="input-icon">
-                    <ul id="start-suggestions" class="suggestions-list"></ul>
-                </div>
-                <div class="input-container">
-                    <input type="text" class="input-field" id="end" name="end" placeholder="Ingresá tu destino" onkeyup="predictDire('end')" required>
-                    <img src="~/img/ingresarDest.png" alt="Icono de ubicación" class="input-icon">
-                    <ul id="end-suggestions" class="suggestions-list"></ul>
-                </div>
-                <div class="input-container">
-                    <label for="fecha">Fecha:</label>
-                    <input type="date" class="input-field" id="fecha" name="fecha" required>
-                </div>
-                <div class="input-container">
-                    <label for="hora">Hora:</label>
-                    <input type="time" class="input-field" id="hora" name="hora" required>
-                </div>
-                <div class="input-buttons">
-                    <button id="openModalBtn" type="submit" class="cta-button">Ver precios</button>
-                </div>
+    <div>
+        <div class="text-section">
+            <h2>Consultá un viaje</h2>
+            <div class="input-container">
+                <input type="text" class="input-field" id="start" placeholder="Ingresá tu ubicación" onkeyup="predictDire('start')" required>
+                <img src="~/img/ingresarUbi.png" alt="Icono de ubicación" class="input-icon">
+                <ul id="start-suggestions" class="suggestions-list"></ul>
+            </div>
+            <div class="input-container">
+                <input type="text" class="input-field" id="end" placeholder="Ingresá tu destino" onkeyup="predictDire('end')" required>
+                <img src="~/img/ingresarDest.png" alt="Icono de ubicación" class="input-icon">
+                <ul id="end-suggestions" class="suggestions-list"></ul>
+            </div>
+            <div class="input-container">
+                <label for="fecha">Fecha:</label>
+                <input type="date" class="input-field" id="fecha" placeholder="Selecciona la fecha" required>
+            </div>
+            <div class="input-container">
+                <label for="hora">Hora:</label>
+                <input type="time" class="input-field" id="hora" placeholder="Selecciona la hora" required>
+            </div>
+            <div class="input-buttons">
+                <button id="openModalBtn" type="submit" onclick="buscarRutaDesdeFormulario()" class="cta-button">Ver precios</button>
             </div>
         </div>
-        
-        <div id="overlay" class="overlay">
-            <div class="overlay-content">
-                <h3 id="eligeRuta">Elige un viaje</h3>
-                <div class="contPrecio">
-                    <input type="radio" name="opcionViaje" id="opcionDidi" value="didi" required>
-                    <label for="opcionDidi">
-                        <img src="~/img/didi.png" alt="DiDi Logo">
-                        <h4 id="precio1">--</h4>
-                        <h6 class="tiempo" id="tiempo">--</h6>
-                    </label>
-                </div>
-                <div class="contPrecio">
-                    <input type="radio" name="opcionViaje" id="opcionUber" value="uber" required>
-                    <label for="opcionUber">
-                        <img src="~/img/uber.png" alt="Uber Logo">
-                        <h4 id="precio2">--</h4>
-                        <h6 class="tiempo" id="tiempo1">--</h6>
-                    </label>
-                </div>
-                <div class="contPrecio">
-                    <input type="radio" name="opcionViaje" id="opcionCabify" value="cabify" required>
-                    <label for="opcionCabify">
-                        <img src="~/img/cabify.png" alt="Cabify Logo">
-                        <h4 id="precio">--</h4>
-                        <h6 class="tiempo" id="tiempo2">--</h6>
-                    </label>
-                </div>
-                <div class="metodoPago">
-                    <select class="form-control-pago" id="metodoPago" name="metodoPago" required>
-                        <option value="">Método de Pago</option>
-                        <option value="efectivo">Efectivo</option>
-                        <option value="mercadoPago">Mercado Pago</option>
-                    </select>
-                </div>
-                <button id="viajarBtn" type="button" onclick="reservar()" class="cta-button">Viajar</button>
-            </div>
-        </div>
-    </form>
+    </div>
     
+     <div id="overlay" class="overlay">
+        <div class="overlay-content">
+            <h3 id="eligeRuta">Elige un viaje</h3>
+            <div class="contPrecio">
+               
+                <label for="opcionDidi">
+                <input type="radio" name="opcionViaje" id="opcionDidi" value="didi" required>
+                    <img src="~/img/didi.png" alt="DiDi Logo">
+                    <h4 id="precio1">--</h4>
+                    <h6 class="tiempo" id="tiempo">--</h6>
+                </label>
+            </div>
+            <div class="contPrecio">
+                <label for="opcionUber">
+                <input type="radio" name="opcionViaje" id="opcionUber" value="uber" required>
+                    <img src="~/img/uber.png" alt="Uber Logo">
+                    <h4 id="precio2">--</h4>
+                    <h6 class="tiempo" id="tiempo1">--</h6>
+                </label>
+            </div>
+            <div class="contPrecio">
+               
+                <label for="opcionCabify">
+                <input type="radio" name="opcionViaje" id="opcionCabify" value="cabify" required>
+                    <img src="~/img/cabify.png" alt="Cabify Logo">
+                    <h4 id="precio">--</h4>
+                    <h6 class="tiempo" id="tiempo2">--</h6>
+                </label>
+            </div>
+            <div class="metodoPago">
+                <select class="form-control-pago" id="metodoPago" name="metodoPago" required>
+                    <option value="">Método de Pago</option>
+                    <option value="efectivo">Efectivo</option>
+                    <option value="mercadoPago">Mercado Pago</option>
+                </select>
+            </div>
+
+            <button id="viajarBtn" type="button" onclick="reservar()" class="cta-button">Viajar</button>
+        </div>
+    </div>
+    </div>
+    </div>
     <div id="map" style="width: 30%;"></div>
+</div>
+
 </div>

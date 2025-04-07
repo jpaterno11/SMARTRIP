@@ -48,3 +48,51 @@
     border: none;
 }
 
+.contPrecio label {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 15px;
+    padding: 12px;
+    border: 2px solid transparent;
+    border-radius: 12px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    background-color: #fff;
+}
+
+/* Hover visual */
+.contPrecio label:hover {
+    border-color: #ccc;
+    background-color: #f9f9f9;
+}
+
+/* Ocultamos el radio */
+.contPrecio input[type="radio"] {
+    display: none;
+}
+
+/* ✅ ESTILO CUANDO ESTÁ SELECCIONADO */
+.contPrecio input[type="radio"]:checked ~ img,
+.contPrecio input[type="radio"]:checked ~ div {
+    /* opcional: estilo a contenido */
+}
+
+.contPrecio input[type="radio"]:checked ~ div {
+    font-weight: bold;
+}
+
+.contPrecio input[type="radio"]:checked ~ * {
+    filter: brightness(1.05);
+}
+
+.contPrecio input[type="radio"]:checked ~ img {
+    outline: 2px solid #007bff;
+    border-radius: 8px;
+}
+
+/* ✅ ESTA ES LA PARTE CLAVE */
+.contPrecio label:has(input[type="radio"]:checked) {
+    border-color: #007bff;
+    background-color: #e6f0ff;
+}
