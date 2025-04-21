@@ -39,6 +39,7 @@ public class AccountController : Controller
         user.telefono = telefono;
         user.contrasena = contraseña; 
         BD.AgregarUsuario(user);
+        TempData["idUsuario"] = BD.ConseguirID(user);
         return View("/Views/Home/Index.cshtml");
      }
 
@@ -52,7 +53,6 @@ public class AccountController : Controller
             ViewBag.Mensaje = "Lo sentimos, esa cuenta no existe.";
             return View("/Views/Home/Login.cshtml");
         }
-        
         return View("/Views/Home/Index.cshtml");
         
         
@@ -93,4 +93,11 @@ public class AccountController : Controller
     //   public IActionResult Calificar()
     //  {
     //  }
+
+    [HttpPost]
+    public IActionResult guardarViaje(string ubicacionInicial, string ubicacionFinal, double costo, DateTime fecha, DateTime hora, string metodoPago, string empresa){
+        int IDUsuario = (int) TempData["idUsuario"];
+        VIAJES viaje = new VIAJES (IDUsuario, ubicacionInicial, ubicacionFinal, costo, fecha, hora, metodoPago, empresa); 
+        return View("/Views/Home/CalificarServicio.cshtml");
+    }
 }

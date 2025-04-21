@@ -49,6 +49,16 @@ namespace SMARTRIP.Models
             }
             return user;
         }
+        public static int ConseguirID(USUARIO user)
+        {
+            int id;
+            string sql = "SELECT idUsuario from USUARIO where email = @Pemail AND contrasena = @Pcontraseña";
+            using (SqlConnection db = new SqlConnection(_connectionString))
+            {
+                id = db.QueryFirstOrDefault<int>(sql, new { Pemail = user.email, Pcontraseña = user.contrasena});
+            }
+            return id;
+        }
 
          public static void ActualizarContraseña(USUARIO user)
         {
@@ -61,10 +71,10 @@ namespace SMARTRIP.Models
 
         public static void AgregarViaje(VIAJES viaje)
         {
-            string sql = "INSERT INTO VIAJES (Fecha, UbicacionInicial, UbicacionFinal, IDUsuario, Costo, Hora) VALUES (@PFecha, @PUbicacionInicial, @PUbicacionFinal, @PIDUsuario, @PCosto, @PHora)";
+            string sql = "INSERT INTO VIAJES (Fecha, UbicacionInicial, UbicacionFinal, IDUsuario, Costo, Hora, Empresa, MetodoPago) VALUES (@PFecha, @PUbicacionInicial, @PUbicacionFinal, @PIDUsuario, @PCosto, @PHora, @Empresa, @MetodoPago)";
             using (SqlConnection db = new SqlConnection(_connectionString))
             {
-                db.Execute(sql, new {PFecha = viaje.fecha, PUbicacionInicial = viaje.ubicacionInicial, PUbicacionFinal = viaje.ubicacionFinal, PIDUsuario = viaje.IDUsuario, PCosto = viaje.costo, PHora = viaje.hora});
+                db.Execute(sql, new {PFecha = viaje.fecha, PUbicacionInicial = viaje.ubicacionInicial, PUbicacionFinal = viaje.ubicacionFinal, PIDUsuario = viaje.IDUsuario, PCosto = viaje.costo, PHora = viaje.hora, PEmpresa=viaje.empresa, PMetodoPago=viaje.metodoPago});
             }
         }
 

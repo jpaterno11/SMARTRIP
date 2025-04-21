@@ -46,21 +46,19 @@ public class HomeController : Controller
     {
         return View();
     }
-    public IActionResult Viaja()
-    {
-        return View();
-    }
     public IActionResult Ayuda()
     {
         return View();
     }
-[HttpGet]
-public IActionResult Viajar(string start, string end)
-{
-    ViewBag.Inicio = start;
-    ViewBag.Final = end;
-    return View();
-}
+
+
+    [HttpGet]
+    public IActionResult Viajar(string start, string end)
+    {
+        ViewBag.Inicio = start;
+        ViewBag.Final = end;
+        return View();
+    }
 
        public IActionResult CalificarServicio()
     {
