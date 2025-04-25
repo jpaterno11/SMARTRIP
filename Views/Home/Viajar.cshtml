@@ -1,24 +1,19 @@
 @{
     ViewData["Title"] = "Viajar - SmarTrip";
 }
-
-@{
-    ViewData["Title"] = "Viajar - SmarTrip";
-}
-
-<form id="formViaje" action="@Url.Action("guardarViaje", "Account")" method="post" class="viajar">
+<form action="@Url.Action("guardarViaje", "Account")" method="post" class="viajar">
     <div>
         <div class="text-section">
             <h2>Consultá un viaje</h2>
 
             <div class="input-container">
-                <input type="text" class="input-field" name="ubicacionInicio" id="start" placeholder="Ingresá tu ubicación" onkeyup="predictDire('start')" required>
+                <input type="text" class="input-field" name="ubicacionInicial" id="start" placeholder="Ingresá tu ubicación" onkeyup="predictDire('start')" value="@ViewBag.Inicio" required>
                 <img src="~/img/ingresarUbi.png" alt="Icono de ubicación" class="input-icon">
                 <ul id="start-suggestions" class="suggestions-list"></ul>
             </div>
 
             <div class="input-container">
-                <input type="text" class="input-field" name="ubicacionDestino" id="end" placeholder="Ingresá tu destino" onkeyup="predictDire('end')" required>
+                <input type="text" class="input-field" name="ubicacionFinal" id="end" placeholder="Ingresá tu destino" onkeyup="predictDire('end')" value="@ViewBag.Final" required>
                 <img src="~/img/ingresarDest.png" alt="Icono de ubicación" class="input-icon">
                 <ul id="end-suggestions" class="suggestions-list"></ul>
             </div>
@@ -45,28 +40,31 @@
 
             <div class="contPrecio">
                 <label for="opcionDidi">
-                    <input type="radio" name="opcionViaje" id="opcionDidi" value="didi" required>
+                    <input type="radio" name="empresa" id="opcionDidi" value="DiDi" required>
                     <img src="~/img/didi.png" alt="DiDi Logo">
-                    <h4 id="precio1">--</h4>
+                    <h4 name = "costo" id="precio1">--</h4>
                     <h6 class="tiempo" id="tiempo">--</h6>
+                    <input type = "hidden" name = "costo" id = "precio1">
                 </label>
             </div>
 
             <div class="contPrecio">
                 <label for="opcionUber">
-                    <input type="radio" name="opcionViaje" id="opcionUber" value="uber" required>
+                    <input type="radio" name="empresa" id="opcionUber" value="Uber" required>
                     <img src="~/img/uber.png" alt="Uber Logo">
-                    <h4 id="precio2">--</h4>
+                    <h4 name = "costo" id="precio2">--</h4>
                     <h6 class="tiempo" id="tiempo1">--</h6>
+                    <input type = "hidden" name = "costo" id = "precio2">
                 </label>
             </div>
 
             <div class="contPrecio">
                 <label for="opcionCabify">
-                    <input type="radio" name="opcionViaje" id="opcionCabify" value="cabify" required>
+                    <input type="radio" name="empresa" id="opcionCabify" value="Cabify" required>
                     <img src="~/img/cabify.png" alt="Cabify Logo">
-                    <h4 id="precio">--</h4>
+                    <h4 name = "costo" id="precio">--</h4>
                     <h6 class="tiempo" id="tiempo2">--</h6>
+                    <input type = "hidden" name = "costo" id = "precio">
                 </label>
             </div>
 
@@ -84,6 +82,17 @@
 
     <div id="map" style="width: 30%;"></div>
 </form>
-
-
 </div>
+<script>
+    const inicio = "@(ViewBag.Inicio ?? "")";
+    const destino = "@(ViewBag.Final ?? "")";
+    let startCoords = {
+        lat: parseFloat("@(ViewBag.InicioLat ?? "")"),
+        lon: parseFloat("@(ViewBag.InicioLon ?? "")"),
+    };
+    let endCoords = {
+        lat: parseFloat("@(ViewBag.FinalLat ?? "")"),
+        lon: parseFloat("@(ViewBag.FinalLon ?? "")")
+    };
+    console.log(startCoords.lat, startCoords.lon, endCoords.lat, endCoords.lon);
+    </script>

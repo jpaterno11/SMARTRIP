@@ -97,7 +97,8 @@ public class AccountController : Controller
     [HttpPost]
     public IActionResult guardarViaje(string ubicacionInicial, string ubicacionFinal, double costo, DateTime fecha, DateTime hora, string metodoPago, string empresa){
         int IDUsuario = (int) TempData["idUsuario"];
-        VIAJES viaje = new VIAJES (IDUsuario, ubicacionInicial, ubicacionFinal, costo, fecha, hora, metodoPago, empresa); 
+        VIAJES viaje = new VIAJES (IDUsuario, ubicacionInicial, ubicacionFinal, costo, fecha, hora, metodoPago, empresa);
+        BD.AgregarViaje(viaje); 
         return View("/Views/Home/CalificarServicio.cshtml");
     }
 }

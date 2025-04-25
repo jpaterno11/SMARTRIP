@@ -14,11 +14,15 @@
             <input type="text" class="input-field" id="start" name="start" placeholder="Ingresá tu ubicación" onkeyup="predictDire('start')" required>
             <img src="~/img/ingresarUbi.png" alt="Icono de ubicación" class="input-icon">
             <ul id="start-suggestions" class="suggestions-list"></ul>
+            <input type="hidden" name="startLat" id="start-lat">
+            <input type="hidden" name="startLon" id="start-lon">
         </div>
         <div class="input-container">
                     <input type="text" class="input-field" id="end" name="end" placeholder="Ingresá tu destino" onkeyup="predictDire('end')" required>
             <img src="~/img/ingresarDest.png" alt="Icono de ubicación" class="input-icon">
             <ul id="end-suggestions" class="suggestions-list"></ul>
+            <input type="hidden" name="endLat" id="end-lat">
+            <input type="hidden" name="endLon" id="end-lon">
         </div>
     </div>
 
@@ -67,3 +71,21 @@
 
 
 <a class="color" href='@Url.Action("CalificarServicio", "Home")'> <button type="button" class="btn btn-secondary">Omitir </button></a>
+<script>
+    document.querySelector('form').addEventListener('submit', function (e) {
+        const startInput = document.getElementById('start');
+        const endInput = document.getElementById('end');
+        const startLat = startInput.dataset.lat;
+        const startLon = startInput.dataset.lon;
+        const endLat = endInput.dataset.lat;
+        const endLon = endInput.dataset.lon;
+        document.getElementById('start-lat').value = startLat;
+        document.getElementById('start-lon').value = startLon;
+        document.getElementById('end-lat').value = endLat;
+        document.getElementById('end-lon').value = endLon;
+        if (!startLat || !startLon || !endLat || !endLon) {
+            e.preventDefault();
+            alert("Seleccioná direcciones válidas desde el autocompletado.");
+        }
+    });
+</script>

@@ -53,12 +53,17 @@ public class HomeController : Controller
 
 
     [HttpGet]
-    public IActionResult Viajar(string start, string end)
-    {
-        ViewBag.Inicio = start;
-        ViewBag.Final = end;
-        return View();
-    }
+   public IActionResult Viajar(string start, string end, string startLat, string startLon, string endLat, string endLon)
+{
+    ViewBag.Inicio = start;
+    ViewBag.Final = end;
+    ViewBag.InicioLat = startLat;
+    ViewBag.InicioLon = startLon;
+    ViewBag.FinalLat = endLat;
+    ViewBag.FinalLon = endLon;
+    return View();
+}
+
 
        public IActionResult CalificarServicio()
     {

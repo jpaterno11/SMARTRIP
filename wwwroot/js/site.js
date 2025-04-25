@@ -85,7 +85,7 @@ inputField.name = (inputType ? 'telefono' : 'email') ;
         
         meses.forEach((mes, index) => {
             const option = document.createElement('option');
-            option.value = index;
+            option.value = index + 1;
             option.textContent = mes;
             selectMes.appendChild(option);
         });
@@ -184,19 +184,45 @@ async function obtenerCoordenadas(direccion) {
         return null;
     }
 }
-function buscarRutaDesdeFormulario() {
-    const startInput = document.getElementById('start');
-    const endInput = document.getElementById('end');
+function selectSuggestion(type, suggestion) {
+    const input = document.getElementById(type);
+    input.value = suggestion.properties.formatted;
+    input.dataset.lat = suggestion.properties.lat;
+    input.dataset.lon = suggestion.properties.lon;
+    document.getElementById(`${type}-lat`).value = suggestion.properties.lat;
+    document.getElementById(`${type}-lon`).value = suggestion.properties.lon;
 
-    // Obtener coordenadas desde los atributos data-*
-    const startCoords = {
-        lat: parseFloat(startInput.dataset.lat),
-        lon: parseFloat(startInput.dataset.lon)
-    };
-    const endCoords = {
-        lat: parseFloat(endInput.dataset.lat),
-        lon: parseFloat(endInput.dataset.lon)
-    };
+    document.getElementById(`${type}-suggestions`).innerHTML = "";
+}
+
+
+function buscarRutaDesdeFormulario() {
+        console.log(inicio);
+        console.log(destino);
+        let startInput = document.getElementById('start');
+        let endInput = document.getElementById('end');
+        if (inicio) {
+            startInput.value = inicio;
+            
+        }else{
+            startCoords = {
+                lat: parseFloat(startInput.dataset.lat),
+                lon: parseFloat(startInput.dataset.lon),
+            };
+        }
+        if (destino) {
+            endInput.value = destino;
+        }
+        else{
+            endCoords = {
+                lat: parseFloat(endInput.dataset.lat),
+                lon: parseFloat(endInput.dataset.lon),
+            };
+        };
+        console.log(startInput.value);
+        console.log(endInput.value);
+    console.log(startCoords.lat, startCoords.lon);
+    console.log(endCoords.lat, endCoords.lon);
 
     if (isNaN(startCoords.lat) || isNaN(startCoords.lon) || isNaN(endCoords.lat) || isNaN(endCoords.lon)) {
         alert("Seleccioná direcciones válidas del autocompletado.");
@@ -335,6 +361,9 @@ function cambiarTexto(lat1, lon1, lat2, lon2) {
     precio.innerHTML = `$${precioCalculado.toLocaleString('es-AR')} AR$`;
     precio1.innerHTML = `$${precioCalculado1.toLocaleString('es-AR')} AR$`;
     precio2.innerHTML = `$${precioCalculado2.toLocaleString('es-AR')} AR$`;
+    precio.value = precioCalculado;
+    precio1.value = precioCalculado;
+    precio2.value = precioCalculado;
     const hora = document.getElementById("hora").value;
     const fechaInput = document.getElementById("fecha").value;
     const fecha = fechaInput ? new Date(fechaInput) : null;
