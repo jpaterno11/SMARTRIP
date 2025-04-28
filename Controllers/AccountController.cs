@@ -45,28 +45,24 @@ public class AccountController : Controller
 
 
      [HttpPost] 
-     public IActionResult IniciarSesionEmail(string email, string contraseña)
+     public IActionResult IniciarSesion(string email, string contraseña, int telefono)
     {
-        USUARIO user = BD.VerificarUsuarioEmail(email, contraseña);
+        USUARIO user;
+        if (telefono == 0){
+            user = BD.VerificarUsuarioEmail(email, contraseña);
+        }
+        else{
+            user = BD.VerificarUsuarioTelefono(telefono, contraseña);
+        }
         if(user == null)
         {
             ViewBag.Mensaje = "Lo sentimos, esa cuenta no existe.";
             return View("/Views/Home/Login.cshtml");
         }
+        TempData["idUsuario"] = BD.ConseguirID(user);
         return View("/Views/Home/Index.cshtml");
         
         
-    }
-   [HttpPost] 
-    public IActionResult IniciarSesionTelefono(int telefono, string contraseña)
-    {
-        USUARIO user = BD.VerificarUsuarioTelefono(telefono, contraseña);
-        if(user == null)
-        {
-            ViewBag.Mensaje = "Lo sentimos, esa cuenta no existe.";
-             return View("/Views/Home/Login.cshtml");
-        }
-        return View("/Views/Home/Index.cshtml");
     }
     [HttpPost] 
       public IActionResult Olvidar(string email, int telefono)
@@ -95,8 +91,21 @@ public class AccountController : Controller
     //  }
 
     [HttpPost]
-    public IActionResult guardarViaje(string ubicacionInicial, string ubicacionFinal, double costo, DateTime fecha, DateTime hora, string metodoPago, string empresa){
+    public IActionResult guardarViaje(string ubicacionInicial, string ubicacionFinal, double costoDidi, double costoUber, double costoCabify, DateTime fecha, DateTime hora, string metodoPago, string empresa){
         int IDUsuario = (int) TempData["idUsuario"];
+        double costo = 0;
+        if (empresa == "DiDi")
+    {
+        costo = costoDidi;
+    }
+    else if (empresa == "Uber")
+    {
+        costo = costoUber;
+    }
+    else if (empresa == "Cabify")
+    {
+        costo = costoCabify;
+    }
         VIAJES viaje = new VIAJES (IDUsuario, ubicacionInicial, ubicacionFinal, costo, fecha, hora, metodoPago, empresa);
         BD.AgregarViaje(viaje); 
         return View("/Views/Home/CalificarServicio.cshtml");

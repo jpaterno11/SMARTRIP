@@ -114,7 +114,10 @@ document.getElementById('Registrarseform').submit();
 return fechaNacimiento;
 }
 
-
+function enviarLogin(){
+    document.getElementById('Login').action = (validarContraseñayMail ? '/Account/IniciarSesion' : '/Account/Login');
+    document.getElementById('Login').submit();
+    }
 function enviarForm(){
 document.getElementById('Registrarseform2').action = (validarContraseñayMail ? '/Account/registrarse2' : '/Account/registrarse');
 document.getElementById('Registrarseform2').submit();
@@ -351,19 +354,26 @@ function predictDire(dire) {
 
 
 function cambiarTexto(lat1, lon1, lat2, lon2) {
-    const precio = document.getElementById("precio");
-    const precio1 = document.getElementById("precio1");
-    const precio2 = document.getElementById("precio2");
+    const precioDidi = document.getElementById("precioDidi");
+    const precioUber = document.getElementById("precioUber");
+    const precioCabify = document.getElementById("precioCabify");
+    const precioDidi1 = document.getElementById("precioDidi1");
+    const precioUber1 = document.getElementById("precioUber1");
+    const precioCabify1 = document.getElementById("precioCabify1");
     const distance = calcularDistancia(lat1, lon1, lat2, lon2);
-    const precioCalculado = calcularPrecio(distance, 'precio1'); 
-    const precioCalculado1 = calcularPrecio(distance, 'precio2');
-    const precioCalculado2 = calcularPrecio(distance, 'precio3');
-    precio.innerHTML = `$${precioCalculado.toLocaleString('es-AR')} AR$`;
-    precio1.innerHTML = `$${precioCalculado1.toLocaleString('es-AR')} AR$`;
-    precio2.innerHTML = `$${precioCalculado2.toLocaleString('es-AR')} AR$`;
-    precio.value = precioCalculado;
-    precio1.value = precioCalculado;
-    precio2.value = precioCalculado;
+    const precioCalculadoDidi = calcularPrecio(distance, 'precioDidi');
+    console.log(precioCalculadoDidi); 
+    const precioCalculadoUber = calcularPrecio(distance, 'precioUber');
+    console.log(precioCalculadoUber); 
+    const precioCalculadoCabify = calcularPrecio(distance, 'precioCabify');
+    console.log(precioCalculadoCabify); 
+    precioDidi.innerHTML = `$${precioCalculadoDidi.toLocaleString('es-AR')} AR$`;
+    precioUber.innerHTML = `$${precioCalculadoUber.toLocaleString('es-AR')} AR$`;
+    precioCabify.innerHTML = `$${precioCalculadoCabify.toLocaleString('es-AR')} AR$`;
+    precioDidi1.value = precioCalculadoDidi;
+    precioUber1.value = precioCalculadoUber;
+    precioCabify1.value = precioCalculadoCabify;
+    console.log(precioDidi1, precioUber1, precioCabify1)
     const hora = document.getElementById("hora").value;
     const fechaInput = document.getElementById("fecha").value;
     const fecha = fechaInput ? new Date(fechaInput) : null;
@@ -403,9 +413,9 @@ function randomizarTiempo() {
 
 function calcularPrecio(distancia, tipoPrecio) {
     const tarifas = {
-        precio1: { tarifaBase: 3000, costoPorKilometro: 1200 },
-        precio2: { tarifaBase: 3500, costoPorKilometro: 1500 },
-        precio3: { tarifaBase: 4000, costoPorKilometro: 1800 }
+        precioDidi: { tarifaBase: 3000, costoPorKilometro: 1200 },
+        precioUber: { tarifaBase: 3500, costoPorKilometro: 1500 },
+        precioCabify: { tarifaBase: 4000, costoPorKilometro: 1800 }
     };
 
     const { tarifaBase, costoPorKilometro } = tarifas[tipoPrecio];

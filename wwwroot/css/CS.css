@@ -44,6 +44,8 @@
 }
 
 .form-control-pago{
+    border-radius: 10px;
+    margin-left: -20%;
     background-color: #CAF0F8;
     border: none;
 }
